@@ -16,6 +16,10 @@
    <!-- <link href='http://fonts.googleapis.com/css?family=Roboto:400,900italic,900,700italic,700,500italic,500,400italic,300italic,300,100italic,100' rel='stylesheet' type='text/css'>-->
     <link rel="stylesheet" href="font-awesome-4.3.0/css/font-awesome.min.css">
     <link href="css/stylesheets/template.css" media="screen, projection" rel="stylesheet" type="text/css" />
+
+     <link href="css/stylesheets/framework7.material.css" media="screen, projection" rel="stylesheet" type="text/css" />
+     
+
     <link href="css/stylesheets/responsive.css" media="screen, projection" rel="stylesheet" type="text/css" />
 </head>
 
@@ -28,13 +32,13 @@
     <div class="panel panel-left panel-reveal">
         <nav id="menu" class="left show">
 	          <ul>
-	            <li><a href="index.html"><i class="fa fa-home"></i>Home</a></li>
-	            <li><a href="aboutus.html"><i class="fa fa-star"></i>About Us</a></li>	           
-	            <li><a href="products.html"><i class="fa fa-file-o"></i>Products</a></li>
-	            <li><a href="product.html"><i class="fa fa-circle-o"></i>Single Product</a></li>
-	            <li><a href="brochure.html"><i class="fa fa-file-text-o"></i>Brochure</a></li>
-	            <li><a href="series.html"><i class="fa fa-file-o"></i>Series</a></li>
-	            <li><a href="contact1.html"><i class="fa fa-envelope"></i>Contact</a></li>
+	            <li><a href="index.html"  class="close-panel"><i class="fa fa-home"></i>Home</a></li>
+	            <li><a href="aboutus.html"  class="close-panel"><i class="fa fa-star"></i>About Us</a></li>	           
+	            <li><a href="products.html"  class="close-panel"><i class="fa fa-file-o"></i>Products</a></li>
+	            <li><a href="product.html"  class="close-panel"><i class="fa fa-circle-o"></i>Single Product</a></li>
+	            <li><a href="brochure.html"  class="close-panel"><i class="fa fa-file-text-o"></i>Brochure</a></li>
+	            <li><a href="series.html"  class="close-panel"><i class="fa fa-file-o"></i>Series</a></li>
+	            <li><a href="contact1.html"  class="close-panel"><i class="fa fa-envelope"></i>Contact</a></li>
 	            <!--<li><a href="aboutus1.html"><i class="fa fa-file-o"></i>aboutus1</a></li>
 	            <li><a href="products1.html"><i class="fa fa-file-o"></i>products1</a></li>-->
 	          </ul>
@@ -46,15 +50,15 @@
         <div class="view view-main">
             <!-- Top Navbar-->
             <div class="navbar">
-                <div class="navbar-inner">
+                <div class="navbar-inner bg-black">
                     <div class="left">
                         <!-- Right link contains only icon - additional "icon-only" class-->
                         <a href="#" class="link icon-only open-panel">
                             <i class="fa fa-bars"></i>
                         </a>
                     </div>
-                    <div class="Right">
-                      <img class="icon" alt="icon" src="icon/logo.png" style=" height: 20px;"/>
+                    <div class="right">
+                       <a href="index.html"><img class="icon" alt="icon" src="icon/logo.png" style=" height: 20px;"/> </a>
                     </div>
                     <!-- Title of the page-->
                 </div>
@@ -68,46 +72,48 @@
                         <div class="content-block">
                             <div class="row home">
                                 <div class="col-33">
-                                    <a href="feature.html" class="link">
+                                    <a href="aboutus.html" class="link">
                                         <img class="icon" alt="icon" src="icon/feature.png" />
-                                        <span>Features</span>
+                                        <!--<span>Features</span>-->
+                                        <p style="font-size:10px;">About Us</p>
                                     </a>
                                 </div>
 
                                 <div class="col-33">
-                                    <a href="pages.html" class="link">
+                                    <a href="products.html" class="link">
                                         <img class="icon" alt="icon" src="icon/pages.png" />
-                                        <span>Pages</span>
+                                        <p style="font-size:10px;">Products</p>
                                     </a>
                                 </div>
                                 <div class="col-33">
-                                    <a href="blog.html" class="link">
-                                        <img class="icon" alt="icon" src="icon/blog.png" />
-                                        <span>Blog</span>
+                                    <a href="product.html" class="link">
+                                        <img class="icon" alt="icon" src="icon/button.png" />
+                                         <p style="font-size:10px;">Single Product</p>
                                     </a>
                                 </div>
+                                
                             </div>
                             <div class="row home">
                                 <div class="col-33">
-                                    <a href="gallery.html" class="link">
-                                        <img class="icon" alt="icon" src="icon/gallery.png" />
-                                        <span>Gallery</span>
+                                    <a href="brochure.html" class="link">
+                                        <img class="icon" alt="icon" src="icon/blog.png" />                                     
+                                        <p style="font-size:10px;">Brochure</p>
+                                    </a>
+                                </div>
+                                 <div class="col-33">
+                                    <a href="series.html" class="link">
+                                        <img class="icon" alt="icon" src="icon/pages.png" />                         
+                                         <p style="font-size:10px;">Series</p>
                                     </a>
                                 </div>
                                 <div class="col-33">
-                                    <a href="video.html" class="link">
-                                        <img class="icon" alt="icon" src="icon/video.png" />
-                                        <span>Video</span>
-                                    </a>
-                                </div>
-                                <div class="col-33">
-                                    <a href="contact.html" class="link">
-                                        <img class="icon" alt="icon" src="icon/contact.png" />
-                                        <span>Contact</span>
+                                    <a href="contact1.html" class="link">
+                                        <img class="icon" alt="icon" src="icon/contact.png" />                                   
+                                         <p style="font-size:10px;">Contact</p>
                                     </a>
                                 </div>
                             </div>
-                            <div class="row home">
+                            <!--<div class="row home">
                                 <div class="col-33">
                                     <a href="typo.html" class="link">
                                         <img class="icon" alt="icon" src="icon/typo.png" />
@@ -126,7 +132,7 @@
                                         <span>Colors</span>
                                     </a>
                                 </div>
-                            </div>
+                            </div>-->
                         </div>
 			    
                 </div>
@@ -134,13 +140,19 @@
                 </div>
             </div>
                <!-- Bottom Toolbar-->
-          <div class="toolbar">
-            <div class="toolbar-inner">
-           <div class="left">  <a href="#tab-1" class="tab-link active"><img src="icon/back.png" style=" height: 20px;"/></a></div>
+          <div class="toolbar"  style="height:40px; ">
+            <div class="toolbar-inner bg-black" >
+             <div class="left"><a href="#" class="back link">
+              <!--<i class="icon  icon-back color-white "></i>-->
+              <img src="icon/back.png" style=" height: 25px;"/>
+              </a>
+            </div>
+           <!--<div class="left">  <a href="#tab-1" class="tab-link active"><img src="icon/back.png" style=" height: 20px;"/></a></div>-->
 
-                   <div class="center"> <a href="#tab-2" class="tab-link"><img src="icon/up-arrow.png" style=" height: 20px;"/></a></div>
+                   <div class="center"> 
+                   <a href="index.html"><img src="icon/home.png" style=" height: 22px;"/></a></div>
 
-                   <div class="right"> <a href="#tab-3" class="tab-link"><img src="icon/settings.png" style=" height: 20px;"/></a></div>
+                   <div class="right"> <a href="#" class="tab-link"><img src="icon/settings.png" style=" height: 25px;"/></a></div>
             </div>
           </div>          
           <!-- /End of Bottom Toolbar-->
