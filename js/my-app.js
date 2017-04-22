@@ -721,41 +721,72 @@ myApp.onPageInit('brochure', function (page) {
       });
 });
 
-function downbrochure(url)
+function downbrochure(URL)
 {
+  Folder_Name = 'abc';
+  File_Name = 'sample.pdf';
+  window.requestFileSystem(LocalFileSystem.PERSISTENT, 0, fileSystemSuccess, fileSystemFail);
 
-    cordova.ThemeableBrowser.open(url, '_blank', {
-    statusbar: {
-        color: '#ffffffff'
-    },
-    toolbar: {
-        height: 0,
-        color: '#f0f0f0ff'
-    },
-    title: {
-        color: '#003264ff',
-        showPageTitle: true
-    },
-    menu: {
-    },
-    backButtonCanClose: true
-    }).addEventListener('closePressed', function(e) 
-    {
-        //myApp.alert('close Button Pressed', '');
-        RefillComplete();
-    }).addEventListener('sharePressed', function(e) 
-    {
-        //myApp.alert(e.url,'');
-    }).addEventListener(cordova.ThemeableBrowser.EVT_ERR, function(e) {
-        console.error(e.message);
-    }).addEventListener(cordova.ThemeableBrowser.EVT_WRN, function(e) {
-        console.log(e.message);
-    });
+function fileSystemSuccess(fileSystem) {
+    var download_link = encodeURI(URL);
+    //ext = download_link.substr(download_link.lastIndexOf('.') + 1); //Get extension of URL
+
+    var directoryEntry = fileSystem.root; // to get root path of directory
+    //alert('main source: ' + directoryEntry);
+
+    directoryEntry.getDirectory(Folder_Name, { create: true, exclusive: false }, onDirectorySuccess, onDirectoryFail); // creating folder in sdcard
+    var rootdir = fileSystem.root;
+    //var fp = rootdir.fullPath.toURL(); // Returns Fulpath of local directory
+    var fp = rootdir.toURL(); // Returns Fulpath of local directory
+    //alert('fp1: ' + fp)
+    //fp = fp + "/" + Folder_Name + "/" + File_Name + "." + ext; // fullpath and name of the file which we want to give
+    //fp = fp + "/" + app_name + "/"  + Folder_Name + "/" + File_Name; // fullpath and name of the file which we want to give
+    fp = fp + "/" + app_name + "/"  + Folder_Name + "/" + File_Name; // fullpath and name of the file which we want to give
+    //alert('fp2: ' + fp)
+    // download function call
+    filetransfer(download_link, fp);
+  }
+
+
+  function onDirectorySuccess(parent) {
+      // Directory created successfuly
+      //alert('directory created')
+  }
+
+  function onDirectoryFail(error) {
+      //Error while creating directory
+      alert("Unable to create new directory: " + error.code);
+  }
+
+  function fileSystemFail(evt) {
+    //Unable to access file system
+    alert(evt.target.error.code);
+ }
 }
+
+function filetransfer(download_link, fp) 
+{
+    var fileTransfer = new FileTransfer();
+    // File download function with URL and local path
+    fileTransfer.download(download_link, fp,
+                        function (entry) {
+                            //alert("download complete: " + entry.fullPath);
+                           //alert("folder: " + fp);
+                    },
+                 function (error) {
+                     //Download abort errors or download failed errors
+                     //alert("folder: " + fp);
+                     alert("download error source: " + error.source);
+                     //alert("download error target " + error.target);
+                     //alert("upload error code" + error.code);
+                 }
+            );
+}
+
 
 function downbrochure2(id)
 {
-  //alert(id)
+  myApp.alert(id, '')
   var fileTransfer = new FileTransfer();
   var uri = encodeURI(id);
 
