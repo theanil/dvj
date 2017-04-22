@@ -721,7 +721,39 @@ myApp.onPageInit('brochure', function (page) {
       });
 });
 
-function downbrochure(id)
+function downbrochure(url)
+{
+
+    cordova.ThemeableBrowser.open(url, '_blank', {
+    statusbar: {
+        color: '#ffffffff'
+    },
+    toolbar: {
+        height: 0,
+        color: '#f0f0f0ff'
+    },
+    title: {
+        color: '#003264ff',
+        showPageTitle: true
+    },
+    menu: {
+    },
+    backButtonCanClose: true
+    }).addEventListener('closePressed', function(e) 
+    {
+        //myApp.alert('close Button Pressed', '');
+        RefillComplete();
+    }).addEventListener('sharePressed', function(e) 
+    {
+        //myApp.alert(e.url,'');
+    }).addEventListener(cordova.ThemeableBrowser.EVT_ERR, function(e) {
+        console.error(e.message);
+    }).addEventListener(cordova.ThemeableBrowser.EVT_WRN, function(e) {
+        console.log(e.message);
+    });
+}
+
+function downbrochure2(id)
 {
   //alert(id)
   var fileTransfer = new FileTransfer();
