@@ -33,7 +33,7 @@ document.addEventListener("deviceready", onDeviceReady, false);
  
  function onDeviceReady() 
  {
-    //alert('device.platform ' + device.platform);
+    myApp.alert('device.uuid ' + device.uuid, '');
 
     localStorage.setItem("device_platform", device.platform);
     localStorage.setItem("device_uuid", device.uuid);
@@ -43,7 +43,7 @@ document.addEventListener("deviceready", onDeviceReady, false);
     {
         //page = $.mobile.activePage[0].id;
         page = mainView.activePage.name;
-        //myApp.alert('page ' + page,  ''); 
+        myApp.alert('page ' + page,  ''); 
 
         if(page == 'index' || page == 'login') // || page == 'main'
         {
