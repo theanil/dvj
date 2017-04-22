@@ -640,3 +640,108 @@ myApp.onPageInit('hooter', function (page) {
     });
 
 });
+
+myApp.onPageInit('brochure', function (page) {
+
+  //myApp.alert('brochure started','');
+  url = srvURL + '/brochure';
+    $$.ajax({
+          url: url,
+          method: "GET",
+          data: {},
+          processData: true,
+          dataType: 'json',
+          timeout : 50000,
+          success: function (e, status, xhr)
+          {
+              //myApp.hidePreloader();
+
+              if(e.status == 'success')
+              {
+                  //myApp.alert('session_id ' + e.session_id,  ''); 
+
+                  //myApp.alert('test Server',  '');   
+
+                  total = e.data.brochure.length;
+                   //myApp.alert(totalalerts);
+
+                  cadd = '';
+                  for(i=0; i< total; i++)
+                  {
+                      brochure_id = e.data.brochure[i].brochure_id;
+                      //alert(brochure_id);
+                      datec = e.data.brochure[i].datec;
+
+                      status = e.data.brochure[i].status;
+
+                      brochure_name = urldecode(e.data.brochure[i].brochure_name);
+                      brochure_image = urldecode(e.data.brochure[i].brochure_image);
+                      brochure_pdf = urldecode(e.data.brochure[i].brochure_pdf);
+
+                      var b= i%2;
+                      //alert(b)
+                      if(b == 0)
+                      {
+                        cadd += '<div class="row">';
+                      }
+
+                      cadd += '           <div class="col-50">';
+                      cadd += '               <a href="#" onclick="downbrochure("' + "'" + e.data.brochure[i].brochure_pdf + "');" + '>';
+                      cadd += '                   <img src=" ' + brochure_image + '" style=" height: 120px; width: 140px;"/>';
+                      cadd += '                  <p style="font-size:10px;">' + brochure_name + '</p>';
+                      cadd += '               </a>';
+                      cadd += '           </div>';
+                      
+                      if(b == 1)
+                      {
+                        cadd += '      </div>';
+                      }
+                    }
+                    console.log(cadd)
+                    $$("#brochuredetails").html(cadd);
+                                  
+              }else
+              {
+                  //myApp.alert('error: ' + e.status,  '');
+                  myApp.alert(e.message,  ''); 
+              }
+          },
+          error: function (xhr, status)
+          {
+              myApp.hideIndicator();
+
+              if(status == 0)
+              {
+                  myApp.alert('Please Check Internet',  ''); 
+              }else
+              {
+                  myApp.alert('failure * ' +  status,  '');  
+              };
+          }
+      });
+});
+
+function downbrochure(id)
+{
+  var fileTransfer = new FileTransfer();
+  var uri = encodeURI(id);
+
+  fileTransfer.download(
+      uri,
+      fileURL,
+      function(entry) {
+          console.log("download complete: " + entry.toURL());
+      },
+      function(error) {
+          console.log("download error source " + error.source);
+          console.log("download error target " + error.target);
+          console.log("download error code" + error.code);
+      },
+      false,
+      {
+          headers: {
+              "Authorization": "Basic dGVzdHVzZXJuYW1lOnRlc3RwYXNzd29yZA=="
+          }
+      }
+  );
+}
