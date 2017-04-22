@@ -686,9 +686,9 @@ myApp.onPageInit('brochure', function (page) {
                       }
 
                       cadd += '           <div class="col-50">';
-                      cadd += '               <a href="#" onclick="downbrochure("' + "'" + e.data.brochure[i].brochure_pdf + "');" + '>';
+                      cadd += '               <a href="#" onclick="downbrochure(' + "'" + urldecode(e.data.brochure[i].brochure_pdf) + "');" + '">';
                       cadd += '                   <img src=" ' + brochure_image + '" style=" height: 120px; width: 140px;"/>';
-                      cadd += '                  <p style="font-size:10px;">' + brochure_name + '</p>';
+                      cadd += '                  <span style="color: black;">' + brochure_name + '</span>';
                       cadd += '               </a>';
                       cadd += '           </div>';
                       
@@ -723,6 +723,7 @@ myApp.onPageInit('brochure', function (page) {
 
 function downbrochure(id)
 {
+  //alert(id)
   var fileTransfer = new FileTransfer();
   var uri = encodeURI(id);
 
