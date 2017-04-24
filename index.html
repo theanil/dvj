@@ -18,6 +18,7 @@
     <link href="css/stylesheets/template.css" media="screen, projection" rel="stylesheet" type="text/css" />
 
      <link href="css/stylesheets/framework7.material.css" media="screen, projection" rel="stylesheet" type="text/css" />
+     <link href="http://idangero.us/swiper/dist/css/swiper.min.css" media="screen, projection" rel="stylesheet" type="text/css" />
      
 
     <link href="css/stylesheets/responsive.css" media="screen, projection" rel="stylesheet" type="text/css" />
@@ -68,50 +69,38 @@
                 <!-- Page, data-page contains page name-->
                 <div data-page="index" class="page">
                     <!-- Scrollable page content-->
+                    <div class="page-content">
 
 
-<div class="page-content">
-
-
-  <div class="swiper-container">
-  <div class="swiper-wrapper">
-    <div class="swiper-slide">
-      <img data-src="http://lorempixel.com/1600/1200/nature/1" class="swiper-lazy">
-      <div class="preloader"></div>
+<!-- Swiper -->
+    <div class="swiper-container">
+        <div class="swiper-wrapper">
+            <div class="swiper-slide">
+                <div class="swiper-zoom-container">
+                    <img src="http://lorempixel.com/800/800/sports/1">
+                </div>
+            </div>
+            <div class="swiper-slide">
+                <div class="swiper-zoom-container">
+                    <img src="http://lorempixel.com/800/400/sports/2">
+                </div>
+            </div>
+            <div class="swiper-slide">
+                <div class="swiper-zoom-container">
+                    <img src="http://lorempixel.com/400/800/sports/3">
+                </div>
+            </div>
+        </div>
+        <!-- Add Pagination -->
+        <div class="swiper-pagination swiper-pagination-white"></div>
+        <!-- Add Navigation -->
+        <div class="swiper-button-prev"></div>
+        <div class="swiper-button-next"></div>
     </div>
-    <div class="swiper-slide">
-      <img data-src="http://lorempixel.com/1600/1200/nature/2" class="swiper-lazy">
-      <div class="preloader"></div>
-    </div>
-    <div class="swiper-slide">
-      <img data-src="http://lorempixel.com/1600/1200/nature/3" class="swiper-lazy">
-      <div class="preloader"></div>
-    </div>
-    <div class="swiper-slide">
-      <img data-src="http://lorempixel.com/1600/1200/nature/4" class="swiper-lazy">
-      <div class="preloader"></div>
-    </div>
-    <div class="swiper-slide">
-      <img data-src="http://lorempixel.com/1600/1200/nature/5" class="swiper-lazy">
-      <div class="preloader"></div>
-    </div>
-  </div>
-  <div class="swiper-pagination color-white"></div>
-</div>
-
-
-</div>
-                
-
-
-
-                    <div class="page-content1">
-
-
-
-
 
                         <div class="content-block">
+
+ 
 
                             <div class="row home">
                                 <div class="col-33">
@@ -210,6 +199,7 @@
     <!-- Path to Framework7 Library JS-->
     <script type="text/javascript" src="js/framework7.min.js"></script>
     <!-- Path to your app js-->
+    <script type="text/javascript" src="http://idangero.us/swiper/dist/js/swiper.min.js"></script>
     <script type="text/javascript" src="js/my-app.js"></script>
 
     <!--<script type="text/javascript" charset="utf-8" src="cordova.js"></script>-->

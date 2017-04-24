@@ -1010,10 +1010,14 @@ function downbrochure2(id)
 
 myApp.onPageInit('index', function (page) {
 
- var mySwiper = new Swiper('.swiper-container', {
-  preloadImages: false,
-  lazyLoading: true,
-  pagination: '.swiper-pagination'
-})   
+
+
+ var swiper = new Swiper('.swiper-container', {
+        zoom: true,
+        pagination: '.swiper-pagination',
+        nextButton: '.swiper-button-next',
+        prevButton: '.swiper-button-prev',
+        autoplay: 2500
+    });
 
 });
