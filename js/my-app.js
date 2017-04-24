@@ -691,7 +691,7 @@ myApp.onPageInit('brochure', function (page) {
                       cadd += '                   <img src=" ' + brochure_image + '" style=" height: 120px; width: 140px;"/>';
                       cadd += '                  <span style="color: black;">' + brochure_name + '</span>';
                       cadd += '               </a>';
-                      cadd += '               <a class="external" ghref="' + urldecode(e.data.brochure[i].brochure_pdf)  + '"' + '>' + brochure_fname + '</a>';
+                      cadd += '               <a class="external" href="' + urldecode(e.data.brochure[i].brochure_pdf)  + '"' + '>' + brochure_fname + '</a>';
                       cadd += '           </div>';
                       
                       if(b == 1)
