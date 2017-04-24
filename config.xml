@@ -77,9 +77,10 @@
     <gap:plugin name="cordova-plugin-file" source="npm" />
     <gap:plugin name="cordova-plugin-themeablebrowser" source="npm" />
 
-    -->
     <gap:plugin name="cordova-plugin-file-transfer" source="npm" />
     <gap:plugin name="cordova-plugin-fastrde-downloader" source="npm" />
+
+    -->
 
     <feature name="http://api.phonegap.com/1.0/network"/>
 
