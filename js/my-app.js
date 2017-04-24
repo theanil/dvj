@@ -1011,7 +1011,7 @@ function downbrochure2(id)
 myApp.onPageBeforeInit('index', function (page) {
 
   var swiper = new Swiper('.swiper-container', {
-        zoom: true,
+        zoom: false,
         pagination: '.swiper-pagination',
         nextButton: '.swiper-button-next',
         prevButton: '.swiper-button-prev',
@@ -1023,13 +1023,10 @@ myApp.onPageBeforeInit('index', function (page) {
 myApp.onPageInit('index', function (page) {
 
  var swiper = new Swiper('.swiper-container', {
-        zoom: true,
+        zoom: false,
         pagination: '.swiper-pagination',
         nextButton: '.swiper-button-next',
         prevButton: '.swiper-button-prev',
         autoplay: 2500
     });
-
-
-
 });
