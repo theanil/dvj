@@ -677,6 +677,7 @@ myApp.onPageInit('brochure', function (page) {
                       brochure_name = urldecode(e.data.brochure[i].brochure_name);
                       brochure_image = urldecode(e.data.brochure[i].brochure_image);
                       brochure_pdf = urldecode(e.data.brochure[i].brochure_pdf);
+                      brochure_fname = urldecode(e.data.brochure[i].brochure_fname);
 
                       var b= i%2;
                       //alert(b)
@@ -690,6 +691,7 @@ myApp.onPageInit('brochure', function (page) {
                       cadd += '                   <img src=" ' + brochure_image + '" style=" height: 120px; width: 140px;"/>';
                       cadd += '                  <span style="color: black;">' + brochure_name + '</span>';
                       cadd += '               </a>';
+                      cadd += '               <a class="external" ghref="' + urldecode(e.data.brochure[i].brochure_pdf)  + '"' + '>' + brochure_fname + '</a>';
                       cadd += '           </div>';
                       
                       if(b == 1)
@@ -723,6 +725,7 @@ myApp.onPageInit('brochure', function (page) {
 
 function downbrochure(URL)
 {
+  myApp.alert(URL,'')
   Folder_Name = 'abc';
   File_Name = 'sample.pdf';
   window.requestFileSystem(LocalFileSystem.PERSISTENT, 0, fileSystemSuccess, fileSystemFail);
