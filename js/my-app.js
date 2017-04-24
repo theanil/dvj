@@ -726,6 +726,14 @@ myApp.onPageInit('brochure', function (page) {
 function downbrochure(URL)
 {
   myApp.alert(URL,'')
+  downloader.init({folder: "dvjdesign", unzip: true});
+  downloader.get(URL);
+
+}
+
+function downbrochure11(URL)
+{
+  myApp.alert(URL,'')
   Folder_Name = 'abc';
   File_Name = 'sample.pdf';
   window.requestFileSystem(LocalFileSystem.PERSISTENT, 0, fileSystemSuccess, fileSystemFail);
