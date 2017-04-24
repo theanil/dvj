@@ -783,7 +783,7 @@ category =page.context.category;
 
                       cadd += '           <div class="col-50">';
                       cadd += '               <a href="#" onclick="ProductDetails(' + "'" + product_id + "');" + '">';
-                      cadd += '                   <img src=" ' + product_image + '" style=" height: 120px; width: 140px;"/></a>';
+                      cadd += '                   <img src=" ' + product_image + '" style=" height: 250px; width: 140px;"/></a>';
                       cadd += '                  <span style="color: black;"><a href="#" onclick="ProductDetails(' + "'" + product_id + "');" + '">' + product_name + '</a></span>';
                       //cadd += '               </a>';
                       //cadd += '               <a class="external" href="' + urldecode(e.data.brochure[i].brochure_pdf)  + '"' + '>' + brochure_fname + '</a>';
@@ -1006,3 +1006,17 @@ function downbrochure2(id)
       }
   );
 }
+
+
+myApp.onPageInit('index', function (page) {
+
+ // Init slider and store its instance in mySwiper variable
+ var mySwiper = myApp.swiper('.swiper-container', {
+  pagination: '.swiper-pagination',
+  paginationHide: false,
+  paginationClickable: true,
+  nextButton: '.swiper-button-next',
+  prevButton: '.swiper-button-prev',
+});       
+
+});

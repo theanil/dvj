@@ -306,3 +306,34 @@
   }
 }
 /* ----------- LAPTOP ----------- */
+
+
+.swiper-custom {
+  position:relative;
+  height:200px;
+}
+.swiper-container {
+  height:200px;
+}
+.swiper-slide {
+  background: #fff;
+}
+.swiper-slide span {
+  text-align:center;
+  display:block;
+  margin: 20px;
+  font-size:21px;
+}
+.swiper-pagination-bullet {
+  width: 10px;
+  height: 10px;
+  background: none;
+  border:1px solid #aaa;
+  border-radius: 0 0 0 0;
+  opacity:1;
+  cursor: pointer;
+}
+.swiper-pagination-bullet-active {
+  background: #007aff;
+  border-color: #007aff;
+}  
