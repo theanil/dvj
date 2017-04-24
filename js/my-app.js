@@ -1010,13 +1010,10 @@ function downbrochure2(id)
 
 myApp.onPageInit('index', function (page) {
 
- // Init slider and store its instance in mySwiper variable
- var mySwiper = myApp.swiper('.swiper-container', {
-  pagination: '.swiper-pagination',
-  paginationHide: false,
-  paginationClickable: true,
-  nextButton: '.swiper-button-next',
-  prevButton: '.swiper-button-prev',
-});       
+ var mySwiper = new Swiper('.swiper-container', {
+  preloadImages: false,
+  lazyLoading: true,
+  pagination: '.swiper-pagination'
+})   
 
 });
