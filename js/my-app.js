@@ -641,6 +641,190 @@ myApp.onPageInit('hooter', function (page) {
 
 });
 
+myApp.onPageInit('products', function (page) {
+
+  //myApp.alert('brochure started','');
+  url = srvURL + '/category';
+    $$.ajax({
+          url: url,
+          method: "GET",
+          data: {},
+          processData: true,
+          dataType: 'json',
+          timeout : 50000,
+          success: function (e, status, xhr)
+          {
+              //myApp.hidePreloader();
+
+              if(e.status == 'success')
+              {
+                  //myApp.alert('session_id ' + e.session_id,  ''); 
+
+                  //myApp.alert('test Server',  '');   
+
+                  total = e.data.category.length;
+                   //myApp.alert(totalalerts);
+
+                  cadd = '';
+                  for(i=0; i< total; i++)
+                  {
+                      category_id = e.data.category[i].category_id;
+                      //alert(brochure_id);
+                      //datec = e.data.category[i].datec;
+
+                      //status = e.data.category[i].status;
+
+                      category_name = urldecode(e.data.category[i].category_name);
+                      category_image = urldecode(e.data.category[i].category_image);
+                      //brochure_pdf = urldecode(e.data.category[i].brochure_pdf);
+                      //brochure_fname = urldecode(e.data.category[i].brochure_fname);
+
+                      var b= i%2;
+                      //alert(b)
+                      if(b == 0)
+                      {
+                        cadd += '<div class="row">';
+                      }
+
+                      cadd += '           <div class="col-50">';
+                      cadd += '               <a href="#" onclick="ProductDisplay(' + "'" + category_id + "','" + category_name  +"');" + '">';
+                      cadd += '                   <img src=" ' + category_image + '" style=" height: 120px; width: 140px;"/></a>';
+                      cadd += '                  <span style="color: black;"><a href="#" onclick="ProductDisplay(' + "'" + category_id + "','" + category_name  +"');" + '">' + category_name + '</a></span>';
+                      //cadd += '               </a>';
+                      //cadd += '               <a class="external" href="' + urldecode(e.data.brochure[i].brochure_pdf)  + '"' + '>' + brochure_fname + '</a>';
+                      cadd += '           </div>';
+                      
+                      if(b == 1)
+                      {
+                        cadd += '      </div>';
+                      }
+                    }
+                    console.log(cadd)
+                    $$("#productsdetails").html(cadd);
+                                  
+              }else
+              {
+                  //myApp.alert('error: ' + e.status,  '');
+                  myApp.alert(e.message,  ''); 
+              }
+          },
+          error: function (xhr, status)
+          {
+              myApp.hideIndicator();
+
+              if(status == 0)
+              {
+                  myApp.alert('Please Check Internet',  ''); 
+              }else
+              {
+                  myApp.alert('failure * ' +  status,  '');  
+              };
+          }
+      });
+});
+
+
+function ProductDisplay(id, category)
+{
+  //myApp.alert(id,'');
+   mainView.router.load({
+                            url: 'productdetails.html',
+                            context: {id: id, category: category}});   
+}
+
+myApp.onPageInit('productdetails', function (page) {
+
+id =page.context.id; 
+category =page.context.category; 
+  //myApp.alert('brochure started','');
+  url = srvURL + '/product_list';
+    $$.ajax({
+          url: url,
+          method: "GET",
+          data: {category_id: id},
+          processData: true,
+          dataType: 'json',
+          timeout : 50000,
+          success: function (e, status, xhr)
+          {
+              //myApp.hidePreloader();
+
+              if(e.status == 'success')
+              {
+                  //myApp.alert('session_id ' + e.session_id,  ''); 
+
+                  //myApp.alert('test Server',  '');   
+
+                  total = e.data.products.length;
+                   //myApp.alert(totalalerts);
+
+                  cadd = '';
+                  for(i=0; i< total; i++)
+                  {
+                      product_id = e.data.products[i].product_id;
+                      //alert(brochure_id);
+                      datec = e.data.products[i].datec;
+
+                      status = e.data.products[i].status;
+                      product_price = e.data.products[i].product_price;
+                      is_new_arrival = e.data.products[i].is_new_arrival;
+
+                      category_id = urldecode(e.data.products[i].category_id);
+                      product_image = urldecode(e.data.products[i].product_image);
+                      product_name = urldecode(e.data.products[i].product_name);
+                      //brochure_fname = urldecode(e.data.products[i].brochure_fname);
+
+                      var b= i%2;
+                      //alert(b)
+                      if(b == 0)
+                      {
+                        cadd += '<div class="row">';
+                      }
+
+                      cadd += '           <div class="col-50">';
+                      cadd += '               <a href="#" onclick="ProductDetails(' + "'" + product_id + "');" + '">';
+                      cadd += '                   <img src=" ' + product_image + '" style=" height: 120px; width: 140px;"/></a>';
+                      cadd += '                  <span style="color: black;"><a href="#" onclick="ProductDetails(' + "'" + product_id + "');" + '">' + product_name + '</a></span>';
+                      //cadd += '               </a>';
+                      //cadd += '               <a class="external" href="' + urldecode(e.data.brochure[i].brochure_pdf)  + '"' + '>' + brochure_fname + '</a>';
+                      cadd += '           </div>';
+                      
+                      if(b == 1)
+                      {
+                        cadd += '      </div>';
+                      }
+                    }
+                    console.log(cadd)
+                    $$("#productsdetails2").html(cadd);
+                    $$("#category_name").html(category);
+                                  
+              }else
+              {
+                  //myApp.alert('error: ' + e.status,  '');
+                  myApp.alert(e.message,  ''); 
+              }
+          },
+          error: function (xhr, status)
+          {
+              myApp.hideIndicator();
+
+              if(status == 0)
+              {
+                  myApp.alert('Please Check Internet',  ''); 
+              }else
+              {
+                  myApp.alert('failure * ' +  status,  '');  
+              };
+          }
+      });
+});
+
+function ProductDetails(id)
+{
+
+
+}
+
 myApp.onPageInit('brochure', function (page) {
 
   //myApp.alert('brochure started','');
