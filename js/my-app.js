@@ -741,11 +741,11 @@ function fileSystemSuccess(fileSystem) {
     var rootdir = fileSystem.root;
     //var fp = rootdir.fullPath.toURL(); // Returns Fulpath of local directory
     var fp = rootdir.toURL(); // Returns Fulpath of local directory
-    //alert('fp1: ' + fp)
+    alert('fp1: ' + fp)
     //fp = fp + "/" + Folder_Name + "/" + File_Name + "." + ext; // fullpath and name of the file which we want to give
     //fp = fp + "/" + app_name + "/"  + Folder_Name + "/" + File_Name; // fullpath and name of the file which we want to give
     fp = fp + "/" + app_name + "/"  + Folder_Name + "/" + File_Name; // fullpath and name of the file which we want to give
-    //alert('fp2: ' + fp)
+    alert('fp2: ' + fp)
     // download function call
     filetransfer(download_link, fp);
   }
@@ -753,7 +753,7 @@ function fileSystemSuccess(fileSystem) {
 
   function onDirectorySuccess(parent) {
       // Directory created successfuly
-      //alert('directory created')
+      alert('directory created')
   }
 
   function onDirectoryFail(error) {
@@ -771,16 +771,18 @@ function filetransfer(download_link, fp)
 {
     var fileTransfer = new FileTransfer();
     // File download function with URL and local path
+    alert(download_link);
     fileTransfer.download(download_link, fp,
-                        function (entry) {
-                            //alert("download complete: " + entry.fullPath);
-                           //alert("folder: " + fp);
+                        function (entry) 
+                        {
+                            alert("download complete: " + entry.fullPath);
+                           alert("folder: " + fp);
                     },
                  function (error) {
                      //Download abort errors or download failed errors
-                     //alert("folder: " + fp);
+                     alert("folder: " + fp);
                      alert("download error source: " + error.source);
-                     //alert("download error target " + error.target);
+                     alert("download error target " + error.target);
                      //alert("upload error code" + error.code);
                  }
             );
