@@ -1008,9 +1008,19 @@ function downbrochure2(id)
 }
 
 
+myApp.onPageBeforeInit('index', function (page) {
+
+  var swiper = new Swiper('.swiper-container', {
+        zoom: true,
+        pagination: '.swiper-pagination',
+        nextButton: '.swiper-button-next',
+        prevButton: '.swiper-button-prev',
+        autoplay: 2500
+    });
+
+}).trigger(); //And trigger it right away
+
 myApp.onPageInit('index', function (page) {
-
-
 
  var swiper = new Swiper('.swiper-container', {
         zoom: true,
@@ -1019,5 +1029,7 @@ myApp.onPageInit('index', function (page) {
         prevButton: '.swiper-button-prev',
         autoplay: 2500
     });
+
+
 
 });
