@@ -34,7 +34,7 @@
 
 
             <div class="pages navbar-through">
-                <div data-page="blog" class="page">
+                <div data-page="contact" class="page">
                     <div class="page-content">
                      <div class="center">
                             <h4>Contact Us</h4>
@@ -53,7 +53,7 @@
                             <h4>Enquiry Now</h4>
                         </div>
 <div style="margin-left: 10px;" class="list-block inputs-list">
-                        
+                        <form id="contact1form">
                    <ul>
                     
                     <li>
@@ -61,7 +61,7 @@
                                     <div class="item-inner">
                                        
                                         <div class="item-input item-input-field">
-                                            <input type="text" placeholder="Enter Your Name:" style="margin-bottom: 24px;border: 1px solid black;margin-top: 2px;" class="">
+                                            <input name="name" id="name" type="text" placeholder="Enter Your Name:" style="margin-bottom: 24px;border: 1px solid black;margin-top: 2px;" class="">
                                         </div>
                                     </div>
                                 </div>
@@ -71,7 +71,7 @@
                                 <div class="item-content">
                                     <div class="item-inner">
                                         <div class="item-input item-input-field">
-                                            <input type="text" placeholder="Enter Your Mobile:" style="margin-bottom: 24px;border: 1px solid black;" class="">
+                                            <input name="mobile" id="mobile" type="tel" maxlength="10" placeholder="Enter Your Mobile:" style="margin-bottom: 24px;border: 1px solid black;" class="">
                                         </div>
                                     </div>
                                 </div>
@@ -81,7 +81,7 @@
                                 <div class="item-content">
                                     <div class="item-inner">
                                         <div class="item-input item-input-field">
-                                            <input type="text" placeholder="Enter Your Name:" style="margin-bottom: 24px;border: 1px solid black;" class="">
+                                            <input name="email" id="email" type="email" placeholder="Enter Your E-mail ID:" style="margin-bottom: 24px;border: 1px solid black;" class="">
                                         </div>
                                     </div>
                                 </div>
@@ -103,13 +103,15 @@
                                    
                                     <div class="item-inner">
                                         <div class="item-input item-input-field">
-                                            <a href="#" class="button button-big submit button-fill color-black" style="margin-bottom:50px;float:left;width:80%">Submit</a>
+                                            <a href="#" id="contact1btn" class="button button-big submit button-fill color-black" style="margin-bottom:50px;float:left;width:80%">Submit</a>
                                         </div>
                                     </div>
                                 </div>
                             </li>
 
                             </ul>
+
+                            </form>
 
                             </div>               
 

@@ -1030,3 +1030,96 @@ myApp.onPageInit('index', function (page) {
         autoplay: 2500
     });
 });
+
+
+myApp.onPageInit('contact', function (page) {
+
+ //myApp.alert('in contact','');
+
+ $$('#contact1btn').on('click', function()
+     {
+        //myApp.alert('clicked contact1btn','')
+        name = $$("#name").val();
+        mobile = $$("#mobile").val();
+        email = $$("#email").val();
+        msg = $$("#msg").val();
+        var errmessage = '';
+        var valid = 1;
+
+        if(name.length <= 0)
+        {
+            errmessage += 'Please Enter Name <br>';
+            //myApp.alert('Please enableter user id');
+            //$$('#username').css('border','1px solid red');
+            valid = 0;
+        }
+        if(mobile.length <= 9)
+        {
+            errmessage += 'Please Enter Mobile <br>';
+            valid = 0;
+        }
+        if(msg.length <= 0)
+        {
+            errmessage += 'Please Enter Message <br>';
+            //myApp.alert('Please enableter user id');
+            //$$('#username').css('border','1px solid red');
+            valid = 0;
+        }
+        if(valid == 0)
+        {
+            myApp.alert(errmessage,'');
+        }
+        if(valid == '1')
+        {
+          //myApp.alert('Will post','');
+
+          url = srvURL + '/enquiry';
+            console.log(url);
+            //myApp.alert('url ' + url, '');
+            //alert(url);//return false;
+            //$_GET[“mode_of_operation”], $_GET[“pressure_drop_check”], $_GET[“gland”], $_GET[“bearing”], $_GET[“vibration”], $_GET[“remark”]
+
+            $$.ajax({
+                url: url,
+                method: "POST",
+                data: {enquiry_name: name, enquiry_mobile: mobile, enquiry_emailid: email, enquiry_msg: msg},
+                processData: true,
+                dataType: 'json',
+                timeout : 50000,
+                success: function (e, status, xhr)
+                {
+                    //myApp.hidePreloader();
+
+                    if(e.status== 'success')
+                    {
+                        //myApp.alert('session_id ' + e.session_id,  ''); 
+
+                        myApp.alert('Data Stored on the Server',  '');   
+
+                        mainView.router.load({
+                                url: 'index.html',
+                                context: {}});                      
+                    }else
+                    {
+                        //myApp.alert('error: ' + e.status,  '');
+                        myApp.alert(e,  ''); 
+                    }
+                },
+                error: function (xhr, status)
+                {
+                    myApp.hideIndicator();
+
+                    if(status == 0)
+                    {
+                        myApp.alert('Please Check Internet',  ''); 
+                    }else
+                    {
+                        myApp.alert('failure * ' +  status,  '');  
+                    };
+                }
+            });
+
+        }
+    });
+
+});
