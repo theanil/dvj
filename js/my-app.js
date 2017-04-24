@@ -726,9 +726,9 @@ myApp.onPageInit('brochure', function (page) {
 function downbrochure(URL)
 {
   myApp.alert(URL,'')
-  downloader.init({folder: "dvjdesign", unzip: true});
-  downloader.get(URL);
-
+  //downloader.init({folder: "dvjdesign", unzip: true});
+  //downloader.get(URL);
+  window.open( URL, '_system');
 }
 
 function downbrochure11(URL)
