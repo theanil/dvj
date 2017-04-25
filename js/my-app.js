@@ -900,7 +900,7 @@ if(id)
 
                       if(dvj_logged_in == 'yes')
                       {
-                        price = 'Rs ' + product_price;
+                        price = 'Rs ' + product_price + ' <br>';
                       }else
                       {
                         price = '';
@@ -909,13 +909,13 @@ if(id)
                         if(myarray.indexOf(product_id) != -1)   
                         {
                            //myApp.alert('matching product_id ' + product_id)
-                           cadd += '<span style="display: block; color: black;" id="pd_' + product_id +'">' + price + ' <br><a href="#" onclick="RemoveProduct(' + "'" + product_id +  "','" + product_name  +  "','" + product_price  + "');" + '">Remove</a></span>';
-                           cadd += '<span style="display: none; color: black;" id="pa_' + product_id +'">' + price + ' <br><a href="#" onclick="AddProduct(' + "'" + product_id +  "','" + product_name  +  "','" + product_price  + "');" + '">Add</a></span>';
+                           cadd += '<span style="display: block; color: black;" id="pd_' + product_id +'">' + price + ' <a href="#" onclick="RemoveProduct(' + "'" + product_id +  "','" + product_name  +  "','" + product_price  + "');" + '">Remove</a></span>';
+                           cadd += '<span style="display: none; color: black;" id="pa_' + product_id +'">' + price + ' <a href="#" onclick="AddProduct(' + "'" + product_id +  "','" + product_name  +  "','" + product_price  + "');" + '">Add</a></span>';
                         }else
                         {
-                          cadd += '<span style="display: none; color: black;" id="pd_' + product_id +'">' + price + ' <br><a href="#" onclick="RemoveProduct(' + "'" + product_id +  "','" + product_name  +  "','" + product_price  + "');" + '">Remove</a></span>';
+                          cadd += '<span style="display: none; color: black;" id="pd_' + product_id +'">' + price + ' <a href="#" onclick="RemoveProduct(' + "'" + product_id +  "','" + product_name  +  "','" + product_price  + "');" + '">Remove</a></span>';
 
-                          cadd += '<span style="display: block; color: black;" id="pa_' + product_id +'">' + price + ' <br><a href="#" onclick="AddProduct(' + "'" + product_id +  "','" + product_name  +  "','" + product_price  + "');" + '">Add</a></span>';
+                          cadd += '<span style="display: block; color: black;" id="pa_' + product_id +'">' + price + ' <a href="#" onclick="AddProduct(' + "'" + product_id +  "','" + product_name  +  "','" + product_price  + "');" + '">Add</a></span>';
                         }
                       //}
                       //cadd += '               </a>';
