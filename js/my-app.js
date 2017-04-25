@@ -844,27 +844,28 @@ if(id)
                       cadd += '                   <img src=" ' + product_image + '" style=" height: 250px; width: 140px;"/></a>';
                       cadd += '                  <span style="color: black;"><a href="#" onclick="ProductDetails(' + "'" + product_id + "');" + '">' + product_name + '</a></span>';
 
-                      
+                      if(dvj_logged_in == 'yes')
+                      {
                       //myApp.alert(myarray.indexOf(product_id))
-                      if(myarray.indexOf(product_id) != -1)   
-                      {
-                        //myApp.alert('matching product_id ' + product_id)
-                        cadd += '<br><span style="color: black;">' + 'Rs ' + product_price + ' <a href="#" onclick="RemoveProduct(' + "'" + product_id +  "','" + product_name  +  "','" + product_price  + "');" + '">Remove</a></span>';
-                      }else
-                      {
-                        if(dvj_logged_in == 'yes')
+                        if(myarray.indexOf(product_id) != -1)   
                         {
-                          cadd += '<br><span style="color: black;">' + 'Rs ' + product_price + ' <a href="#" onclick="AddProduct(' + "'" + product_id +  "','" + product_name  +  "','" + product_price  + "');" + '">Add</a></span>';
+                           //myApp.alert('matching product_id ' + product_id)
+                           cadd += '<span style="display: block; color: black;" id="pd_' + product_id +'">' + 'Rs ' + product_price + ' <br><a href="#" onclick="RemoveProduct(' + "'" + product_id +  "','" + product_name  +  "','" + product_price  + "');" + '">Remove</a></span>';
+                           cadd += '<span style="display: none; color: black;" id="pa_' + product_id +'">' + 'Rs ' + product_price + ' <br><a href="#" onclick="AddProduct(' + "'" + product_id +  "','" + product_name  +  "','" + product_price  + "');" + '">Add</a></span>';
+                        }else
+                        {
+                          cadd += '<span style="display: none; color: black;" id="pd_' + product_id +'">' + 'Rs ' + product_price + ' <br><a href="#" onclick="RemoveProduct(' + "'" + product_id +  "','" + product_name  +  "','" + product_price  + "');" + '">Remove</a></span>';
+
+                          cadd += '<span style="display: block; color: black;" id="pa_' + product_id +'">' + 'Rs ' + product_price + ' <br><a href="#" onclick="AddProduct(' + "'" + product_id +  "','" + product_name  +  "','" + product_price  + "');" + '">Add</a></span>';
                         }
                       }
-
                       //cadd += '               </a>';
                       //cadd += '               <a class="external" href="' + urldecode(e.data.brochure[i].brochure_pdf)  + '"' + '>' + brochure_fname + '</a>';
-                      cadd += '           </div>';
+                      cadd += '           </div>' + "\n\n";
                       
                       if(b == 1)
                       {
-                        cadd += '      </div>';
+                        cadd += '      </div>' + "\n\n";
                       }
                     }
                     console.log(cadd)
@@ -892,17 +893,18 @@ if(id)
       });
 });
 
-function ProductDetails(id)
-{
-
-
-}
-
 function AddProduct(id,product_name, product_price)
 {
   //myApp.alert(id,'')
   //myApp.alert(product_name,'')
   //myApp.alert(product_price,'')
+
+  //var pid = "p_" + id;
+  //alert(pid)
+  $$("#" + "pa_" + id).hide();
+  $$("#" + "pd_" + id).show();
+
+  //eturn false;
 
   var myarray = [];
   if(myarray.indexOf(id) == -1) 
@@ -915,7 +917,105 @@ function AddProduct(id,product_name, product_price)
 
     //a_session_id = localStorage.getItem("a_session_id");
     local_products = localStorage.getItem("local_products");
-    alert('local_products <br>' + local_products)
+    //alert('local_products <br>' + local_products)
+    console.log(local_products);
+    if(local_products === null || local_products === 'undefined')
+    {
+        local_products = '';
+        t = '[{"product_id": "' + id + '", "product_name": "' + product_name + '", "product_price": "' + product_price + '"}]';
+        t2 = JSON.parse(t);
+       //myApp.alert(product_name + ' ' + t2[0].product_name)
+        localStorage.setItem("local_products", t);
+        //localStorage.setItem("local_products", local_products);
+    }else{
+    //myApp.alert('length ' + local_products.length,'')
+
+      if(local_products.length>0)
+      {
+        //myApp.alert('local_products ' + local_products,'')
+
+        test = JSON.parse(local_products);
+        //myApp.alert('test.length ' + test.length);
+        //myApp.alert('product_id ' + test[0].product_id);
+        //test = JSON.parse(local_products);
+        
+        var myarray = [];
+        for(j = 0; j<test.length; j++)
+        {
+            //myApp.alert(test[j].product_id);
+            myarray.push(test[j].product_id);
+        }
+        //for(j = 0; j<test.length; j++)
+        //{
+            //myApp.alert(test[j].product_id);
+            //product_id = test[j].product_id;
+            //if(product_id != id)
+
+            if(test.length >0)
+            {
+              if(myarray.indexOf(id) == -1)   
+              {
+                  t = ',{"product_id": "' + id + '", "product_name": "' + product_name + '", "product_price": "' + product_price + '"}]';
+                   //t2 = JSON.parse(t);
+                   //myApp.alert('product_name  ' + t2[0].product_name)
+                   t3 = local_products.substring(0, (local_products.length-1)) + t;
+                    //myApp.alert('t3 ' + t3);
+                    console.log(t3)
+                   localStorage.setItem("local_products", t3);
+                   //t4 = JSON.parse(t3);
+                   //myApp.alert('product_name2 ' + t4[0].product_name)
+                   myApp.alert('New Product Added','')
+              }
+            }else{
+              if(myarray.indexOf(id) == -1)   
+              {
+                  t = '{"product_id": "' + id + '", "product_name": "' + product_name + '", "product_price": "' + product_price + '"}]';
+                   //t2 = JSON.parse(t);
+                   //myApp.alert('product_name  ' + t2[0].product_name)
+                   t3 = local_products.substring(0, (local_products.length-1)) + t;
+                    //myApp.alert('t3 ' + t3);
+                    console.log(t3)
+                   localStorage.setItem("local_products", t3);
+                   //t4 = JSON.parse(t3);
+                   //myApp.alert('product_name2 ' + t4[0].product_name)
+                   myApp.alert('New Product Added','')
+              }
+            }
+        //}
+      }else{
+        //myApp.alert('new array','')
+      }
+    }
+    /*
+      t = '[{"product_id": "' + id + '", "product_name": "' + product_name + '", "product_price": "' + product_price + '"}]';
+       t2 = JSON.parse(t);
+       alert(product_name + ' ' + t2[0].product_name)
+       localStorage.setItem("local_products", t);
+    */
+}
+
+function RemoveProduct(id,product_name, product_price)
+{
+  //myApp.alert(id,'')
+  //myApp.alert(product_name,'')
+  //myApp.alert(product_price,'')
+  $$("#" + "pa_" + id).show();
+  $$("#" + "pd_" + id).hide();
+
+  //eturn false;
+
+  var myarray = [];
+  if(myarray.indexOf(id) == -1) 
+    {
+        //myarray.push(id);
+        //myApp.alert('not found : ' + cat_name);
+        //console.log("is in array");
+        //myApp.alert(uloc_id + ' ' + comp_cat_id + ' * ' + cat_name , '');
+    }
+
+    //a_session_id = localStorage.getItem("a_session_id");
+    local_products = localStorage.getItem("local_products");
+    //alert('local_products <br>' + local_products)
     if(local_products === null || local_products === 'undefined')
     {
         local_products = '';
@@ -928,7 +1028,7 @@ function AddProduct(id,product_name, product_price)
       //myApp.alert('local_products ' + local_products,'')
 
       test = JSON.parse(local_products);
-      myApp.alert('test.length ' + test.length);
+      //myApp.alert('test.length ' + test.length);
       //myApp.alert('product_id ' + test[0].product_id);
       //test = JSON.parse(local_products);
       
@@ -943,26 +1043,33 @@ function AddProduct(id,product_name, product_price)
           //myApp.alert(test[j].product_id);
           //product_id = test[j].product_id;
           //if(product_id != id)
-          if(myarray.indexOf(id) == -1)   
+          if(myarray.indexOf(id) != -1)   
           {
-              t = ',{"product_id": "' + id + '", "product_name": "' + product_name + '", "product_price": "' + product_price + '"}]';
-               //t2 = JSON.parse(t);
-               //myApp.alert('product_name  ' + t2[0].product_name)
-               t3 = local_products.substring(0, (local_products.length-1)) + t;
-                //myApp.alert('t3 ' + t3);
-                console.log(t3)
-               localStorage.setItem("local_products", t3);
-               t4 = JSON.parse(t3);
-               //myApp.alert('product_name2 ' + t4[0].product_name)
+              //myApp.alert('product ' + id + ' matching','')
+
+              t5 ='';
+              for(j = 0; j<test.length; j++)
+              {
+                  //myApp.alert(test[j].product_id);
+                  //myarray.push(test[j].product_id);
+                  if(test[j].product_id != id)
+                  {
+                    t5 += ',{"product_id": "' + test[j].product_id + '", "product_name": "' + test[j].product_name + '", "product_price": "' + test[j].product_price + '"}';
+                  }
+              }
+
+              t5 = '[' + t5.substring(1, (t5.length)) + ']';
+              //myApp.alert(t5);
+
+              console.log(t5)
+              localStorage.setItem("local_products", t5);
+              //t4 = JSON.parse(t3);
+              //myApp.alert('product_name2 ' + t4[0].product_name)
+              myApp.alert('Product Removed','')
           }
       //}
     }else{
-      //myApp.alert('new array','')
-
-      t = '[{"product_id": "' + id + '", "product_name": "' + product_name + '", "product_price": "' + product_price + '"}]';
-       t2 = JSON.parse(t);
-       //myApp.alert(product_name + ' ' + t2[0].product_name)
-       localStorage.setItem("local_products", t);
+      myApp.alert('blank array','')
       
     }
     /*
@@ -971,6 +1078,12 @@ function AddProduct(id,product_name, product_price)
        alert(product_name + ' ' + t2[0].product_name)
        localStorage.setItem("local_products", t);
     */
+}
+
+function ProductDetails(id)
+{
+
+
 }
 
 myApp.onPageInit('brochure', function (page) {
@@ -1273,9 +1386,38 @@ myApp.onPageInit('contact', function (page) {
 });
 
 
+
+myApp.onPageBeforeInit('dealer_profile', function (page) {
+
+/*
+ dvj_logged_in = localStorage.getItem("dvj_logged_in");
+ dvj_session_id = localStorage.getItem("dvj_session_id");
+ //alert(dvj_logged_in)
+
+ if(dvj_logged_in)
+ {}else{ myApp.alert('Please Login 1',''); 
+
+          mainView.router.load({
+                                url: 'index.html',
+                                context: {}}); 
+        }
+
+*/
+
+
+  //mainView.router.load({url: 'login.html'})
+
+
+
+});
+
 myApp.onPageInit('dealer_profile', function (page) {
 
  //myApp.alert('in dealer_profile','');
+
+
+
+
 
   $$('#climit').hide();
   $$('#cpass').on('change', function()
@@ -1295,7 +1437,10 @@ myApp.onPageInit('dealer_profile', function (page) {
  //alert(dvj_logged_in)
 
  if(dvj_logged_in)
- {}else{ return 1;}
+ {}else{ myApp.alert('Please Login',''); 
+
+      
+                                return 1;}
 
         url = srvURL + '/dealer_data';
           console.log(url);
@@ -1582,7 +1727,7 @@ myApp.onPageInit('dealer', function (page) {
                     }else
                     {
                         //myApp.alert('error: ' + e.status,  '');
-                        myApp.alert(e,  ''); 
+                        myApp.alert(e.message,  ''); 
                     }
                 },
                 error: function (xhr, status)
