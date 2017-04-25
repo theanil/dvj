@@ -900,19 +900,24 @@ if(id)
 
                       if(dvj_logged_in == 'yes')
                       {
+                        price = 'Rs ' + product_price;
+                      }else
+                      {
+                        price = '';
+                      }
                       //myApp.alert(myarray.indexOf(product_id))
                         if(myarray.indexOf(product_id) != -1)   
                         {
                            //myApp.alert('matching product_id ' + product_id)
-                           cadd += '<span style="display: block; color: black;" id="pd_' + product_id +'">' + 'Rs ' + product_price + ' <br><a href="#" onclick="RemoveProduct(' + "'" + product_id +  "','" + product_name  +  "','" + product_price  + "');" + '">Remove</a></span>';
-                           cadd += '<span style="display: none; color: black;" id="pa_' + product_id +'">' + 'Rs ' + product_price + ' <br><a href="#" onclick="AddProduct(' + "'" + product_id +  "','" + product_name  +  "','" + product_price  + "');" + '">Add</a></span>';
+                           cadd += '<span style="display: block; color: black;" id="pd_' + product_id +'">' + price + ' <br><a href="#" onclick="RemoveProduct(' + "'" + product_id +  "','" + product_name  +  "','" + product_price  + "');" + '">Remove</a></span>';
+                           cadd += '<span style="display: none; color: black;" id="pa_' + product_id +'">' + price + ' <br><a href="#" onclick="AddProduct(' + "'" + product_id +  "','" + product_name  +  "','" + product_price  + "');" + '">Add</a></span>';
                         }else
                         {
-                          cadd += '<span style="display: none; color: black;" id="pd_' + product_id +'">' + 'Rs ' + product_price + ' <br><a href="#" onclick="RemoveProduct(' + "'" + product_id +  "','" + product_name  +  "','" + product_price  + "');" + '">Remove</a></span>';
+                          cadd += '<span style="display: none; color: black;" id="pd_' + product_id +'">' + price + ' <br><a href="#" onclick="RemoveProduct(' + "'" + product_id +  "','" + product_name  +  "','" + product_price  + "');" + '">Remove</a></span>';
 
-                          cadd += '<span style="display: block; color: black;" id="pa_' + product_id +'">' + 'Rs ' + product_price + ' <br><a href="#" onclick="AddProduct(' + "'" + product_id +  "','" + product_name  +  "','" + product_price  + "');" + '">Add</a></span>';
+                          cadd += '<span style="display: block; color: black;" id="pa_' + product_id +'">' + price + ' <br><a href="#" onclick="AddProduct(' + "'" + product_id +  "','" + product_name  +  "','" + product_price  + "');" + '">Add</a></span>';
                         }
-                      }
+                      //}
                       //cadd += '               </a>';
                       //cadd += '               <a class="external" href="' + urldecode(e.data.brochure[i].brochure_pdf)  + '"' + '>' + brochure_fname + '</a>';
                       cadd += '           </div>' + "\n\n";
