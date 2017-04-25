@@ -45,7 +45,7 @@ document.addEventListener("deviceready", onDeviceReady, false);
         page = mainView.activePage.name;
         //myApp.alert('page ' + page,  ''); 
 
-        if(page == 'index' || page == 'login') // || page == 'main'
+        if(page == 'index' ) // || page == 'main' || page == 'login'
         {
             // call this to get a new token each time. don't call it to reuse existing token.
             
