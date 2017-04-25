@@ -95,21 +95,21 @@ myApp.onPageBeforeInit('index', function (page) {
 
 }).trigger(); //And trigger it right away
 
+
 myApp.onPageInit('login', function (page) {
     //mainView.hideToolbar();
     //mainView.hideNavbar();
     // run createContentPage func after link was clicked
     //alert('hello');
-   $$('#loginbtn').on('click', function()
+   $$('#dealerloginbtn').on('click', function()
     {
-        username = $$('#username').val();
-        password = $$('#password').val();
+        username = $$('#dealer_mobile').val();
+        password = $$('#dealer_password').val();
 
         device_id= localStorage.getItem("device_uuid");
         device_platform= localStorage.getItem("device_platform");
 
         //alert('hello ' + username);
-        var formData = myApp.formToData('#my-form');
         //alert(JSON.stringify(formData));
         var valid = 1;
         var errmessage = '';
@@ -133,8 +133,20 @@ myApp.onPageInit('login', function (page) {
 
         if(valid == 1)
         {       
+            //myApp.showPreloader('Checking login ..')
+            //setTimeout(function () {
+            //    myApp.hidePreloader();
+            //}, 50000);
+
+             //myApp.alert('Everything is correct',  '');
+             //var mainView = myApp.addView('.view-main')          
+        
+            // Load page from about.html file to main View:
+
+            //username = "9702502361";
+            //password = "9702502361";
             
-            var url = srvURL + "login";//?mobile=9702502361&pass=9702502361
+            var url = srvURL + "/dealer_login";//?mobile=9702502361&pass=9702502361
             
             $$.ajax({
                 url: url,
@@ -150,16 +162,16 @@ myApp.onPageInit('login', function (page) {
                     if(e.status == 'success')
                     {
                         //myApp.alert('session_id ' + e.session_id,  '');  
-                        myApp.alert('Welcome ' + e.vendor_name,  ''); 
+                        myApp.alert('Welcome ' + urldecode(e.vendor_name),  ''); 
 
-                        localStorage.setItem("logged_in", "yes");
-                        localStorage.setItem("a_session_id", e.session_id);
-                        localStorage.setItem("a_vendor_id", e.user_id);
-                        localStorage.setItem("a_vendor_name", e.vendor_name);
+                        localStorage.setItem("dvj_logged_in", "yes");
+                        localStorage.setItem("dvj_session_id", e.session_id);
+                        localStorage.setItem("dvj_vendor_id", e.user_id);
+                        localStorage.setItem("dvj_vendor_name", e.vendor_name);
                         
                         //sendID();
 
-                        mainView.router.loadPage('main.html');                      
+                        mainView.router.loadPage('index.html');                      
                     }else
                     {
                         //myApp.alert('error: ' + e.status,  '');
@@ -181,7 +193,15 @@ myApp.onPageInit('login', function (page) {
                 }
             });
             
- 
+            //localStorage.setItem("logged_in", "yes");
+
+            //myApp.addNotification( {
+            //    message: 'Welcome '+ username +'!'
+            //  } );
+            //mainView.router.loadPage('main.html');
+            //$$.post('path-to-file.php', {username: username}, function (data) {
+            //  console.log(data);
+            //});            
         }else
         {
             myApp.alert(errmessage,  '');   
@@ -236,7 +256,7 @@ myApp.onPageInit('login', function (page) {
             //password = "9702502361";
             //a_session_id = localStorage.getItem("a_session_id");
 
-            var url = srvURL + "vendor_forgot";//?mobile=9702502361&pass=9702502361
+            var url = srvURL + "/dealer_forgot";//?mobile=9702502361&pass=9702502361
             
             $$.ajax({
                 url: url,
@@ -736,6 +756,43 @@ myApp.onPageInit('productdetails', function (page) {
 
 id =page.context.id; 
 category =page.context.category; 
+if(id)
+{
+  //myApp.alert(id.length,'')
+}else{
+  //myApp.alert('not defined','');
+  return 1;
+}
+
+    var myarray = [];
+
+    local_products = localStorage.getItem("local_products");
+    //alert('local_products <br>' + local_products)
+    if(local_products === null || local_products === 'undefined')
+    {
+    }else{
+    //myApp.alert('length ' + local_products.length,'')
+
+      if(local_products.length>0)
+      {
+        //myApp.alert('local_products ' + local_products,'')
+
+        test = JSON.parse(local_products);
+        //myApp.alert('test.length ' + test.length);
+        //myApp.alert('product_id ' + test[0].product_id);
+        //test = JSON.parse(local_products);
+        
+        for(j = 0; j<test.length; j++)
+        {
+            //myApp.alert(test[j].product_id);
+            myarray.push(test[j].product_id);
+        }
+      }}
+      //myApp.alert(myarray,'')
+
+ dvj_logged_in = localStorage.getItem("dvj_logged_in");
+ dvj_session_id = localStorage.getItem("dvj_session_id");
+
   //myApp.alert('brochure started','');
   url = srvURL + '/product_list';
     $$.ajax({
@@ -772,6 +829,7 @@ category =page.context.category;
                       category_id = urldecode(e.data.products[i].category_id);
                       product_image = urldecode(e.data.products[i].product_image);
                       product_name = urldecode(e.data.products[i].product_name);
+                      product_price = urldecode(e.data.products[i].product_price);
                       //brochure_fname = urldecode(e.data.products[i].brochure_fname);
 
                       var b= i%2;
@@ -785,6 +843,18 @@ category =page.context.category;
                       cadd += '               <a href="#" onclick="ProductDetails(' + "'" + product_id + "');" + '">';
                       cadd += '                   <img src=" ' + product_image + '" style=" height: 250px; width: 140px;"/></a>';
                       cadd += '                  <span style="color: black;"><a href="#" onclick="ProductDetails(' + "'" + product_id + "');" + '">' + product_name + '</a></span>';
+
+                      if(dvj_logged_in == 'yes')
+                      {
+                        cadd += '<br><span style="color: black;">' + 'Rs ' + product_price + ' <a href="#" onclick="AddProduct(' + "'" + product_id +  "','" + product_name  +  "','" + product_price  + "');" + '">Add</a></span>';
+                      }
+                      //myApp.alert(myarray.indexOf(product_id))
+                      if(myarray.indexOf(product_id) != -1)   
+                      {
+                        //myApp.alert('matching product_id ' + product_id)
+                        cadd += '<br><span style="color: black;"><a href="#" onclick="RemoveProduct(' + "'" + product_id +  "','" + product_name  +  "','" + product_price  + "');" + '">Remove</a></span>';
+                      }
+
                       //cadd += '               </a>';
                       //cadd += '               <a class="external" href="' + urldecode(e.data.brochure[i].brochure_pdf)  + '"' + '>' + brochure_fname + '</a>';
                       cadd += '           </div>';
@@ -823,6 +893,81 @@ function ProductDetails(id)
 {
 
 
+}
+
+function AddProduct(id,product_name, product_price)
+{
+  //myApp.alert(id,'')
+  //myApp.alert(product_name,'')
+  //myApp.alert(product_price,'')
+
+  var myarray = [];
+  if(myarray.indexOf(id) == -1) 
+    {
+        //myarray.push(id);
+        //myApp.alert('not found : ' + cat_name);
+        //console.log("is in array");
+        //myApp.alert(uloc_id + ' ' + comp_cat_id + ' * ' + cat_name , '');
+    }
+
+    //a_session_id = localStorage.getItem("a_session_id");
+    local_products = localStorage.getItem("local_products");
+    alert('local_products <br>' + local_products)
+    if(local_products === null || local_products === 'undefined')
+    {
+        local_products = '';
+        localStorage.setItem("local_products", local_products);
+    }
+    //myApp.alert('length ' + local_products.length,'')
+
+    if(local_products.length>0)
+    {
+      //myApp.alert('local_products ' + local_products,'')
+
+      test = JSON.parse(local_products);
+      myApp.alert('test.length ' + test.length);
+      //myApp.alert('product_id ' + test[0].product_id);
+      //test = JSON.parse(local_products);
+      
+      var myarray = [];
+      for(j = 0; j<test.length; j++)
+      {
+          //myApp.alert(test[j].product_id);
+          myarray.push(test[j].product_id);
+      }
+      //for(j = 0; j<test.length; j++)
+      //{
+          //myApp.alert(test[j].product_id);
+          //product_id = test[j].product_id;
+          //if(product_id != id)
+          if(myarray.indexOf(id) == -1)   
+          {
+              t = ',{"product_id": "' + id + '", "product_name": "' + product_name + '", "product_price": "' + product_price + '"}]';
+               //t2 = JSON.parse(t);
+               //myApp.alert('product_name  ' + t2[0].product_name)
+               t3 = local_products.substring(0, (local_products.length-1)) + t;
+                //myApp.alert('t3 ' + t3);
+                console.log(t3)
+               localStorage.setItem("local_products", t3);
+               t4 = JSON.parse(t3);
+               //myApp.alert('product_name2 ' + t4[0].product_name)
+          }
+      //}
+    }else{
+      //myApp.alert('new array','')
+
+      t = '[{"product_id": "' + id + '", "product_name": "' + product_name + '", "product_price": "' + product_price + '"}]';
+       t2 = JSON.parse(t);
+       //myApp.alert(product_name + ' ' + t2[0].product_name)
+       localStorage.setItem("local_products", t);
+      
+    }
+    /*
+      t = '[{"product_id": "' + id + '", "product_name": "' + product_name + '", "product_price": "' + product_price + '"}]';
+       t2 = JSON.parse(t);
+       alert(product_name + ' ' + t2[0].product_name)
+       localStorage.setItem("local_products", t);
+    */
 }
 
 myApp.onPageInit('brochure', function (page) {
@@ -1123,3 +1268,337 @@ myApp.onPageInit('contact', function (page) {
     });
 
 });
+
+
+myApp.onPageInit('dealer_profile', function (page) {
+
+ //myApp.alert('in dealer_profile','');
+
+  $$('#climit').hide();
+  $$('#cpass').on('change', function()
+  {
+      cpass = $$('#cpass').is(":checked");
+      if(cpass == true)
+      {
+          $$('#climit').show();
+      }else
+      {
+          $$('#climit').hide();
+      }
+  });
+
+ dvj_logged_in = localStorage.getItem("dvj_logged_in");
+ dvj_session_id = localStorage.getItem("dvj_session_id");
+ //alert(dvj_logged_in)
+
+ if(dvj_logged_in)
+ {}else{ return 1;}
+
+        url = srvURL + '/dealer_data';
+          console.log(url);
+          //myApp.alert('url ' + url, '');
+          //alert(url);//return false;
+          //$_GET[“mode_of_operation”], $_GET[“pressure_drop_check”], $_GET[“gland”], $_GET[“bearing”], $_GET[“vibration”], $_GET[“remark”]
+
+          $$.ajax({
+              url: url,
+              method: "POST",
+              data: {session_id: dvj_session_id },
+              processData: true,
+              dataType: 'json',
+              timeout : 50000,
+              success: function (e, status, xhr)
+              {
+                  //myApp.hidePreloader();
+
+                  if(e.status== 'success')
+                  {
+                      //myApp.alert('session_id ' + e.session_id,  ''); 
+
+                      //myApp.alert('Data Stored on the Server',  '');   
+
+                              
+                      datec = e.data.profile[0].datec;
+                      dealer_name = urldecode(e.data.profile[0].dealer_name);
+                      dealer_address = urldecode(e.data.profile[0].dealer_address);
+                      dealer_contact_person = urldecode(e.data.profile[0].dealer_contact_person);
+                      dealer_mobile = e.data.profile[0].dealer_mobile;
+                      dealer_email = urldecode(e.data.profile[0].dealer_email);
+                      dealer_profile = urldecode(e.data.profile[0].dealer_profile);
+                      dealer_status = e.data.profile[0].dealer_status;
+
+                      $$("#dealer_name").val(dealer_name);
+                      $$("#dealer_address").val(dealer_address);
+                      $$("#dealer_contact_person").val(dealer_contact_person);
+                      $$("#dealer_mobile").val(dealer_mobile);
+                      $$("#dealer_email").val(dealer_email);
+                      $$("#dealer_profile").val(dealer_profile);
+                  }else
+                  {
+                      //myApp.alert('error: ' + e.status,  '');
+                      myApp.alert(e,  ''); 
+                  }
+              },
+              error: function (xhr, status)
+              {
+                  myApp.hideIndicator();
+
+                  if(status == 0)
+                  {
+                      myApp.alert('Please Check Internet',  ''); 
+                  }else
+                  {
+                      myApp.alert('failure * ' +  status,  '');  
+                  };
+              }
+          });
+
+
+    $$('#dealerupdbtn').on('click', function()
+     {
+        //myApp.alert('clicked dealerupdbtn','')
+        dealer_name = $$("#dealer_name").val();
+        dealer_address = $$("#dealer_address").val();
+        dealer_contact_person = $$("#dealer_contact_person").val();
+        dealer_mobile = $$("#dealer_mobile").val();
+        dealer_email = $$("#dealer_email").val();
+        dealer_password = $$("#dealer_password").val();
+        dealer_profile = $$("#dealer_profile").val();
+
+        var errmessage = '';
+        var valid = 1;
+
+        if(dealer_name.length <= 0)
+        {
+            errmessage += 'Please Enter Company Name <br>';
+            //myApp.alert('Please enableter user id');
+            //$$('#username').css('border','1px solid red');
+            valid = 0;
+        }
+        if(dealer_mobile.length <= 9)
+        {
+            errmessage += 'Please Enter Mobile <br>';
+            valid = 0;
+        }
+        if(dealer_address.length <= 0)
+        {
+            errmessage += 'Please Enter Address <br>';
+            //myApp.alert('Please enableter user id');
+            //$$('#username').css('border','1px solid red');
+            valid = 0;
+        }
+        if(dealer_contact_person.length <= 0)
+        {
+            errmessage += 'Please Enter Contact person <br>';
+            //myApp.alert('Please enableter user id');
+            //$$('#username').css('border','1px solid red');
+            valid = 0;
+        }
+        if(dealer_email.length <= 0)
+        {
+            errmessage += 'Please Enter Email ID <br>';
+            //myApp.alert('Please enableter user id');
+            //$$('#username').css('border','1px solid red');
+            valid = 0;
+        }
+        if(dealer_profile.length <= 0)
+        {
+            errmessage += 'Please Enter Company Profile <br>';
+            //myApp.alert('Please enableter user id');
+            //$$('#username').css('border','1px solid red');
+            valid = 0;
+        }
+
+        cpass = $$('#cpass').is(":checked");
+        if(cpass == true)
+        {
+          if(dealer_password.length <= 3)
+          {
+              errmessage += 'Please Enter Password <br>';
+              //myApp.alert('Please enableter user id');
+              //$$('#username').css('border','1px solid red');
+              valid = 0;
+          }
+        }else
+        {
+          $$("#dealer_password").val('');
+          dealer_password = '';
+        }
+
+        if(valid == 0)
+        {
+            myApp.alert(errmessage,'');
+        }
+        if(valid == '1')
+        {
+          //myApp.alert('Will post','');
+           dvj_session_id = localStorage.getItem("dvj_session_id");
+
+          url = srvURL + '/dealer_profile';
+            console.log(url);
+            //myApp.alert('url ' + url, '');
+            //alert(url);//return false;
+            //$_GET[“mode_of_operation”], $_GET[“pressure_drop_check”], $_GET[“gland”], $_GET[“bearing”], $_GET[“vibration”], $_GET[“remark”]
+
+            $$.ajax({
+                url: url,
+                method: "POST",
+                data: {session: dvj_session_id, dealer_name: dealer_name, dealer_address: dealer_address, dealer_contact_person: dealer_contact_person, dealer_mobile: dealer_mobile, dealer_email: dealer_email, dealer_profile: dealer_profile, dealer_password: dealer_password },
+                processData: true,
+                dataType: 'json',
+                timeout : 50000,
+                success: function (e, status, xhr)
+                {
+                    //myApp.hidePreloader();
+
+                    if(e.status== 'success')
+                    {
+                        //myApp.alert('session_id ' + e.session_id,  ''); 
+
+                        myApp.alert('Data Updated on the Server',  '');   
+
+                        mainView.router.load({
+                                url: 'index.html',
+                                context: {}});                      
+                    }else
+                    {
+                        //myApp.alert('error: ' + e.status,  '');
+                        myApp.alert(e,  ''); 
+                    }
+                },
+                error: function (xhr, status)
+                {
+                    myApp.hideIndicator();
+
+                    if(status == 0)
+                    {
+                        myApp.alert('Please Check Internet',  ''); 
+                    }else
+                    {
+                        myApp.alert('failure * ' +  status,  '');  
+                    };
+                }
+            });
+
+        }
+    });
+
+});
+
+myApp.onPageInit('dealer', function (page) {
+
+ //myApp.alert('in dealer','');
+
+ $$('#dealerregbtn').on('click', function()
+     {
+        //myApp.alert('clicked dealerregbtn','')
+        dealer_name = $$("#dealer_name").val();
+        dealer_address = $$("#dealer_address").val();
+        dealer_contact_person = $$("#dealer_contact_person").val();
+        dealer_mobile = $$("#dealer_mobile").val();
+        dealer_email = $$("#dealer_email").val();
+        dealer_profile = $$("#dealer_profile").val();
+
+        var errmessage = '';
+        var valid = 1;
+
+        if(dealer_name.length <= 0)
+        {
+            errmessage += 'Please Enter Company Name <br>';
+            //myApp.alert('Please enableter user id');
+            //$$('#username').css('border','1px solid red');
+            valid = 0;
+        }
+        if(dealer_mobile.length <= 9)
+        {
+            errmessage += 'Please Enter Mobile <br>';
+            valid = 0;
+        }
+        if(dealer_address.length <= 0)
+        {
+            errmessage += 'Please Enter Address <br>';
+            //myApp.alert('Please enableter user id');
+            //$$('#username').css('border','1px solid red');
+            valid = 0;
+        }
+        if(dealer_contact_person.length <= 0)
+        {
+            errmessage += 'Please Enter Contact person <br>';
+            //myApp.alert('Please enableter user id');
+            //$$('#username').css('border','1px solid red');
+            valid = 0;
+        }
+        if(dealer_email.length <= 0)
+        {
+            errmessage += 'Please Enter Email ID <br>';
+            //myApp.alert('Please enableter user id');
+            //$$('#username').css('border','1px solid red');
+            valid = 0;
+        }
+        if(dealer_profile.length <= 0)
+        {
+            errmessage += 'Please Enter Company Profile <br>';
+            //myApp.alert('Please enableter user id');
+            //$$('#username').css('border','1px solid red');
+            valid = 0;
+        }
+        if(valid == 0)
+        {
+            myApp.alert(errmessage,'');
+        }
+        if(valid == '1')
+        {
+          //myApp.alert('Will post','');
+
+          url = srvURL + '/dealer_register';
+            console.log(url);
+            //myApp.alert('url ' + url, '');
+            //alert(url);//return false;
+            //$_GET[“mode_of_operation”], $_GET[“pressure_drop_check”], $_GET[“gland”], $_GET[“bearing”], $_GET[“vibration”], $_GET[“remark”]
+
+            $$.ajax({
+                url: url,
+                method: "POST",
+                data: {dealer_name: dealer_name, dealer_address: dealer_address, dealer_contact_person: dealer_contact_person, dealer_mobile: dealer_mobile, dealer_email: dealer_email, dealer_profile: dealer_profile },
+                processData: true,
+                dataType: 'json',
+                timeout : 50000,
+                success: function (e, status, xhr)
+                {
+                    //myApp.hidePreloader();
+
+                    if(e.status== 'success')
+                    {
+                        //myApp.alert('session_id ' + e.session_id,  ''); 
+
+                        myApp.alert('Data Stored on the Server',  '');   
+
+                        mainView.router.load({
+                                url: 'index.html',
+                                context: {}});                      
+                    }else
+                    {
+                        //myApp.alert('error: ' + e.status,  '');
+                        myApp.alert(e,  ''); 
+                    }
+                },
+                error: function (xhr, status)
+                {
+                    myApp.hideIndicator();
+
+                    if(status == 0)
+                    {
+                        myApp.alert('Please Check Internet',  ''); 
+                    }else
+                    {
+                        myApp.alert('failure * ' +  status,  '');  
+                    };
+                }
+            });
+
+        }
+    });
+
+});
+
+

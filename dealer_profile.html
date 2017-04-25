@@ -1,0 +1,173 @@
+<body>
+    <div class="views">
+        <div class="view view-main">
+             <!-- Top Navbar-->
+            <div class="navbar">
+                  <div class="navbar-inner bg-black" >
+                    <div class="left">
+                        <!-- Right link contains only icon - additional "icon-only" class-->
+                        <a href="#" class="link icon-only open-panel" >
+                            <i class="fa fa-bars color-white"></i>
+                        </a>
+                    </div>
+                    <div class="right">
+                       <a href="index.html" style="margin-top: 15px;"><img class="icon" alt="icon" src="icon/logo.png" style=" height: 30px;"/> </a>
+                    </div>
+                    <!-- Title of the page-->
+                </div>
+            </div>
+                <!-- Bottom Toolbar-->
+          <div class="toolbar"  style="height:40px; ">
+            <div class="toolbar-inner bg-black" >
+             <div class="left"><a href="#" class="back">
+              <!--<i class="icon  icon-back color-white "></i>-->
+              <img src="icon/back.png" style=" height: 30px; margin-left:-5px;;"/>
+              </a>
+            </div>
+           <!--<div class="left">  <a href="#tab-1" class="tab-link active"><img src="icon/back.png" style=" height: 20px;"/></a></div>-->
+
+                   <div class="center"> 
+                   <a href="index.html"><img src="icon/home.png" style=" height: 22px;"/></a></div>
+
+                   <div class="right"> <a href="#" class="tab-link"><img src="icon/settings.png" style=" height: 25px;"/></a></div>
+            </div>
+          </div>          
+          <!-- /End of Bottom Toolbar-->
+
+
+            <div class="pages navbar-through">
+                <div data-page="dealer_profile" class="page">
+                    <div class="page-content">
+                     <!--<div class="center">
+                            <h4>Contact Us</h4>
+                        </div>-->
+
+                       <div class="card demo-card-header-pic" style="background:#000000">
+                            <div class="card-footer">
+                                 <a href="article.html" class="left"><img src="icon/t.png" style=" height: 20px;"/></a>
+                                  <a href="article.html" class="right"><img src="icon/facebook.png" style=" height: 20px;"/></a>
+                                   <a href="article.html" class="center"><img src="icon/pinrest1.png" style=" height: 20px;"/></a>
+                                    <a href="article.html" class="center"><img src="icon/google-plus1.png" style=" height: 20px;"/></a>
+
+                            </div>
+                        </div>
+                       <div class="center">
+                            <h4>Profile Update</h4>
+                        </div>
+            <div style="margin-left: 10px;" class="list-block inputs-list">
+                        <form id="dealerregform">  
+                   <ul>
+                    
+							<li>
+                                <div class="item-content">
+                                    <div class="item-inner">
+                                       
+                                        <div class="item-input item-input-field">
+                                            <input type="text" name="dealer_name" id="dealer_name" placeholder="Enter Your Compant Name:" style="margin-bottom: 10px;border: 1px solid black;margin-top: 2px; border-radius:; height: 34px;" class="">
+                                        </div>
+                                    </div>
+                                </div>
+                            </li>
+							
+							<li>
+                                <div class="item-content">
+                                   
+                                    <div class="item-inner">
+                                        <div class="item-input item-input-field">
+                                            <textarea name="dealer_address" id="dealer_address" style="margin-bottom: 10px;border: 1px solid black;padding-left: 11px; height: 60px; " placeholder="Enter Company Address:" class=""></textarea>
+                                        </div>
+                                    </div>
+                                </div>
+                            </li>
+							
+							<li>
+                                <div class="item-content">
+                                    <div class="item-inner">
+                                       
+                                        <div class="item-input item-input-field">
+                                            <input type="text" name="dealer_contact_person" id="dealer_contact_person" placeholder="Enter Contact Person Name:" style="margin-bottom: 10px;border: 1px solid black;margin-top: 2px; border-radius:; height: 34px;" class="">
+                                        </div>
+                                    </div>
+                                </div>
+                            </li>
+							<li>
+                                <div class="item-content">
+                                    <div class="item-inner">
+                                        <div class="item-input item-input-field">
+                                            <input type="tel" readonly name="dealer_mobile" id="dealer_mobile" maxlength="10" placeholder="Enter Your Mobile:" style="margin-bottom: 10px;border: 1px solid black; height: 34px;" class="">
+                                        </div>
+                                    </div>
+                                </div>
+                            </li>
+                            
+          <li>
+            <div class="item-content">
+              <div class="item-inner"> 
+                <div class="item-title label">Change Password</div>
+                <div class="item-input">
+                  <label class="label-switch">
+                    <input type="checkbox" id="cpass" name="cpass" value="Y"/>
+                    <div class="checkbox"></div>
+                  </label>
+                </div>
+              </div>
+            </div>
+          </li>
+
+        <li id="climit">
+            <div class="item-content">
+                <div class="item-inner">
+                    <div class="item-input item-input-field">
+                        <input type="password"  name="dealer_password" id="dealer_password" maxlength="10" placeholder="Password" style="margin-bottom: 10px;border: 1px solid black; height: 34px;" class="">
+                    </div>
+                </div>
+            </div>
+        </li>
+
+
+							<li>
+                                <div class="item-content">
+                                    <div class="item-inner">
+                                        <div class="item-input item-input-field">
+                                            <input type="email"  name="dealer_email" id="dealer_email" placeholder="Enter Your Email Id:" style="margin-bottom: 10px;border: 1px solid black; height: 34px;" class="">
+                                        </div>
+                                    </div>
+                                </div>
+                            </li>
+							
+							<li>
+                                <div class="item-content">
+                                   
+                                    <div class="item-inner">
+                                        <div class="item-input item-input-field">
+                                            <textarea name="dealer_profile" id="dealer_profile" style="margin-bottom: 10px;border: 1px solid black;padding-left: 11px; height: 60px; " placeholder="Enter Your Company Profile:" class=""></textarea>
+                                        </div>
+                                    </div>
+                                </div>
+                            </li>
+                         
+
+                            <li>
+                                <div class="item-content">
+                                   
+                                    <div class="item-inner">
+                                        <div class="item-input item-input-field">
+                                            <a href="#" id="dealerupdbtn" class="button button-big submit button-fill color-black" style="margin-bottom:40px;float:left;width:60%;height: 40px;">Submit</a>
+                                        </div>
+                                    </div>
+                                </div>
+                            </li>
+
+                            </ul>
+                            </form>
+
+                            </div>               
+
+                    </div>
+
+                </div>
+            </div>
+
+        </div>
+    </div>
+</body>
