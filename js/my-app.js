@@ -844,15 +844,18 @@ if(id)
                       cadd += '                   <img src=" ' + product_image + '" style=" height: 250px; width: 140px;"/></a>';
                       cadd += '                  <span style="color: black;"><a href="#" onclick="ProductDetails(' + "'" + product_id + "');" + '">' + product_name + '</a></span>';
 
-                      if(dvj_logged_in == 'yes')
-                      {
-                        cadd += '<br><span style="color: black;">' + 'Rs ' + product_price + ' <a href="#" onclick="AddProduct(' + "'" + product_id +  "','" + product_name  +  "','" + product_price  + "');" + '">Add</a></span>';
-                      }
+                      
                       //myApp.alert(myarray.indexOf(product_id))
                       if(myarray.indexOf(product_id) != -1)   
                       {
                         //myApp.alert('matching product_id ' + product_id)
-                        cadd += '<br><span style="color: black;"><a href="#" onclick="RemoveProduct(' + "'" + product_id +  "','" + product_name  +  "','" + product_price  + "');" + '">Remove</a></span>';
+                        cadd += '<br><span style="color: black;">' + 'Rs ' + product_price + ' <a href="#" onclick="RemoveProduct(' + "'" + product_id +  "','" + product_name  +  "','" + product_price  + "');" + '">Remove</a></span>';
+                      }else
+                      {
+                        if(dvj_logged_in == 'yes')
+                        {
+                          cadd += '<br><span style="color: black;">' + 'Rs ' + product_price + ' <a href="#" onclick="AddProduct(' + "'" + product_id +  "','" + product_name  +  "','" + product_price  + "');" + '">Add</a></span>';
+                        }
                       }
 
                       //cadd += '               </a>';
