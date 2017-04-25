@@ -741,6 +741,33 @@ myApp.onPageInit('products', function (page) {
               };
           }
       });
+
+    var mlen = 0;
+    //a_session_id = localStorage.getItem("a_session_id");
+    local_products = localStorage.getItem("local_products");
+    //alert('local_products <br>' + local_products)
+    console.log(local_products);
+    if(local_products === null || local_products === 'undefined')
+    {
+    }else{
+    //myApp.alert('length ' + local_products.length,'')
+
+      if(local_products.length>0)
+      {
+        //myApp.alert('local_products ' + local_products,'')
+
+        test = JSON.parse(local_products);
+        mlen = test.length;
+      }
+    }
+    if(mlen == 0)
+    {
+      mlen = '';
+    }else
+    {
+      mlen = mlen + " Products";
+    }
+    $$("#t_amt").html(mlen);
 });
 
 
@@ -792,6 +819,33 @@ if(id)
 
  dvj_logged_in = localStorage.getItem("dvj_logged_in");
  dvj_session_id = localStorage.getItem("dvj_session_id");
+
+    var mlen = 0;
+    //a_session_id = localStorage.getItem("a_session_id");
+    local_products = localStorage.getItem("local_products");
+    //alert('local_products <br>' + local_products)
+    console.log(local_products);
+    if(local_products === null || local_products === 'undefined')
+    {
+    }else{
+    //myApp.alert('length ' + local_products.length,'')
+
+      if(local_products.length>0)
+      {
+        //myApp.alert('local_products ' + local_products,'')
+
+        test = JSON.parse(local_products);
+        mlen = test.length;
+      }
+    }
+    if(mlen == 0)
+    {
+      mlen = '';
+    }else
+    {
+      mlen = mlen + " Products";
+    }
+  $$("#t_amt2").html(mlen);
 
   //myApp.alert('brochure started','');
   url = srvURL + '/product_list';
@@ -915,6 +969,7 @@ function AddProduct(id,product_name, product_price)
         //myApp.alert(uloc_id + ' ' + comp_cat_id + ' * ' + cat_name , '');
     }
 
+    var mlen = 0;
     //a_session_id = localStorage.getItem("a_session_id");
     local_products = localStorage.getItem("local_products");
     //alert('local_products <br>' + local_products)
@@ -945,6 +1000,7 @@ function AddProduct(id,product_name, product_price)
             //myApp.alert(test[j].product_id);
             myarray.push(test[j].product_id);
         }
+        mlen = test.length;
         //for(j = 0; j<test.length; j++)
         //{
             //myApp.alert(test[j].product_id);
@@ -965,6 +1021,7 @@ function AddProduct(id,product_name, product_price)
                    //t4 = JSON.parse(t3);
                    //myApp.alert('product_name2 ' + t4[0].product_name)
                    myApp.alert('New Product Added','')
+                   mlen = parseInt(mlen) + 1;
               }
             }else{
               if(myarray.indexOf(id) == -1)   
@@ -979,6 +1036,7 @@ function AddProduct(id,product_name, product_price)
                    //t4 = JSON.parse(t3);
                    //myApp.alert('product_name2 ' + t4[0].product_name)
                    myApp.alert('New Product Added','')
+                   mlen = parseInt(mlen) + 1;
               }
             }
         //}
@@ -992,6 +1050,15 @@ function AddProduct(id,product_name, product_price)
        alert(product_name + ' ' + t2[0].product_name)
        localStorage.setItem("local_products", t);
     */
+
+    if(mlen == 0)
+    {
+      mlen = '';
+    }else
+    {
+      mlen = mlen + " Products";
+    }
+    $$("#t_amt2").html(mlen);
 }
 
 function RemoveProduct(id,product_name, product_price)
@@ -1003,6 +1070,24 @@ function RemoveProduct(id,product_name, product_price)
   $$("#" + "pd_" + id).hide();
 
   //eturn false;
+  var mlen = 0;
+    //a_session_id = localStorage.getItem("a_session_id");
+  local_products = localStorage.getItem("local_products");
+  //alert('local_products <br>' + local_products)
+  console.log(local_products);
+  if(local_products === null || local_products === 'undefined')
+  {
+  }else{
+  //myApp.alert('length ' + local_products.length,'')
+
+    if(local_products.length>0)
+    {
+      //myApp.alert('local_products ' + local_products,'')
+
+      test = JSON.parse(local_products);
+      mlen = test.length;
+    }
+  }
 
   var myarray = [];
   if(myarray.indexOf(id) == -1) 
@@ -1066,12 +1151,22 @@ function RemoveProduct(id,product_name, product_price)
               //t4 = JSON.parse(t3);
               //myApp.alert('product_name2 ' + t4[0].product_name)
               myApp.alert('Product Removed','')
+              mlen = parseInt(mlen) - 1;
           }
       //}
     }else{
       myApp.alert('blank array','')
       
     }
+
+    if(mlen == 0)
+    {
+      mlen = '';
+    }else
+    {
+      mlen = mlen + " Products";
+    }
+    $$("#t_amt2").html(mlen);
     /*
       t = '[{"product_id": "' + id + '", "product_name": "' + product_name + '", "product_price": "' + product_price + '"}]';
        t2 = JSON.parse(t);
