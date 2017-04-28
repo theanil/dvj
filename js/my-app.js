@@ -14,7 +14,8 @@ var mainView = myApp.addView('.view-main', {
 var hostname = location.hostname;
 //alert(hostname);
 
-var srvURL = "http://www.bluapps.in/api_dvj/Serv";
+//var srvURL = "http://www.bluapps.in/api_dvj/Serv";
+var srvURL = "http://www.dvj-design.com/api_dvj/Serv";
 if(hostname == 'localhost')
 {
     var srvURL = "http://localhost/api_dvj/Serv";
@@ -909,13 +910,13 @@ if(id)
                         if(myarray.indexOf(product_id) != -1)   
                         {
                            //myApp.alert('matching product_id ' + product_id)
-                           cadd += '<span style="display: block; color: black;" id="pd_' + product_id +'">' + price + ' <a href="#" onclick="RemoveProduct(' + "'" + product_id +  "','" + product_name  +  "','" + product_price  + "');" + '">Remove</a></span>';
-                           cadd += '<span style="display: none; color: black;" id="pa_' + product_id +'">' + price + ' <a href="#" onclick="AddProduct(' + "'" + product_id +  "','" + product_name  +  "','" + product_price  + "');" + '">Add</a></span>';
+                           cadd += '<span style="display: block; color: black;" id="pd_' + product_id +'">' + price + ' <a href="#" class="link" onclick="RemoveProduct(' + "'" + product_id +  "','" + product_name  +  "','" + product_price  + "');" + '">Remove</a></span>';
+                           cadd += '<span style="display: none; color: black;" id="pa_' + product_id +'">' + price + ' <a href="#" class="link" onclick="AddProduct(' + "'" + product_id +  "','" + product_name  +  "','" + product_price  + "');" + '">Add</a></span>';
                         }else
                         {
-                          cadd += '<span style="display: none; color: black;" id="pd_' + product_id +'">' + price + ' <a href="#" onclick="RemoveProduct(' + "'" + product_id +  "','" + product_name  +  "','" + product_price  + "');" + '">Remove</a></span>';
+                          cadd += '<span style="display: none; color: black;" id="pd_' + product_id +'">' + price + ' <a href="#" class="link" onclick="RemoveProduct(' + "'" + product_id +  "','" + product_name  +  "','" + product_price  + "');" + '">Remove</a></span>';
 
-                          cadd += '<span style="display: block; color: black;" id="pa_' + product_id +'">' + price + ' <a href="#" onclick="AddProduct(' + "'" + product_id +  "','" + product_name  +  "','" + product_price  + "');" + '">Add</a></span>';
+                          cadd += '<span style="display: block; color: black;" id="pa_' + product_id +'">' + price + ' <a href="#" class="link" onclick="AddProduct(' + "'" + product_id +  "','" + product_name  +  "','" + product_price  + "');" + '">Add</a></span>';
                         }
                       //}
                       //cadd += '               </a>';
