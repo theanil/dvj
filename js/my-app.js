@@ -117,7 +117,7 @@ myApp.onPageInit('login', function (page) {
 
         if(username.length <= 0)
         {
-            errmessage += 'Please enter user id <br>';
+            errmessage += 'Please enter Mobile No <br>';
             //myApp.alert('Please enableter user id');
             //$$('#username').css('border','1px solid red');
             valid = 0;
@@ -709,7 +709,7 @@ myApp.onPageInit('products', function (page) {
 
                       cadd += '           <div class="col-50">';
                       cadd += '               <a href="#" onclick="ProductDisplay(' + "'" + category_id + "','" + category_name  +"');" + '">';
-                      cadd += '                   <img src=" ' + category_image + '" style=" height: 120px; width: 140px;"/></a>';
+                      cadd += '                   <img src="' + category_image + '" style=" height: 120px; width: 140px;"/></a>';
                       cadd += '                  <span style="color: black;"><a href="#" onclick="ProductDisplay(' + "'" + category_id + "','" + category_name  +"');" + '">' + category_name + '</a></span>';
                       //cadd += '               </a>';
                       //cadd += '               <a class="external" href="' + urldecode(e.data.brochure[i].brochure_pdf)  + '"' + '>' + brochure_fname + '</a>';
@@ -896,7 +896,7 @@ if(id)
 
                       cadd += '           <div class="col-50">';
                       cadd += '               <a href="#" onclick="ProductDetails(' + "'" + product_id + "');" + '">';
-                      cadd += '                   <img src=" ' + product_image + '" style=" height: 250px; width: 140px;"/></a>';
+                      cadd += '                   <img src="' + product_image + '" style=" height: 250px; width: 140px;"/></a>';
                       cadd += '                  <span style="color: black;"><a href="#" onclick="ProductDetails(' + "'" + product_id + "');" + '">' + product_name + '</a></span>';
 
                       if(dvj_logged_in == 'yes')
@@ -920,7 +920,7 @@ if(id)
                         }
 
                         cadd += '<br /><a href="#" onclick="RemoveProduct2(' + "'" + product_id +  "','" + product_name  +  "','" + product_price  + "')" + '";' + '><img src="img/minus-64.png" style="width: 35px; height:35px;"></a>';
-                        cadd += '<span id="lblqty_' + product_id + '" style="width: 20px; display: inline-block; background-color: #fff;line-height: 36px; vertical-align: top;">1 </span><input type="hidden" style="width:10px;" value="1" id="qty_' + product_id + '">';
+                        cadd += '<span id="lblqty_' + product_id + '" style="width: 50px; display: inline-block; background-color: #fff;line-height: 36px; vertical-align: top;">Qty 1 </span><input type="hidden" style="width:10px;" value="0" id="qty_' + product_id + '">';
                         cadd += '<a href="#" onclick="AddProduct2(' + "'" + product_id +  "','" + product_name  +  "','" + product_price  + "')" + '";' + '><img src="img/plus-64.png" style="width: 35px; height:35px;"></a>';
 
 
@@ -978,7 +978,7 @@ function AddProduct2(id,product_name, product_price)
       }
 
       $$("#qty_" + id).val(qty2);
-      $$("#lblqty_" + id).html(qty2);
+      $$("#lblqty_" + id).html('Qty ' + qty2);
     }
 
 function RemoveProduct2(id,product_name, product_price)
@@ -997,7 +997,7 @@ function RemoveProduct2(id,product_name, product_price)
       }
 
       $$("#qty_" + id).val(qty2);
-      $$("#lblqty_" + id).html(qty2);
+      $$("#lblqty_" + id).html('Qty ' + qty2);
     }
 
 
@@ -1282,7 +1282,7 @@ myApp.onPageInit('brochure', function (page) {
 
                       cadd += '           <div class="col-50">';
                       cadd += '               <a href="#" onclick="downbrochure(' + "'" + urldecode(e.data.brochure[i].brochure_pdf) + "');" + '">';
-                      cadd += '                   <img src=" ' + brochure_image + '" style=" height: 120px; width: 140px;"/></a>';
+                      cadd += '                   <img src="' + brochure_image + '" style=" height: 120px; width: 140px;"/></a>';
                       cadd += '                  <span style="color: black;"><a href="#" onclick="downbrochure(' + "'" + urldecode(e.data.brochure[i].brochure_pdf) + "');" + '">' + brochure_name + '</a></span>';
                       //cadd += '               </a>';
                       //cadd += '               <a class="external" href="' + urldecode(e.data.brochure[i].brochure_pdf)  + '"' + '>' + brochure_fname + '</a>';
