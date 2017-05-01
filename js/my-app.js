@@ -910,14 +910,20 @@ if(id)
                         if(myarray.indexOf(product_id) != -1)   
                         {
                            //myApp.alert('matching product_id ' + product_id)
-                           cadd += '<span style="display: block; color: black;" id="pd_' + product_id +'">' + price + ' <a href="#" class="link" onclick="RemoveProduct(' + "'" + product_id +  "','" + product_name  +  "','" + product_price  + "');" + '">Remove</a></span>';
-                           cadd += '<span style="display: none; color: black;" id="pa_' + product_id +'">' + price + ' <a href="#" class="link" onclick="AddProduct(' + "'" + product_id +  "','" + product_name  +  "','" + product_price  + "');" + '">Add</a></span>';
+                           //cadd += '<span style="display: block; color: black;" id="pd_' + product_id +'">' + price + ' <a href="#" class="link" onclick="RemoveProduct(' + "'" + product_id +  "','" + product_name  +  "','" + product_price  + "');" + '">Remove</a></span>';
+                           //cadd += '<span style="display: none; color: black;" id="pa_' + product_id +'">' + price + ' <a href="#" class="link" onclick="AddProduct(' + "'" + product_id +  "','" + product_name  +  "','" + product_price  + "');" + '">Add</a></span>';
                         }else
                         {
-                          cadd += '<span style="display: none; color: black;" id="pd_' + product_id +'">' + price + ' <a href="#" class="link" onclick="RemoveProduct(' + "'" + product_id +  "','" + product_name  +  "','" + product_price  + "');" + '">Remove</a></span>';
+                          //cadd += '<span style="display: none; color: black;" id="pd_' + product_id +'">' + price + ' <a href="#" class="link" onclick="RemoveProduct(' + "'" + product_id +  "','" + product_name  +  "','" + product_price  + "');" + '">Remove</a></span>';
 
-                          cadd += '<span style="display: block; color: black;" id="pa_' + product_id +'">' + price + ' <a href="#" class="link" onclick="AddProduct(' + "'" + product_id +  "','" + product_name  +  "','" + product_price  + "');" + '">Add</a></span>';
+                          //cadd += '<span style="display: block; color: black;" id="pa_' + product_id +'">' + price + ' <a href="#" class="link" onclick="AddProduct(' + "'" + product_id +  "','" + product_name  +  "','" + product_price  + "');" + '">Add</a></span>';
                         }
+
+                        cadd += '<br /><a href="#" onclick="RemoveProduct2(' + "'" + product_id +  "','" + product_name  +  "','" + product_price  + "')" + '";' + '><img src="img/minus-64.png" style="width: 35px; height:35px;"></a>';
+                        cadd += '<span id="lblqty_' + product_id + '" style="width: 20px; display: inline-block; background-color: #fff;line-height: 36px; vertical-align: top;">1 </span><input type="hidden" style="width:10px;" value="1" id="qty_' + product_id + '">';
+                        cadd += '<a href="#" onclick="AddProduct2(' + "'" + product_id +  "','" + product_name  +  "','" + product_price  + "')" + '";' + '><img src="img/plus-64.png" style="width: 35px; height:35px;"></a>';
+
+
                       //}
                       //cadd += '               </a>';
                       //cadd += '               <a class="external" href="' + urldecode(e.data.brochure[i].brochure_pdf)  + '"' + '>' + brochure_fname + '</a>';
@@ -951,7 +957,49 @@ if(id)
               };
           }
       });
+
+    
 });
+
+
+function AddProduct2(id,product_name, product_price)
+    {
+      //myApp.alert(id,'')
+      //myApp.alert(product_name,'')
+      //myApp.alert(product_price,'')
+      qtyvar = "qty_" + id;
+      qty = $$("#" + qtyvar).val();
+      //qty = $$("#qty_112").val();
+      //myApp.alert(qty,'')
+      qty2 = parseInt(qty)+1;
+      if(qty2 >100)
+      {
+        qty2 = 100;
+      }
+
+      $$("#qty_" + id).val(qty2);
+      $$("#lblqty_" + id).html(qty2);
+    }
+
+function RemoveProduct2(id,product_name, product_price)
+    {
+      //myApp.alert(id,'')
+      //myApp.alert(product_name,'')
+      //myApp.alert(product_price,'')
+      qtyvar = "qty_" + id;
+      qty = $$("#" + qtyvar).val();
+      //qty = $$("#qty_112").val();
+      //myApp.alert(qty,'')
+      qty2 = parseInt(qty)-1;
+      if(qty2 <0)
+      {
+        qty2 = 0;
+      }
+
+      $$("#qty_" + id).val(qty2);
+      $$("#lblqty_" + id).html(qty2);
+    }
+
 
 function AddProduct(id,product_name, product_price)
 {
