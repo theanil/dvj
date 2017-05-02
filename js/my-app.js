@@ -1906,7 +1906,7 @@ myApp.onPageInit('aboutus', function (page) {
  /*=== Default standalone ===*/
     var myPhotoBrowserPopup = myApp.photoBrowser({
         photos : [
-            'http://www.dvj-design.com/img/brochure/8fecc19db32c9dc9b19b430c3a305ce9.jpg'
+            'http://www.dvj-design.com/img/category/ed2e4ca8a7f2de4a2e7f7f762feade06.jpg'
         ],
         type: 'page', 
         zoom: 400,
