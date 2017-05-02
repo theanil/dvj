@@ -1908,7 +1908,8 @@ myApp.onPageInit('aboutus', function (page) {
         photos : [
             'http://www.dvj-design.com/img/brochure/8fecc19db32c9dc9b19b430c3a305ce9.jpg'
         ],
-        type: 'popup', 
+        zoom: true,
+        maxZoom: 4,
         toolbar: false
     });
     //Open photo browser on click
