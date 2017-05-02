@@ -784,6 +784,9 @@ myApp.onPageInit('productdetails', function (page) {
 
 id =page.context.id; 
 category =page.context.category; 
+
+//id=14;
+//category= 'test';
 if(id)
 {
   //myApp.alert(id.length,'')
@@ -818,8 +821,8 @@ if(id)
       }}
       //myApp.alert(myarray,'')
 
- dvj_logged_in = localStorage.getItem("dvj_logged_in");
- dvj_session_id = localStorage.getItem("dvj_session_id");
+     dvj_logged_in = localStorage.getItem("dvj_logged_in");
+     dvj_session_id = localStorage.getItem("dvj_session_id");
 
     var mlen = 0;
     //a_session_id = localStorage.getItem("a_session_id");
@@ -830,6 +833,7 @@ if(id)
     {
     }else{
     //myApp.alert('length ' + local_products.length,'')
+        console.log(local_products);
 
       if(local_products.length>0)
       {
@@ -907,21 +911,44 @@ if(id)
                         price = '';
                       }
                       //myApp.alert(myarray.indexOf(product_id))
+
+
                         if(myarray.indexOf(product_id) != -1)   
                         {
                            //myApp.alert('matching product_id ' + product_id)
-                           //cadd += '<span style="display: block; color: black;" id="pd_' + product_id +'">' + price + ' <a href="#" class="link" onclick="RemoveProduct(' + "'" + product_id +  "','" + product_name  +  "','" + product_price  + "');" + '">Remove</a></span>';
-                           //cadd += '<span style="display: none; color: black;" id="pa_' + product_id +'">' + price + ' <a href="#" class="link" onclick="AddProduct(' + "'" + product_id +  "','" + product_name  +  "','" + product_price  + "');" + '">Add</a></span>';
+                           //cadd += '<span style="display: block; color: black;" id="pd_' + product_id +'">' + price + ' <a href="#" class="link" onclick="RemoveProduct(' + "'" + product_id +  "','" + product_name  +  "','" + product_price  + "');" + '">Remove 1</a></span>';
+                           //cadd += '<span style="display: none; color: black;" id="pa_' + product_id +'">' + price + ' <a href="#" class="link" onclick="AddProduct(' + "'" + product_id +  "','" + product_name  +  "','" + product_price  + "');" + '">Add 1</a></span>';
+
+                            for(j = 0; j<test.length; j++)
+                              {
+                                  //myApp.alert(test[j].product_id + ' ' + test[j].product_name + ' ' + test[j].product_qty,'' );
+                                  //myarray.push(test[j].product_id);
+                                  if(test[j].product_id == product_id)
+                                  {
+                                    qty = test[j].product_qty;break;
+                                  }
+                              }
+                              //myApp.alert('qty: ' + qty, '');
+
+                            cadd += '<span style="display: block; color: black;" id="pd_' + product_id +'">' + price + '<a href="#" onclick="RemoveProduct2(' + "'" + product_id +  "','" + product_name  +  "','" + product_price  + "')" + '";' + '><img src="img/minus-64.png" style="width: 35px; height:35px;"></a>';
+                            cadd += '<span id="lblqty_' + product_id + '" style="width: 50px; display: inline-block; background-color: #fff;line-height: 36px; vertical-align: top;">Qty ' + qty + ' </span><input type="hidden" style="width:10px;" value="' + qty +'" id="qty_' + product_id + '">';
+                            cadd += '<a href="#" onclick="AddProduct2(' + "'" + product_id +  "','" + product_name  +  "','" + product_price  + "')" + '";' + '><img src="img/plus-64.png" style="width: 35px; height:35px;"></a></span>';
+                            
+                            cadd += '<span style="display: none; color: black;" id="pa_' + product_id +'">' + price + ' <a style="width:100px;" href="#" class="link button button-small button-fill color-red" onclick="AddProduct(' + "'" + product_id +  "','" + product_name  +  "','" + product_price  + "');" + '">Add </a></span>';
                         }else
                         {
-                          //cadd += '<span style="display: none; color: black;" id="pd_' + product_id +'">' + price + ' <a href="#" class="link" onclick="RemoveProduct(' + "'" + product_id +  "','" + product_name  +  "','" + product_price  + "');" + '">Remove</a></span>';
+                          //cadd += '<span style="display: none; color: black;" id="pd_' + product_id +'">' + price + ' <a href="#" class="link" onclick="RemoveProduct(' + "'" + product_id +  "','" + product_name  +  "','" + product_price  + "');" + '">Remove 2</a></span>';
 
-                          //cadd += '<span style="display: block; color: black;" id="pa_' + product_id +'">' + price + ' <a href="#" class="link" onclick="AddProduct(' + "'" + product_id +  "','" + product_name  +  "','" + product_price  + "');" + '">Add</a></span>';
+                            cadd += '<span style="display: none; color: black;" id="pd_' + product_id +'">' + price + '<a href="#" onclick="RemoveProduct2(' + "'" + product_id +  "','" + product_name  +  "','" + product_price  + "')" + '";' + '><img src="img/minus-64.png" style="width: 35px; height:35px;"></a>';
+                            cadd += '<span id="lblqty_' + product_id + '" style="width: 50px; display: inline-block; background-color: #fff;line-height: 36px; vertical-align: top;">Qty 1 </span><input type="hidden" style="width:10px;" value="1" id="qty_' + product_id + '">';
+                            cadd += '<a href="#" onclick="AddProduct2(' + "'" + product_id +  "','" + product_name  +  "','" + product_price  + "')" + '";' + '><img src="img/plus-64.png" style="width: 35px; height:35px;"></a></span>';
+                            
+                            cadd += '<span style="display: block; color: black;" id="pa_' + product_id +'">' + price + ' <a style="width:100px;" href="#" class="link button button-small button-fill color-red" onclick="AddProduct(' + "'" + product_id +  "','" + product_name  +  "','" + product_price  + "');" + '">Add</a></span>';
                         }
 
-                        cadd += '<br /><a href="#" onclick="RemoveProduct2(' + "'" + product_id +  "','" + product_name  +  "','" + product_price  + "')" + '";' + '><img src="img/minus-64.png" style="width: 35px; height:35px;"></a>';
-                        cadd += '<span id="lblqty_' + product_id + '" style="width: 50px; display: inline-block; background-color: #fff;line-height: 36px; vertical-align: top;">Qty 1 </span><input type="hidden" style="width:10px;" value="0" id="qty_' + product_id + '">';
-                        cadd += '<a href="#" onclick="AddProduct2(' + "'" + product_id +  "','" + product_name  +  "','" + product_price  + "')" + '";' + '><img src="img/plus-64.png" style="width: 35px; height:35px;"></a>';
+                        //cadd += '<br /><a href="#" onclick="RemoveProduct2(' + "'" + product_id +  "','" + product_name  +  "','" + product_price  + "')" + '";' + '><img src="img/minus-64.png" style="width: 35px; height:35px;"></a>';
+                        //cadd += '<span id="lblqty_' + product_id + '" style="width: 50px; display: inline-block; background-color: #fff;line-height: 36px; vertical-align: top;">Qty 1 </span><input type="hidden" style="width:10px;" value="0" id="qty_' + product_id + '">';
+                        //cadd += '<a href="#" onclick="AddProduct2(' + "'" + product_id +  "','" + product_name  +  "','" + product_price  + "')" + '";' + '><img src="img/plus-64.png" style="width: 35px; height:35px;"></a>';
 
 
                       //}
@@ -935,6 +962,9 @@ if(id)
                       }
                     }
                     console.log(cadd)
+
+                    //console.log(localStorage.getItem("local_products"));
+
                     $$("#productsdetails2").html(cadd);
                     $$("#category_name").html(category);
                                   
@@ -979,6 +1009,8 @@ function AddProduct2(id,product_name, product_price)
 
       $$("#qty_" + id).val(qty2);
       $$("#lblqty_" + id).html('Qty ' + qty2);
+
+      UpdateQty(id, qty2);
     }
 
 function RemoveProduct2(id,product_name, product_price)
@@ -998,8 +1030,112 @@ function RemoveProduct2(id,product_name, product_price)
 
       $$("#qty_" + id).val(qty2);
       $$("#lblqty_" + id).html('Qty ' + qty2);
+
+      if(qty2 == 0)
+      {
+            RemoveProduct(id,product_name, product_price);
+      }else
+      {
+        UpdateQty(id, qty2);
+      }
     }
 
+function UpdateQty(id, qty)
+{
+    //myApp.alert('id: '+id + ' qty: '+qty,'')
+
+
+   var mlen = 0;
+    //a_session_id = localStorage.getItem("a_session_id");
+  local_products = localStorage.getItem("local_products");
+  //alert('local_products <br>' + local_products)
+  console.log(local_products);
+  if(local_products === null || local_products === 'undefined')
+  {
+  }else{
+  //myApp.alert('length ' + local_products.length,'')
+
+    if(local_products.length>0)
+    {
+      //myApp.alert('local_products ' + local_products,'')
+
+      test = JSON.parse(local_products);
+      mlen = test.length;
+    }
+  }
+
+  var myarray = [];
+  if(myarray.indexOf(id) == -1) 
+    {
+        //myarray.push(id);
+        //myApp.alert('not found : ' + cat_name);
+        //console.log("is in array");
+        //myApp.alert(uloc_id + ' ' + comp_cat_id + ' * ' + cat_name , '');
+    }
+
+    //a_session_id = localStorage.getItem("a_session_id");
+    local_products = localStorage.getItem("local_products");
+    //alert('local_products <br>' + local_products)
+    if(local_products === null || local_products === 'undefined')
+    {
+        local_products = '';
+        localStorage.setItem("local_products", local_products);
+    }
+    //myApp.alert('length ' + local_products.length,'')
+
+    if(local_products.length>0)
+    {
+      //myApp.alert('local_products ' + local_products,'')
+
+      test = JSON.parse(local_products);
+      //myApp.alert('test.length ' + test.length);
+      //myApp.alert('product_id ' + test[0].product_id);
+      //test = JSON.parse(local_products);
+      
+      var myarray = [];
+      for(j = 0; j<test.length; j++)
+      {
+          //myApp.alert(test[j].product_id);
+          myarray.push(test[j].product_id);
+      }
+      //for(j = 0; j<test.length; j++)
+      //{
+          //myApp.alert(test[j].product_id);
+          //product_id = test[j].product_id;
+          //if(product_id != id)
+          if(myarray.indexOf(id) != -1)   
+          {
+              //myApp.alert('product ' + id + ' matching','')
+
+              t5 ='';
+              for(j = 0; j<test.length; j++)
+              {
+                  //myApp.alert(test[j].product_id);
+                  //myarray.push(test[j].product_id);
+                  if(test[j].product_id == id)
+                  {
+                    t5 += ',{"product_id": "' + test[j].product_id + '", "product_name": "' + test[j].product_name + '", "product_qty": "' + qty + '", "product_price": "' + test[j].product_price + '"}';
+                  }else
+                  {
+                    t5 += ',{"product_id": "' + test[j].product_id + '", "product_name": "' + test[j].product_name + '", "product_qty": "' + test[j].product_qty + '", "product_price": "' + test[j].product_price + '"}';
+                  }
+              }
+
+              t5 = '[' + t5.substring(1, (t5.length)) + ']';
+              //myApp.alert(t5);
+
+              console.log(t5)
+              localStorage.setItem("local_products", t5);
+              //t4 = JSON.parse(t3);
+              //myApp.alert('product_name2 ' + t4[0].product_name)
+              //myApp.alert('Product Updated','')
+          }
+    }else{
+      myApp.alert('blank array','')
+      
+    }
+
+}
 
 function AddProduct(id,product_name, product_price)
 {
@@ -1012,6 +1148,8 @@ function AddProduct(id,product_name, product_price)
   $$("#" + "pa_" + id).hide();
   $$("#" + "pd_" + id).show();
 
+  //myApp.alert("#" + "pd_" + id, '');
+
   //eturn false;
 
   var myarray = [];
@@ -1023,6 +1161,7 @@ function AddProduct(id,product_name, product_price)
         //myApp.alert(uloc_id + ' ' + comp_cat_id + ' * ' + cat_name , '');
     }
 
+    var product_qty =1;
     var mlen = 0;
     //a_session_id = localStorage.getItem("a_session_id");
     local_products = localStorage.getItem("local_products");
@@ -1031,7 +1170,7 @@ function AddProduct(id,product_name, product_price)
     if(local_products === null || local_products === 'undefined')
     {
         local_products = '';
-        t = '[{"product_id": "' + id + '", "product_name": "' + product_name + '", "product_price": "' + product_price + '"}]';
+        t = '[{"product_id": "' + id + '", "product_name": "' + product_name + '", "product_qty": "' + product_qty + '", "product_price": "' + product_price + '"}]';
         t2 = JSON.parse(t);
        //myApp.alert(product_name + ' ' + t2[0].product_name)
         localStorage.setItem("local_products", t);
@@ -1065,7 +1204,7 @@ function AddProduct(id,product_name, product_price)
             {
               if(myarray.indexOf(id) == -1)   
               {
-                  t = ',{"product_id": "' + id + '", "product_name": "' + product_name + '", "product_price": "' + product_price + '"}]';
+                  t = ',{"product_id": "' + id + '", "product_name": "' + product_name + '", "product_qty": "' + product_qty + '", "product_price": "' + product_price + '"}]';
                    //t2 = JSON.parse(t);
                    //myApp.alert('product_name  ' + t2[0].product_name)
                    t3 = local_products.substring(0, (local_products.length-1)) + t;
@@ -1074,13 +1213,13 @@ function AddProduct(id,product_name, product_price)
                    localStorage.setItem("local_products", t3);
                    //t4 = JSON.parse(t3);
                    //myApp.alert('product_name2 ' + t4[0].product_name)
-                   myApp.alert('New Product Added','')
+                   myApp.alert('Product ' + product_name + ' added','')
                    mlen = parseInt(mlen) + 1;
               }
             }else{
               if(myarray.indexOf(id) == -1)   
               {
-                  t = '{"product_id": "' + id + '", "product_name": "' + product_name + '", "product_price": "' + product_price + '"}]';
+                  t = '{"product_id": "' + id + '", "product_name": "' + product_name + '", "product_qty": "' + product_qty + '", "product_price": "' + product_price + '"}]';
                    //t2 = JSON.parse(t);
                    //myApp.alert('product_name  ' + t2[0].product_name)
                    t3 = local_products.substring(0, (local_products.length-1)) + t;
@@ -1089,7 +1228,7 @@ function AddProduct(id,product_name, product_price)
                    localStorage.setItem("local_products", t3);
                    //t4 = JSON.parse(t3);
                    //myApp.alert('product_name2 ' + t4[0].product_name)
-                   myApp.alert('New Product Added','')
+                   myApp.alert('Product ' + product_name + ' added','')
                    mlen = parseInt(mlen) + 1;
               }
             }
@@ -1113,6 +1252,8 @@ function AddProduct(id,product_name, product_price)
       mlen = mlen + " Products";
     }
     $$("#t_amt2").html(mlen);
+    //AddProduct2(id,product_name, product_price);
+    UpdateQty(id, 1);
 }
 
 function RemoveProduct(id,product_name, product_price)
@@ -1193,7 +1334,7 @@ function RemoveProduct(id,product_name, product_price)
                   //myarray.push(test[j].product_id);
                   if(test[j].product_id != id)
                   {
-                    t5 += ',{"product_id": "' + test[j].product_id + '", "product_name": "' + test[j].product_name + '", "product_price": "' + test[j].product_price + '"}';
+                    t5 += ',{"product_id": "' + test[j].product_id + '", "product_name": "' + test[j].product_name + '", "product_qty": "' + test[j].product_qty + '", "product_price": "' + test[j].product_price + '"}';
                   }
               }
 
@@ -1204,7 +1345,7 @@ function RemoveProduct(id,product_name, product_price)
               localStorage.setItem("local_products", t5);
               //t4 = JSON.parse(t3);
               //myApp.alert('product_name2 ' + t4[0].product_name)
-              myApp.alert('Product Removed','')
+              myApp.alert('Product ' + product_name + ' removed','')
               mlen = parseInt(mlen) - 1;
           }
       //}
