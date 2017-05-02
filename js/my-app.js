@@ -1909,7 +1909,7 @@ myApp.onPageInit('aboutus', function (page) {
             'http://www.dvj-design.com/img/brochure/8fecc19db32c9dc9b19b430c3a305ce9.jpg'
         ],
         type: 'page', 
-        zoom: 400,
+        zoom: true,
 
         toolbar: false
     });
