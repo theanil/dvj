@@ -1899,3 +1899,23 @@ myApp.onPageInit('dealer', function (page) {
 });
 
 
+myApp.onPageInit('aboutus', function (page) {
+
+ //myApp.alert('in aboutus','');
+
+ /*=== Default standalone ===*/
+    var myPhotoBrowserPopup = myApp.photoBrowser({
+        photos : [
+            'http://www.dvj-design.com/img/brochure/8fecc19db32c9dc9b19b430c3a305ce9.jpg'
+        ],
+        type: 'popup', 
+        toolbar: false
+    });
+    //Open photo browser on click
+    $$('.pb-standalone').on('click', function () 
+    {
+        myPhotoBrowserPopup.open();
+    });
+
+});
+
