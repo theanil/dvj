@@ -1704,6 +1704,12 @@ myApp.onPageInit('contact', function (page) {
 
  $$('#contact1btn').on('click', function()
      {
+         dvj_session_id = localStorage.getItem("dvj_session_id");
+         //alert(dvj_session_id)
+         if(dvj_session_id == null || dvj_session_id =='undefined')
+         {
+            dvj_session_id = '';
+         }
         //myApp.alert('clicked contact1btn','')
         name = $$("#name").val();
         mobile = $$("#mobile").val();
@@ -1748,7 +1754,7 @@ myApp.onPageInit('contact', function (page) {
             $$.ajax({
                 url: url,
                 method: "POST",
-                data: {enquiry_name: name, enquiry_mobile: mobile, enquiry_emailid: email, enquiry_msg: msg, products: local_products},
+                data: {session_id: dvj_session_id, enquiry_name: name, enquiry_mobile: mobile, enquiry_emailid: email, enquiry_msg: msg, enquiry_product: local_products},
                 processData: true,
                 dataType: 'json',
                 timeout : 50000,
