@@ -1271,6 +1271,7 @@ function RemoveProduct(id,product_name, product_price)
   //myApp.alert(product_price,'')
   $$("#" + "pa_" + id).show();
   $$("#" + "pd_" + id).hide();
+  $$("#" + "divd_" + id).hide();
 
   //eturn false;
   var mlen = 0;
@@ -1595,6 +1596,108 @@ myApp.onPageInit('contact', function (page) {
 
  //myApp.alert('in contact','');
 
+
+   var mlen = 0;
+    //a_session_id = localStorage.getItem("a_session_id");
+  local_products = localStorage.getItem("local_products");
+  //alert('local_products <br>' + local_products)
+  console.log(local_products);
+  if(local_products === null || local_products === 'undefined')
+  {
+  }else{
+  //myApp.alert('length ' + local_products.length,'')
+
+    if(local_products.length>0)
+    {
+      //myApp.alert('local_products ' + local_products,'')
+
+      test = JSON.parse(local_products);
+      mlen = test.length;
+    }
+  }
+
+  var myarray = [];
+
+    //a_session_id = localStorage.getItem("a_session_id");
+    local_products = localStorage.getItem("local_products");
+    //alert('local_products <br>' + local_products)
+    if(local_products === null || local_products === 'undefined')
+    {
+        local_products = '';
+        localStorage.setItem("local_products", local_products);
+    }
+    //myApp.alert('length ' + local_products.length,'')
+
+    if(local_products.length>0)
+    {
+      //myApp.alert('local_products ' + local_products,'')
+
+      test = JSON.parse(local_products);
+      //myApp.alert('test.length ' + test.length);
+      //myApp.alert('product_id ' + test[0].product_id);
+      //test = JSON.parse(local_products);
+      
+      var myarray = [];
+      for(j = 0; j<test.length; j++)
+      {
+          //myApp.alert(test[j].product_id);
+          myarray.push(test[j].product_id);
+      }
+      //for(j = 0; j<test.length; j++)
+      //{
+          //myApp.alert(test[j].product_id);
+          //product_id = test[j].product_id;
+          //if(product_id != id)
+              //myApp.alert('product ' + id + ' matching','')
+
+              t5 ='';
+              elist = '';
+              if(test.length >0)
+              {
+                  elist += '<div class="row home"><div class="col-50"><b>Product Name</b></div>';
+                  elist += '<div class="col-50"><b>Quantity</b></div></div>' + "\n\n";
+
+                  for(j = 0; j<test.length; j++)
+                  {
+                      //myApp.alert(test[j].product_id);
+                      
+                        t5 += ',{"product_id": "' + test[j].product_id + '", "product_name": "' + test[j].product_name + '", "product_qty": "' + test[j].product_qty + '", "product_price": "' + test[j].product_price + '"}';
+                        
+                        product_id = test[j].product_id;
+                        product_name = test[j].product_name;
+                        price = test[j].product_price;
+                        product_price = test[j].product_price;
+                        qty = test[j].product_qty;
+                        price ='';
+
+                        //elist += '<div class="col-25">Product ID: ' + test[j].product_id + '</div>';
+                        elist += '<div class="row home" id="divd_' + product_id +'"><div class="col-50">' + test[j].product_name + '</div>';
+                        //elist += '<div class="col-50">' + test[j].product_qty + '</div></div>';
+                        //elist += 'Product ID: ' + test[j].product_id + '<br>';
+
+                        elist += '<div class="col-50"><span style="display: block; color: black; height:20px;" id="pd_' + product_id +'">' + price + '<a href="#" onclick="RemoveProduct2(' + "'" + product_id +  "','" + product_name  +  "','" + product_price  + "')" + '";' + '><img src="img/minus-64.png" style="width: 35px; height:35px;"></a>';
+                        elist += '<span id="lblqty_' + product_id + '" style="width: 50px; display: inline-block; background-color: #fff;line-height: 36px; vertical-align: top;">Qty ' + qty + ' </span><input type="hidden" style="width:10px;" value="' + qty + '" id="qty_' + product_id + '">';
+                        elist += '<a href="#" onclick="AddProduct2(' + "'" + product_id +  "','" + product_name  +  "','" + product_price  + "')" + '";' + '><img src="img/plus-64.png" style="width: 35px; height:35px;"></a></span></div></div>' + "\n\n";
+                        
+                  }
+
+                  t5 = '[' + t5.substring(1, (t5.length)) + ']';
+              }
+              console.log(elist);
+              //myApp.alert(t5);
+
+              console.log(t5)
+              $$("#elist").html(elist);
+              //localStorage.setItem("local_products", t5);
+              //t4 = JSON.parse(t3);
+              //myApp.alert('product_name2 ' + t4[0].product_name)
+              //myApp.alert('Product Updated','')
+          
+    }else{
+      //myApp.alert('blank array','')
+      
+    }
+
  $$('#contact1btn').on('click', function()
      {
         //myApp.alert('clicked contact1btn','')
@@ -1641,7 +1744,7 @@ myApp.onPageInit('contact', function (page) {
             $$.ajax({
                 url: url,
                 method: "POST",
-                data: {enquiry_name: name, enquiry_mobile: mobile, enquiry_emailid: email, enquiry_msg: msg},
+                data: {enquiry_name: name, enquiry_mobile: mobile, enquiry_emailid: email, enquiry_msg: msg, products: local_products},
                 processData: true,
                 dataType: 'json',
                 timeout : 50000,
