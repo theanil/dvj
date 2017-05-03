@@ -1028,8 +1028,16 @@ function RemoveProduct2(id,product_name, product_price)
         qty2 = 0;
       }
 
-      $$("#qty_" + id).val(qty2);
-      $$("#lblqty_" + id).html('Qty ' + qty2);
+      if(qty2 == 0)
+      {
+        qty3 = 1;
+      }else
+      {
+        qty3 = qty2;
+      }
+
+      $$("#qty_" + id).val(qty3);
+      $$("#lblqty_" + id).html('Qty ' + qty3);
 
       if(qty2 == 0)
       {
