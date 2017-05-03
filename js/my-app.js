@@ -1022,6 +1022,11 @@ function RemoveProduct2(id,product_name, product_price)
       //myApp.alert(product_price,'')
       qtyvar = "qty_" + id;
       qty = $$("#" + qtyvar).val();
+
+      if(isNaN(qty))
+      {
+        qty = 0;
+      }
       //qty = $$("#qty_112").val();
       //myApp.alert(qty,'')
       qty2 = parseInt(qty)-1;
