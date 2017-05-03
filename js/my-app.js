@@ -1009,6 +1009,8 @@ function AddProduct2(id,product_name, product_price)
 
       $$("#qty_" + id).val(qty2);
       $$("#lblqty_" + id).html('Qty ' + qty2);
+      $$("#qty2_" + id).val(qty2);
+      $$("#lblqty2_" + id).html('Qty ' + qty2);
 
       UpdateQty(id, qty2);
     }
@@ -1038,6 +1040,8 @@ function RemoveProduct2(id,product_name, product_price)
 
       $$("#qty_" + id).val(qty3);
       $$("#lblqty_" + id).html('Qty ' + qty3);
+      $$("#qty2_" + id).val(qty3);
+      $$("#lblqty2_" + id).html('Qty ' + qty3);
 
       if(qty2 == 0)
       {
@@ -1675,8 +1679,8 @@ myApp.onPageInit('contact', function (page) {
                         //elist += '<div class="col-50">' + test[j].product_qty + '</div></div>';
                         //elist += 'Product ID: ' + test[j].product_id + '<br>';
 
-                        elist += '<div class="col-50"><span style="display: block; color: black; height:20px;" id="pd_' + product_id +'">' + price + '<a href="#" onclick="RemoveProduct2(' + "'" + product_id +  "','" + product_name  +  "','" + product_price  + "')" + '";' + '><img src="img/minus-64.png" style="width: 35px; height:35px;"></a>';
-                        elist += '<span id="lblqty_' + product_id + '" style="width: 50px; display: inline-block; background-color: #fff;line-height: 36px; vertical-align: top;">Qty ' + qty + ' </span><input type="hidden" style="width:10px;" value="' + qty + '" id="qty_' + product_id + '">';
+                        elist += '<div class="col-50"><span style="display: block; color: black; height:20px;" id="pd2_' + product_id +'">' + price + '<a href="#" onclick="RemoveProduct2(' + "'" + product_id +  "','" + product_name  +  "','" + product_price  + "')" + '";' + '><img src="img/minus-64.png" style="width: 35px; height:35px;"></a>';
+                        elist += '<span id="lblqty2_' + product_id + '" style="width: 50px; display: inline-block; background-color: #fff;line-height: 36px; vertical-align: top;">Qty ' + qty + ' </span><input type="hidden" style="width:10px;" value="' + qty + '" id="qty2_' + product_id + '">';
                         elist += '<a href="#" onclick="AddProduct2(' + "'" + product_id +  "','" + product_name  +  "','" + product_price  + "')" + '";' + '><img src="img/plus-64.png" style="width: 35px; height:35px;"></a></span></div></div>' + "\n\n";
                         
                   }
