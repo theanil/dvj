@@ -45,7 +45,8 @@ document.addEventListener("deviceready", onDeviceReady, false);
     {
         //page = $.mobile.activePage[0].id;
         page = mainView.activePage.name;
-        //myApp.alert('page ' + page,  ''); 
+        myApp.alert('page ' + page,  ''); 
+        myApp.alert('model length: ' + $$('.modal-in').length , '')
 
         if(page == 'index' ) // || page == 'main' || page == 'login'
         {
