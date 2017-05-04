@@ -70,7 +70,7 @@ document.addEventListener("deviceready", onDeviceReady, false);
 
             if($$('.photo-browser').length>0)
             {
-                myPhotoBrowserStandalone.close(); 
+                //myPhotoBrowserStandalone.close(); 
             }else
             {
                 mainView.router.back();
