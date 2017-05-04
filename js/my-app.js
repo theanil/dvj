@@ -1461,6 +1461,7 @@ function ProductDetails(id, img)
               photos : [
                   img
               ],
+              zoom: 600,
               toolbar: false
           });
       //Open photo browser on click
