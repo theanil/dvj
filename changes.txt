@@ -1,0 +1,25 @@
+Logo center , mail icon
+
+Home Page
+  white background - text
+
+Product page 
+  single listing
+
+
+background
+
+skip enquiry form for dealer
+enquiry in mail
+
+product_price -> field varchar(200)
+
+drop down - shopping centre
+
+Notification 
+   text
+  product updates (field )
+
+open product after clicking notification
+
+notification stored
