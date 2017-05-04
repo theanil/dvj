@@ -1242,7 +1242,7 @@ function AddProduct(id,product_name, product_price)
   //alert(pid)
   $$("#" + "pa_" + id).hide();
   $$("#" + "pd_" + id).show();
-
+  $$("#elist").show();
   //myApp.alert("#" + "pd_" + id, '');
 
   //eturn false;
@@ -1453,6 +1453,7 @@ function RemoveProduct(id,product_name, product_price)
     if(mlen == 0)
     {
       mlen = '';
+      $$("#elist").hide();
     }else
     {
       mlen = mlen + " Products";
@@ -1753,8 +1754,8 @@ myApp.onPageInit('contact', function (page) {
               elist = '';
               if(test.length >0)
               {
-                  elist += '<div class="row home"><div class="col-50"><b>Product Name</b></div>';
-                  elist += '<div class="col-50"><b>Quantity</b></div></div>' + "\n\n";
+                  elist += '<div class="row home"><div class="col-50"  style="background-color: #000; color: #fff;"><b>Product Name</b></div>';
+                  elist += '<div class="col-50" style="background-color: #000; color: #fff;"><b>Quantity</b></div></div>' + "\n\n";
 
                   for(j = 0; j<test.length; j++)
                   {
@@ -1774,7 +1775,7 @@ myApp.onPageInit('contact', function (page) {
                         //elist += '<div class="col-50">' + test[j].product_qty + '</div></div>';
                         //elist += 'Product ID: ' + test[j].product_id + '<br>';
 
-                        elist += '<div class="col-50"><span style="display: block; color: black; height:20px;" id="pd2_' + product_id +'">' + price + '<a href="#" onclick="RemoveProduct2(' + "'" + product_id +  "','" + product_name  +  "','" + product_price  + "')" + '";' + '><img src="img/minus-64.png" style="width: 35px; height:35px;"></a>';
+                        elist += '<div class="col-50"><span style="display: block; color: black; height:20px; text-align: left;" id="pd2_' + product_id +'">' + price + '<a href="#" onclick="RemoveProduct2(' + "'" + product_id +  "','" + product_name  +  "','" + product_price  + "')" + '";' + '><img src="img/minus-64.png" style="width: 35px; height:35px;"></a>';
                         elist += '<span id="lblqty2_' + product_id + '" style="width: 50px; display: inline-block; background-color: #fff;line-height: 36px; vertical-align: top;">Qty ' + qty + ' </span><input type="hidden" style="width:10px;" value="' + qty + '" id="qty2_' + product_id + '">';
                         elist += '<a href="#" onclick="AddProduct2(' + "'" + product_id +  "','" + product_name  +  "','" + product_price  + "')" + '";' + '><img src="img/plus-64.png" style="width: 35px; height:35px;"></a></span></div></div>' + "\n\n";
                         

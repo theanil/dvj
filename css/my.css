@@ -20,3 +20,15 @@ input[type="text"]{
       -moz-border-radius:5px;
       -webkit-border-radius:5px;
     }
+
+ .row.home {
+    margin-bottom: 10px;
+}
+
+div[class*="col-"] {
+  background: white;
+  text-align: left;
+  color: #3db6fd;
+  padding: 5px;
+  padding-left: 10px;
+}
