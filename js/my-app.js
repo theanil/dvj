@@ -304,9 +304,9 @@ myApp.onPageInit('login', function (page) {
         var valid = 1;
         var errmessage = '';
 
-        if(forgot_mobile_no.length <4)
+        if(forgot_mobile_no.length <10)
         {
-            errmessage += 'Please type Username (min 4 char) <br>';
+            errmessage += 'Please type Mobile No (min 10 char) <br>';
 
             //myApp.alert('Please enter password');
             //$$('#password').css('border','1px solid red');
