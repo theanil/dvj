@@ -965,7 +965,7 @@ if(id)
                       cadd += '                   <img src="' + product_image + '" style=" height: 250px; width: 140px;"/></a>';
                       cadd += '                  <span style="color: black;"><a href="#" onclick="ProductDetails(' + "'" + product_id +"','" + bigproduct_image +  "');" + '">' + product_name + '</a></span>';
 
-                      console.log(cadd + '\n\n');
+                      //console.log(cadd + '\n\n');
 
                       if(dvj_logged_in == 'yes')
                       {
@@ -1462,6 +1462,8 @@ function ProductDetails(id, img)
                   img
               ],
               zoom: true,
+              swipeToClose: false,
+              exposition: false,
               toolbar: false
           });
       //Open photo browser on click
