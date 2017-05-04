@@ -869,6 +869,7 @@ myApp.onPageInit('products', function (page) {
           }
       });
 
+    //localStorage.setItem("local_products", '');
     var mlen = 0;
     //a_session_id = localStorage.getItem("a_session_id");
     local_products = localStorage.getItem("local_products");
@@ -1278,7 +1279,7 @@ function UpdateQty(id, qty)
               //myApp.alert('Product Updated','')
           }
     }else{
-      myApp.alert('blank array','')
+      myApp.alert('blank array U','')
       
     }
 
@@ -1314,16 +1315,17 @@ function AddProduct(id,product_name, product_price)
     local_products = localStorage.getItem("local_products");
     //alert('local_products <br>' + local_products)
     console.log(local_products);
+
     if(local_products === null || local_products === 'undefined')
     {
         local_products = '';
         t = '[{"product_id": "' + id + '", "product_name": "' + product_name + '", "product_qty": "' + product_qty + '", "product_price": "' + product_price + '"}]';
         t2 = JSON.parse(t);
-       //myApp.alert(product_name + ' ' + t2[0].product_name)
+        //myApp.alert(product_name + ' ' + t2[0].product_name)
         localStorage.setItem("local_products", t);
         //localStorage.setItem("local_products", local_products);
     }else{
-    //myApp.alert('length ' + local_products.length,'')
+        //myApp.alert('length ' + local_products.length,'')
 
       if(local_products.length>0)
       {
@@ -1382,6 +1384,18 @@ function AddProduct(id,product_name, product_price)
         //}
       }else{
         //myApp.alert('new array','')
+
+        t = '[{"product_id": "' + id + '", "product_name": "' + product_name + '", "product_qty": "' + product_qty + '", "product_price": "' + product_price + '"}]';
+                   //t2 = JSON.parse(t);
+                   //myApp.alert('product_name  ' + t2[0].product_name)
+                   t3 = local_products.substring(0, (local_products.length-1)) + t;
+                    //myApp.alert('t3 ' + t3);
+                    console.log(t3)
+                   localStorage.setItem("local_products", t3);
+                   //t4 = JSON.parse(t3);
+                   //myApp.alert('product_name2 ' + t4[0].product_name)
+                   myApp.alert('Product ' + product_name + ' added','')
+                   mlen =  1;
       }
     }
     /*
@@ -1498,7 +1512,7 @@ function RemoveProduct(id,product_name, product_price)
           }
       //}
     }else{
-      myApp.alert('blank array','')
+      myApp.alert('blank array 2','')
       
     }
 
