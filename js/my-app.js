@@ -1731,6 +1731,72 @@ myApp.onPageInit('contact', function (page) {
 
  //myApp.alert('in contact','');
 
+ dvj_logged_in = localStorage.getItem("dvj_logged_in");
+ dvj_session_id = localStorage.getItem("dvj_session_id");
+ //alert(dvj_logged_in)
+
+ if(dvj_logged_in)
+ {
+
+        url = srvURL + '/dealer_data';
+          console.log(url);
+          //myApp.alert('url ' + url, '');
+          //alert(url);//return false;
+          //$_GET[“mode_of_operation”], $_GET[“pressure_drop_check”], $_GET[“gland”], $_GET[“bearing”], $_GET[“vibration”], $_GET[“remark”]
+
+          $$.ajax({
+              url: url,
+              method: "POST",
+              data: {session_id: dvj_session_id },
+              processData: true,
+              dataType: 'json',
+              timeout : 50000,
+              success: function (e, status, xhr)
+              {
+                  //myApp.hidePreloader();
+
+                  if(e.status== 'success')
+                  {
+                      //myApp.alert('session_id ' + e.session_id,  ''); 
+
+                      //myApp.alert('Data Stored on the Server',  '');   
+
+                              
+                      datec = e.data.profile[0].datec;
+                      dealer_name = urldecode(e.data.profile[0].dealer_name);
+                      dealer_address = urldecode(e.data.profile[0].dealer_address);
+                      dealer_contact_person = urldecode(e.data.profile[0].dealer_contact_person);
+                      dealer_mobile = e.data.profile[0].dealer_mobile;
+                      dealer_email = urldecode(e.data.profile[0].dealer_email);
+                      dealer_profile = urldecode(e.data.profile[0].dealer_profile);
+                      dealer_status = e.data.profile[0].dealer_status;
+
+                      $$("#name").val(dealer_name);
+                      //$$("#dealer_address").val(dealer_address);
+                      //$$("#dealer_contact_person").val(dealer_contact_person);
+                      $$("#mobile").val(dealer_mobile);
+                      $$("#email").val(dealer_email);
+                      //$$("#dealer_profile").val(dealer_profile);
+                  }else
+                  {
+                      //myApp.alert('error: ' + e.status,  '');
+                      myApp.alert(e,  ''); 
+                  }
+              },
+              error: function (xhr, status)
+              {
+                  myApp.hideIndicator();
+
+                  if(status == 0)
+                  {
+                      myApp.alert('Please Check Internet',  ''); 
+                  }else
+                  {
+                      myApp.alert('failure * ' +  status,  '');  
+                  };
+              }
+          });
+      }
 
    var mlen = 0;
     //a_session_id = localStorage.getItem("a_session_id");
