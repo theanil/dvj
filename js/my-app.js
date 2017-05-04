@@ -948,6 +948,7 @@ if(id)
 
                       category_id = urldecode(e.data.products[i].category_id);
                       product_image = urldecode(e.data.products[i].product_image);
+                      bigproduct_image = urldecode(e.data.products[i].bigproduct_image);
                       product_name = urldecode(e.data.products[i].product_name);
                       product_price = urldecode(e.data.products[i].product_price);
                       //brochure_fname = urldecode(e.data.products[i].brochure_fname);
@@ -960,9 +961,9 @@ if(id)
                       }
 
                       cadd += '           <div class="col-50">';
-                      cadd += '               <a href="#" onclick="ProductDetails(' + "'" + product_id +"','" + product_image +  "');" + '">';
+                      cadd += '               <a href="#" onclick="ProductDetails(' + "'" + product_id +"','" + bigproduct_image +  "');" + '">';
                       cadd += '                   <img src="' + product_image + '" style=" height: 250px; width: 140px;"/></a>';
-                      cadd += '                  <span style="color: black;"><a href="#" onclick="ProductDetails(' + "'" + product_id +"','" + product_image +  "');" + '">' + product_name + '</a></span>';
+                      cadd += '                  <span style="color: black;"><a href="#" onclick="ProductDetails(' + "'" + product_id +"','" + bigproduct_image +  "');" + '">' + product_name + '</a></span>';
 
                       console.log(cadd + '\n\n');
 
@@ -1550,7 +1551,7 @@ myApp.onPageInit('brochure', function (page) {
 
 function downbrochure(URL)
 {
-  //myApp.alert(URL,'')
+  myApp.alert(URL,'')
   //downloader.init({folder: "dvjdesign", unzip: true});
   //downloader.get(URL);
   window.open( URL, '_system');
