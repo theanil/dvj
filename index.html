@@ -32,11 +32,25 @@
 	            <li><a href="products.html"  class="close-panel"><i class="fa fa-file-o"></i>Products</a></li>
 	            <li><a href="brochure.html"  class="close-panel"><i class="fa fa-file-text-o"></i>Brochure</a></li>
                 <li><a href="contact.html"  class="close-panel"><i class="fa fa-envelope"></i>Contact</a></li>
-                <li><a href="login.html"  class="close-panel"><i class="fa fa-envelope"></i>Login</a></li>
-                <li><a href="dealer_profile.html"  class="close-panel"><i class="fa fa-file-o"></i>Update Profile</a></li>
-	            <li><a href="#" onclick="Logout();"  class="close-panel"><i class="fa fa-envelope"></i>Log Out</a></li>
-	            <!--<li><a href="aboutus1.html"><i class="fa fa-file-o"></i>aboutus1</a></li>
-	            <li><a href="products1.html"><i class="fa fa-file-o"></i>products1</a></li>-->
+
+
+                <script>
+
+                	dvj_logged_in = localStorage.getItem("dvj_logged_in");
+                	if(dvj_logged_in == null || dvj_logged_in == 'undefined')
+                		{
+
+	                		document.write('<li><a href="login.html"  class="close-panel"><i class="fa fa-envelope"></i>Login</a></li>');
+
+                		}else
+	                	{
+	                		document.write('<li><a href="dealer_profile.html"  class="close-panel"><i class="fa fa-file-o"></i>Update Profile</a></li>');
+	            			document.write('<li><a href="#" onclick="Logout();"  class="close-panel"><i class="fa fa-envelope"></i>Log Out</a></li>');
+	                	}
+         
+                </script>
+
+                
 	          </ul>
         </nav>
     </div>
