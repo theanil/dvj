@@ -76,13 +76,13 @@ p {
 }
 
 a {
-  color: white;
+  color: #3db6fd;
 }
 
 h2 {
   font-size: 16px;
   font-weight: 500;
-  color: white;
+  color: #3db6fd;
   font-family: "Roboto", sans-serif;
 }
 
@@ -146,7 +146,7 @@ li.accordion-item {
 .list-block .item-title {
   font-size: 15px;
   font-weight: 400;
-  color:#000000;
+  color: #3db6fd;
   font-family: "Roboto", sans-serif;
 }
 
@@ -158,14 +158,12 @@ li.accordion-item {
 /* ---------->>> HEADER <<<-----------*/
 /* -----------------------------------*/
 .navbar {
-  background: #000000;
+  background: #fff;
   width: 100%;
   height: 45px;
   box-shadow: 0 1px 4px #e3e3e3;
   font-family: "Roboto", sans-serif;
 }
-
-
 
 .navbar:after {
   display: none;
@@ -173,7 +171,7 @@ li.accordion-item {
 
 h2.title {
   font-weight: 500;
-  color: white;
+  color: #3db6fd;
 }
 
 /* -----------------------------------*/
@@ -186,8 +184,6 @@ h2.title {
 img.icon {
   width: 100%;
   height: auto;
-
-
 }
 
 /* -----------------------------------*/
@@ -349,7 +345,7 @@ input {
   font-size: 13px !important;
   font-weight: 400;
   color: #4D4D4D !important;
-  padding: 11px !important;
+  padding: 0 !important;
 }
 
 select {
@@ -364,7 +360,6 @@ textarea {
   font-size: 13px !important;
   font-weight: 400;
   color: #4D4D4D !important;
-  
 }
 
 .label-switch .checkbox {
@@ -482,9 +477,7 @@ textarea {
 }
 
 .toolbar {
-  background:#000000;
-
-  height:30px;
+  background: #fff;
 }
 
 .messagebar textarea {
@@ -527,7 +520,6 @@ div[class*="col-"] {
 .row.home {
   margin-bottom: 28px;
 }
-
 
 /* -----------------------------------*/
 /* ---------->>> CARDS <<<-----------*/
@@ -771,7 +763,7 @@ a.item-link.back {
   position: relative;
 }
 
-.swiper-slide img {
+/*.swiper-slide img {
   position: absolute;
   left: 50%;
   top: 50%;
@@ -779,7 +771,7 @@ a.item-link.back {
   max-height: 100%;
   -webkit-transform: translate(-50%, -50%);
   transform: translate(-50%, -50%);
-}
+}*/
 
 /* -----------------------------------*/
 /* ---------->>> VIDEO <<<-----------*/
@@ -844,7 +836,7 @@ p.caps {
 /* -----------------------------------*/
 /* ---------->>> BUTTONS <<<-----------*/
 /* -----------------------------------*/
-.button {
+/*.button {
   font-family: "Roboto", sans-serif;
   font-size: 13px;
   font-weight: 500;
@@ -854,7 +846,7 @@ p.caps {
   margin-left: auto;
   margin-right: auto;
   width: 240px;
-}
+}*/
 
 .button.active-state, html:not(.watch-active-state) .button:active {
   color: #fff;
@@ -947,5 +939,3 @@ p.caps {
   color: #3db6fd;
   font-weight: 500;
 }
-
-

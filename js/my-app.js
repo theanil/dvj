@@ -2,6 +2,7 @@
 var myApp = new Framework7({template7Pages: true, popupCloseByOutside:false, pushState: true,
                 swipeBackPage: false, swipePanel: "left", autoLayout: true, animatePages:false});
 
+
 // Export selectors engine
 var $$ = Dom7;
 
@@ -96,6 +97,66 @@ myApp.onPageBeforeInit('index', function (page) {
 
 }).trigger(); //And trigger it right away
 
+       /*=== Default standalone ===*/
+          var myPhotoBrowserStandalone = myApp.photoBrowser({
+              photos : [
+                  'img/brochure3.jpg',
+              ],
+              toolbar: false
+          });
+          //Open photo browser on click
+          $$('.pb-standalone').on('click', function () {
+              myPhotoBrowserStandalone.open();
+          });
+          
+          /*=== Popup ===*/
+          var myPhotoBrowserPopup = myApp.photoBrowser({
+              photos : [ 'img/brochure3.jpg'],
+              type: 'popup',
+              toolbar: false
+          });
+          $$('.pb-popup').on('click', function () {
+              myPhotoBrowserPopup.open();
+          });
+
+var mySwiper = new Swiper('.swiper-container2', {
+  preloadImages: true,
+  lazyLoading: true,
+  pagination: '.swiper-pagination',
+  autoplay: 2500
+})   
+
+myApp.onPageInit('index', function (page) {
+       /*=== Default standalone ===*/
+          var myPhotoBrowserStandalone = myApp.photoBrowser({
+              photos : [
+                  'img/brochure3.jpg',
+              ],
+              toolbar: false
+          });
+          //Open photo browser on click
+          $$('.pb-standalone').on('click', function () {
+              myPhotoBrowserStandalone.open();
+          });
+          
+          /*=== Popup ===*/
+          var myPhotoBrowserPopup = myApp.photoBrowser({
+              photos : [ 'img/brochure3.jpg'],
+              type: 'popup',
+              toolbar: false
+          });
+          $$('.pb-popup').on('click', function () {
+              myPhotoBrowserPopup.open();
+          });
+
+    var mySwiper = new Swiper('.swiper-container2', {
+      preloadImages: true,
+      lazyLoading: true,
+      pagination: '.swiper-pagination',
+      autoplay: 2500
+    })   
+
+});
 
 myApp.onPageInit('login', function (page) {
     //mainView.hideToolbar();

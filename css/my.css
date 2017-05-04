@@ -1,0 +1,11 @@
+.swiper-container2 {
+		width: 100%;
+		height: 250px;
+		overflow-y: scroll;
+	}
+
+	.swiper-container2 .swiper-slide img {
+	  height: 250px;
+	}
+
+	
