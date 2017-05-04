@@ -65,7 +65,7 @@ document.addEventListener("deviceready", onDeviceReady, false);
             //mainView.router.back();
 
 
-            if ($$('.modal-in').length > 0) { myApp.closeModal(); return false; } else { mainView.router.back(); } return true; }
+            if ($$('.modal-in').length > 0) { myApp.closeModal(); return false; } else { mainView.router.back(); } return true; 
         }
     }, false);  
     
