@@ -1,13 +1,12 @@
-Logo center , mail icon
+--Logo center , mail icon
 
 Home Page
   white background - text
 
-Product page 
+--Product page 
   single listing
 
 
-background
 
 skip enquiry form for dealer
 enquiry in mail
@@ -23,3 +22,8 @@ Notification
 open product after clicking notification
 
 notification stored
+
+--
+otp - vaccifire
+
+Select Drop Down -> contact name of lead (multiple)
