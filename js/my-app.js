@@ -107,7 +107,21 @@ myApp.onPageBeforeInit('index', function (page) {
   //myApp.alert('01 index page initialized ' + page + ' name'  ,'');
 
   logged_in = localStorage.getItem("logged_in");
-        
+   
+    
+
+    dvj_logged_in = localStorage.getItem("dvj_logged_in");
+    if(dvj_logged_in == null || dvj_logged_in == 'undefined')
+        {  
+            $$("#beforelogin").show();
+            $$("#afterlogin").hide();
+        }
+        else
+        {
+            $$("#beforelogin").hide();     
+            $$("#afterlogin").show();     
+        }
+
 
 }).trigger(); //And trigger it right away
 
@@ -177,6 +191,24 @@ myApp.onPageInit('login', function (page) {
     //mainView.hideNavbar();
     // run createContentPage func after link was clicked
     //alert('hello');
+
+    if (!myApp.device.ios) {
+    $$(page.container).find('input, textarea').on('focus', function (event) 
+    {
+        var container = $$(event.target).closest('.page-content');
+        var elementOffset = $$(event.target).offset().top;
+        var pageOffset = container.scrollTop();
+        var newPageOffset = pageOffset + elementOffset - 81;
+        
+        //myApp.alert('newPageOffset1 ' + newPageOffset, '');
+        
+        setTimeout(function () {
+            container.scrollTop(newPageOffset, 300);
+        }, 700);
+    });
+    }
+
+
    $$('#dealerloginbtn').on('click', function()
     {
         username = $$('#dealer_mobile').val();
@@ -247,7 +279,10 @@ myApp.onPageInit('login', function (page) {
                         
                         //sendID();
 
-                        mainView.router.loadPage('index.html');                      
+                        $$("#beforelogin").hide();
+                        $$("#afterlogin").show();
+
+                        mainView.router.reloadPage('index.html');                      
                     }else
                     {
                         //myApp.alert('error: ' + e.status,  '');
@@ -1862,7 +1897,7 @@ myApp.onPageInit('contact', function (page) {
                     {
                         //myApp.alert('session_id ' + e.session_id,  ''); 
 
-                        myApp.alert('Data Stored on the Server',  '');   
+                        myApp.alert('Enquiry Saved',  '');   
 
                         mainView.router.load({
                                 url: 'index.html',
@@ -1922,6 +1957,21 @@ myApp.onPageInit('dealer_profile', function (page) {
 
  //myApp.alert('in dealer_profile','');
 
+    if (!myApp.device.ios) {
+    $$(page.container).find('input, textarea').on('focus', function (event) 
+    {
+        var container = $$(event.target).closest('.page-content');
+        var elementOffset = $$(event.target).offset().top;
+        var pageOffset = container.scrollTop();
+        var newPageOffset = pageOffset + elementOffset - 81;
+        
+        //myApp.alert('newPageOffset1 ' + newPageOffset, '');
+        
+        setTimeout(function () {
+            container.scrollTop(newPageOffset, 300);
+        }, 700);
+    });
+    }
 
 
 
@@ -2015,7 +2065,7 @@ myApp.onPageInit('dealer_profile', function (page) {
         dealer_name = $$("#dealer_name").val();
         dealer_address = $$("#dealer_address").val();
         dealer_contact_person = $$("#dealer_contact_person").val();
-        dealer_mobile = $$("#dealer_mobile").val();
+        dealer_mobile = $$("#dealer_mobile2").val();
         dealer_email = $$("#dealer_email").val();
         dealer_password = $$("#dealer_password").val();
         dealer_profile = $$("#dealer_profile").val();
@@ -2110,7 +2160,7 @@ myApp.onPageInit('dealer_profile', function (page) {
                     {
                         //myApp.alert('session_id ' + e.session_id,  ''); 
 
-                        myApp.alert('Data Updated on the Server',  '');   
+                        myApp.alert('Profile Updated',  '');   
 
                         mainView.router.load({
                                 url: 'index.html',
@@ -2144,13 +2194,29 @@ myApp.onPageInit('dealer', function (page) {
 
  //myApp.alert('in dealer','');
 
+    if (!myApp.device.ios) {
+    $$(page.container).find('input, textarea').on('focus', function (event) 
+    {
+        var container = $$(event.target).closest('.page-content');
+        var elementOffset = $$(event.target).offset().top;
+        var pageOffset = container.scrollTop();
+        var newPageOffset = pageOffset + elementOffset - 81;
+        
+        //myApp.alert('newPageOffset1 ' + newPageOffset, '');
+        
+        setTimeout(function () {
+            container.scrollTop(newPageOffset, 300);
+        }, 700);
+    });
+    }
+
  $$('#dealerregbtn').on('click', function()
      {
         //myApp.alert('clicked dealerregbtn','')
         dealer_name = $$("#dealer_name").val();
         dealer_address = $$("#dealer_address").val();
         dealer_contact_person = $$("#dealer_contact_person").val();
-        dealer_mobile = $$("#dealer_mobile").val();
+        dealer_mobile = $$("#dealer_mobile1").val();
         dealer_email = $$("#dealer_email").val();
         dealer_profile = $$("#dealer_profile").val();
 
@@ -2226,7 +2292,7 @@ myApp.onPageInit('dealer', function (page) {
                     {
                         //myApp.alert('session_id ' + e.session_id,  ''); 
 
-                        myApp.alert('Data Stored on the Server',  '');   
+                        myApp.alert('Registration Done',  '');   
 
                         mainView.router.load({
                                 url: 'index.html',

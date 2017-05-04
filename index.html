@@ -33,6 +33,15 @@
 	            <li><a href="brochure.html"  class="close-panel"><i class="fa fa-file-text-o"></i>Brochure</a></li>
                 <li><a href="contact.html"  class="close-panel"><i class="fa fa-envelope"></i>Contact</a></li>
 
+                <div id="beforelogin" style="display:none;">
+                <li><a href="dealer.html"  class="close-panel"><i class="fa fa-envelope"></i>Register as Dealer</a></li>
+                <li><a href="login.html"  class="close-panel"><i class="fa fa-envelope"></i>Login</a></li>
+                </div>
+
+                <div id="afterlogin" style="display:none;">
+                <li><a href="dealer_profile.html"  class="close-panel"><i class="fa fa-file-o"></i>Update Profile</a></li>
+                <li><a href="#" onclick="Logout();"  class="close-panel"><i class="fa fa-envelope"></i>Log Out</a></li>
+                </div>
 
                 <script>
 
@@ -40,13 +49,13 @@
                 	if(dvj_logged_in == null || dvj_logged_in == 'undefined')
                 		{
 
-	                		document.write('<li><a href="dealer.html"  class="close-panel"><i class="fa fa-envelope"></i>Register as Dealer</a></li>');
-	                		document.write('<li><a href="login.html"  class="close-panel"><i class="fa fa-envelope"></i>Login</a></li>');
+	                		//document.write('<li><a href="dealer.html"  class="close-panel"><i class="fa fa-envelope"></i>Register as Dealer</a></li>');
+	                		//document.write('<li><a href="login.html"  class="close-panel"><i class="fa fa-envelope"></i>Login</a></li>');
 
                 		}else
 	                	{
-	                		document.write('<li><a href="dealer_profile.html"  class="close-panel"><i class="fa fa-file-o"></i>Update Profile</a></li>');
-	            			document.write('<li><a href="#" onclick="Logout();"  class="close-panel"><i class="fa fa-envelope"></i>Log Out</a></li>');
+	                		//document.write('<li><a href="dealer_profile.html"  class="close-panel"><i class="fa fa-file-o"></i>Update Profile</a></li>');
+	            			//document.write('<li><a href="#" onclick="Logout();"  class="close-panel"><i class="fa fa-envelope"></i>Log Out</a></li>');
 	                	}
          
                 </script>
