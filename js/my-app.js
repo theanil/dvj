@@ -960,9 +960,11 @@ if(id)
                       }
 
                       cadd += '           <div class="col-50">';
-                      cadd += '               <a href="#" onclick="ProductDetails(' + "'" + product_id + "');" + '">';
+                      cadd += '               <a href="#" onclick="ProductDetails(' + "'" + product_id +"','" + product_image +  "');" + '">';
                       cadd += '                   <img src="' + product_image + '" style=" height: 250px; width: 140px;"/></a>';
-                      cadd += '                  <span style="color: black;"><a href="#" onclick="ProductDetails(' + "'" + product_id + "');" + '">' + product_name + '</a></span>';
+                      cadd += '                  <span style="color: black;"><a href="#" onclick="ProductDetails(' + "'" + product_id +"','" + product_image +  "');" + '">' + product_name + '</a></span>';
+
+                      console.log(cadd + '\n\n');
 
                       if(dvj_logged_in == 'yes')
                       {
@@ -1449,10 +1451,19 @@ function RemoveProduct(id,product_name, product_price)
     */
 }
 
-function ProductDetails(id)
+function ProductDetails(id, img)
 {
 
+    //myApp.alert(id + ' * ' + img,'')
 
+    var myPhotoBrowserStandalone = myApp.photoBrowser({
+              photos : [
+                  img
+              ],
+              toolbar: false
+          });
+      //Open photo browser on click
+    myPhotoBrowserStandalone.open();
 }
 
 myApp.onPageInit('brochure', function (page) {
