@@ -47,6 +47,7 @@ document.addEventListener("deviceready", onDeviceReady, false);
         page = mainView.activePage.name;
         myApp.alert('page ' + page,  ''); 
         myApp.alert('model length: ' + $$('.modal-in').length , '')
+        myApp.alert('photo-browser length: ' + $$('.photo-browser').length , '')
 
         if(page == 'index' ) // || page == 'main' || page == 'login'
         {
@@ -65,8 +66,9 @@ document.addEventListener("deviceready", onDeviceReady, false);
             myApp.hideIndicator();
             //mainView.router.back();
 
+            var len=myApp.getCurrentView().history.length; if(len>1){ myApp.getCurrentView().router.back(); }
 
-            if ($$('.modal-in').length > 0) { myApp.closeModal(); return false; } else { mainView.router.back(); } return true; 
+            //if ($$('.modal-in').length > 0) { myApp.closeModal(); return false; } else { mainView.router.back(); } return true; 
         }
     }, false);  
     
