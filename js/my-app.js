@@ -838,7 +838,7 @@ myApp.onPageInit('products', function (page) {
                       cadd += '           <div class="col-100">';
                       cadd += '               <a href="#" onclick="ProductDisplay(' + "'" + category_id + "','" + category_name  +"');" + '">';
                       cadd += '                   <img src="' + category_image + '" style="width: 100%;"/></a>';
-                      cadd += '                  <div><center><a style="color: black;" href="#" onclick="ProductDisplay(' + "'" + category_id + "','" + category_name  +"');" + '">' + category_name + '</a></center></div>';
+                      cadd += '                  <div><center><a style="color: black; font-size: 22px;" href="#" onclick="ProductDisplay(' + "'" + category_id + "','" + category_name  +"');" + '">' + category_name + '</a></center></div>';
                       //cadd += '               </a>';
                       //cadd += '               <a class="external" href="' + urldecode(e.data.brochure[i].brochure_pdf)  + '"' + '>' + brochure_fname + '</a>';
                       cadd += '           </div>';
@@ -1029,7 +1029,7 @@ if(id)
                       cadd += '           <div class="col-100">';
                       cadd += '               <a href="#" onclick="ProductDetails(' + "'" + product_id +"','" + bigproduct_image +  "');" + '">';
                       cadd += '                   <img src="' + product_image + '" style="width: 100%;"/></a>';
-                      cadd += '                  <div><center><a style="color: black;"href="#" onclick="ProductDetails(' + "'" + product_id +"','" + bigproduct_image +  "');" + '">' + product_name + '</a></center></div>';
+                      cadd += '                  <div><center><a style="color: black; font-size: 22px;"href="#" onclick="ProductDetails(' + "'" + product_id +"','" + bigproduct_image +  "');" + '">' + product_name + '</a></center></div>';
 
                       //console.log(cadd + '\n\n');
 
@@ -1086,7 +1086,7 @@ if(id)
                       //cadd += '               <a class="external" href="' + urldecode(e.data.brochure[i].brochure_pdf)  + '"' + '>' + brochure_fname + '</a>';
                       cadd += '           </div>' + "\n\n";
                       
-                      if(b == 1)
+                      if(b == 0)
                       {
                         cadd += '      </div>' + "\n\n";
                       }
@@ -1585,7 +1585,7 @@ myApp.onPageInit('brochure', function (page) {
                       cadd += '           <div class="col-50">';
                       cadd += '               <a href="#" onclick="downbrochure(' + "'" + urldecode(e.data.brochure[i].brochure_pdf) + "');" + '">';
                       cadd += '                   <img src="' + brochure_image + '" style=" height: 120px; width: 140px;"/></a>';
-                      cadd += '                  <span style="color: black;"><a href="#" onclick="downbrochure(' + "'" + urldecode(e.data.brochure[i].brochure_pdf) + "');" + '">' + brochure_name + '</a></span>';
+                      cadd += '                  <span><center><a style="color: black;" href="#" onclick="downbrochure(' + "'" + urldecode(e.data.brochure[i].brochure_pdf) + "');" + '">' + brochure_name + '</a></center></span>';
                       //cadd += '               </a>';
                       //cadd += '               <a class="external" href="' + urldecode(e.data.brochure[i].brochure_pdf)  + '"' + '>' + brochure_fname + '</a>';
                       cadd += '           </div>';
