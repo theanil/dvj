@@ -2100,7 +2100,8 @@ myApp.onPageInit('contact', function (page) {
                     {
                         //myApp.alert('session_id ' + e.session_id,  ''); 
 
-                        myApp.alert('Enquiry Saved',  '');   
+                        myApp.alert('Enquiry Saved',  '');  
+                        localStorage.setItem("local_products", ''); 
 
                         mainView.router.load({
                                 url: 'index.html',
@@ -2600,6 +2601,7 @@ function ContactPage()
                             //myApp.alert('session_id ' + e.session_id,  ''); 
 
                             myApp.alert('Enquiry Saved',  '');   
+                            localStorage.setItem("local_products", '');
 
                             mainView.router.load({
                                     url: 'index.html',
