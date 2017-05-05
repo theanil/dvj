@@ -909,11 +909,12 @@ function ProductDisplay(id, category)
 
 myApp.onPageInit('productdetails', function (page) {
 
-id =page.context.id; 
-category =page.context.category; 
+//id =page.context.id; 
+//category =page.context.category; 
 
-//id=14;
-//category= 'test';
+id=14;
+category= 'test';
+
 if(id)
 {
   //myApp.alert(id.length,'')
@@ -1026,14 +1027,6 @@ if(id)
                       {
                         cadd += '<div class="row">' + "\n\n";
                       }
-
-                      cadd += '           <div class="col-100">';
-                      cadd += '               <a href="#" onclick="ProductDetails(' + "'" + product_id +"','" + bigproduct_image +  "');" + '">';
-                      cadd += '                   <img src="' + product_image + '" style="width: 100%;"/></a>';
-                      cadd += '                  <div><center><a style="color: black; font-size: 22px;"href="#" onclick="ProductDetails(' + "'" + product_id +"','" + bigproduct_image +  "');" + '">' + product_name + '</a></center></div>' + "\n\n";
-
-                      //console.log(cadd + '\n\n');
-
                       if(dvj_logged_in == 'yes')
                       {
                         //price = 'Rs ' + product_price + ' <br>';
@@ -1042,6 +1035,20 @@ if(id)
                       {
                         price = '';
                       }
+
+                      cadd += '           <div class="col-100">';
+                      cadd += '               <a href="#" onclick="ProductDetails(' + "'" + product_id +"','" + bigproduct_image +  "');" + '">';
+                      cadd += '                   <img src="' + product_image + '" style="width: 100%;"/></a>';
+                      cadd += '                  <div><center><a style="color: black; font-size: 22px;" href="#" onclick="ProductDetails(' + "'" + product_id +"','" + bigproduct_image +  "');" + '">' + product_name + '</a>';
+                      if(dvj_logged_in == 'yes')
+                      {
+                        cadd += '<br><p color: black; font-size: 22px;">Price: ' + price + '</p>';
+                      }
+                      cadd += '</center></div>' + "\n\n";
+
+                      //console.log(cadd + '\n\n');
+
+
                       //myApp.alert(myarray.indexOf(product_id))
 
 
@@ -1072,11 +1079,13 @@ if(id)
 
                             cadd += '<center>';
 
-                            cadd += '<span id="lblqty_' + product_id + '" style="width: 100px; display: inline-block; background-color: #fff;line-height: 36px; vertical-align: top;">Qty <input onchange="Pchange(' + "'" + product_id + "'" + ')"; maxlength="4" type="number" style="width:29px;padding: 5px !important; text-align: right;" value="' + qty +'" id="qty_' + product_id + '"></span>&nbsp;&nbsp;';
-                            
-                            cadd += '<span style="width: 50px; display: inline-block; color: black;" id="pd_' + product_id +'">' + price + ' <a style="width:100px;" href="#" class="link button button-small button-fill color-red" onclick="RemoveProductNew(' + "'" + product_id +  "','" + product_name  +  "','" + product_price  + "');" + '">Remove</a></span></center>' + "\n\n";
+                            cadd += '<span id="lblqty_' + product_id + '" style="width: 100px; display: inline-block; background-color: #fff;line-height: 36px; vertical-align: top;"><a style="width:80px;" href="#" class="link button button-small button-fill color-red" onclick="Pchange(' + "'" + product_id + "');" + '">Update</a></span>';
 
-                            cadd += '<center><span style="display: none; color: black;" id="pa_' + product_id +'">' + price + ' <a style="width:100px;" href="#" class="link button button-small button-fill color-red" onclick="AddProduct(' + "'" + product_id +  "','" + product_name  +  "','" + product_price  + "');" + '">Add</a></span></center>';
+                            cadd += '<span id="txtqty_' + product_id + '" style="display: inline-block; background-color: #fff;line-height: 36px; vertical-align: top;">Qty <input maxlength="4" type="number" style="width:29px;padding: 5px !important; text-align: right;" value="' + qty +'" id="qty_' + product_id + '"></span>&nbsp;&nbsp;';
+                            
+                            cadd += '<span style="width: 50px; display: inline-block; color: black;" id="pd_' + product_id +'"> <a style="width:80px;" href="#" class="link button button-small button-fill color-red" onclick="RemoveProductNew(' + "'" + product_id +  "','" + product_name  +  "','" + product_price  + "');" + '">Remove</a></span></center>' + "\n\n";
+
+                            cadd += '<center><span style="display: none; color: black;" id="pa_' + product_id +'"> <a style="width:100px;" href="#" class="link button button-small button-fill color-red" onclick="AddProduct(' + "'" + product_id +  "','" + product_name  +  "','" + product_price  + "');" + '">Add</a></span></center>';
 
                         }else
                         {
@@ -1092,11 +1101,13 @@ if(id)
                             qty =1;
                             cadd += '<center>';
 
-                            cadd += '<span id="lblqty_' + product_id + '" style="width: 100px; display: none; background-color: #fff;line-height: 36px; vertical-align: top;">Qty <input onchange="Pchange(' + "'" + product_id + "'" + ')"; maxlength="4" type="number" style="width:29px;padding: 5px !important; text-align: right;" value="' + qty +'" id="qty_' + product_id + '"></span>&nbsp;&nbsp;';
-                            
-                            cadd += '<span style="width: 50px; display: none; color: black;" id="pd_' + product_id +'">' + price + ' <a style="width:100px;" href="#" class="link button button-small button-fill color-red" onclick="RemoveProductNew(' + "'" + product_id +  "','" + product_name  +  "','" + product_price  + "');" + '">Remove</a></span></center>' + "\n\n";
+                            cadd += '<span id="lblqty_' + product_id + '" style="width: 100px; display: none; background-color: #fff;line-height: 36px; vertical-align: top;"><a style="width:80px;" href="#" class="link button button-small button-fill color-red" onclick="Pchange(' + "'" + product_id + "');" + '">Update</a></span>';
 
-                            cadd += '<center><span style="display: block; color: black;" id="pa_' + product_id +'">' + price + ' <a style="width:100px;" href="#" class="link button button-small button-fill color-red" onclick="AddProduct(' + "'" + product_id +  "','" + product_name  +  "','" + product_price  + "');" + '">Add</a></span></center>';
+                            cadd += '<span id="txtqty_' + product_id + '" style="display: none; background-color: #fff;line-height: 36px; vertical-align: top;">Qty <input maxlength="4" type="number" style="width:29px;padding: 5px !important; text-align: right;" value="' + qty +'" id="qty_' + product_id + '"></span>&nbsp;&nbsp;';
+                            
+                            cadd += '<span style="width: 50px; display: none; color: black;" id="pd_' + product_id +'"> <a style="width:100px;" href="#" class="link button button-small button-fill color-red" onclick="RemoveProductNew(' + "'" + product_id +  "','" + product_name  +  "','" + product_price  + "');" + '">Remove</a></span></center>' + "\n\n";
+
+                            cadd += '<center><span style="display: block; color: black;" id="pa_' + product_id +'"> <a style="width:100px;" href="#" class="link button button-small button-fill color-red" onclick="AddProduct(' + "'" + product_id +  "','" + product_name  +  "','" + product_price  + "');" + '">Add</a></span></center>';
                         }
 
                         //cadd += '<br /><a href="#" onclick="RemoveProduct2(' + "'" + product_id +  "','" + product_name  +  "','" + product_price  + "')" + '";' + '><img src="img/minus-64.png" style="width: 35px; height:35px;"></a>';
@@ -1213,6 +1224,7 @@ function RemoveProduct2(id,product_name, product_price)
 function RemoveProductNew(id,product_name, product_price)
 {
     $$("#lblqty_"+id).hide();
+    $$("#txtqty_"+id).hide();
     $$("#pd_"+id).hide();
     $$("#pa_"+id).show();
     RemoveProduct(id,product_name, product_price);
@@ -1225,8 +1237,9 @@ function Pchange(id)
     qty = parseInt(qty);
     if(qty <1)
     {
-        myApp.alert('Please Eneter correct Quantity','')
+        myApp.alert('Please Enter correct Quantity','')
     }else{
+        myApp.alert('Product Updated','')
         UpdateQty(id, qty);
     }
 
@@ -1239,10 +1252,12 @@ function UpdateQty(id, qty)
     //myApp.alert('id: '+id + ' qty: '+qty,'')
 
     $$("#lblqty_"+id).show();
+    $$("#txtqty_"+id).show();
     $$("#pd_"+id).show();
     $$("#pa_"+id).hide();
 
     $$("#" + "lblqty_" + id).css("display", "inline-block");
+    $$("#" + "txtqty_" + id).css("display", "inline-block");
     $$("#" + "pd_" + id).css("display", "inline-block");
 
    var mlen = 0;
@@ -1981,8 +1996,8 @@ myApp.onPageInit('contact', function (page) {
                         //elist += '<a href="#" onclick="AddProduct2(' + "'" + product_id +  "','" + product_name  +  "','" + product_price  + "')" + '";' + '><img src="img/plus-64.png" style="width: 35px; height:35px;"></a></span></div></div>' + "\n\n";
 
                         elist += '<div class="col-50"><span style="display: block; color: black; height:20px; text-align: left;" id="pd2_' + product_id +'">' + price + '';
-                        elist += '<span id="lblqty2_' + product_id + '" style="width: 50px; display: inline-block; background-color: #fff;line-height: 36px; vertical-align: top;">Qty ' + qty + ' </span><input type="hidden" style="width:10px;" value="' + qty + '" id="qty2_' + product_id + '">';
-                        elist += '<a href="#" class="link button button-small button-fill color-red" onclick="RemoveProductNew(' + "'" + product_id +  "','" + product_name  +  "','" + product_price  + "')" + '";' + '>Remove</a></span></div></div>' + "\n\n";
+                        elist += '<span id="lblqty2_' + product_id + '" style="width: 50px; display: inline-block; background-color: #fff;line-height: 36px; vertical-align: top;">Qty ' + qty + ' </span><input type="hidden" style="width:10px;" value="' + qty + '" id="qty2_' + product_id + '"></div></div>' + "\n\n";
+                        //elist += '<a href="#" class="link button button-small button-fill color-red" onclick="RemoveProductNew(' + "'" + product_id +  "','" + product_name  +  "','" + product_price  + "')" + '";' + '>Remove</a></span></div></div>' + "\n\n";
                         //<a style="width:100px;" href="#" class="link button button-small button-fill color-red" onclick="RemoveProductNew(' + "'" + product_id +  "','" + product_name  +  "','" + product_price  + "');" + '">Remove</a>
                   }
 
