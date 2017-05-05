@@ -2078,7 +2078,7 @@ myApp.onPageInit('contact', function (page) {
         if(valid == '1')
         {
           //myApp.alert('Will post','');
-
+          local_products = localStorage.getItem("local_products");
           url = srvURL + '/enquiry';
             console.log(url);
             //myApp.alert('url ' + url, '');
