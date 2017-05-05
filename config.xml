@@ -99,7 +99,10 @@
       <variable name="PHOTOLIBRARY_USAGE_DESCRIPTION" value="App would like to access the library." />
     </plugin>
 -->
-
+    <gap:plugin name="phonegap-plugin-push" source="npm" spec="~1.7.2">
+        <param name="SENDER_ID" value="797051143620" />
+    </gap:plugin> 
+    
 	<feature name="Device">
 		<param name="android-package" value="org.apache.cordova.device.Device" />
 	</feature>

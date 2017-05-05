@@ -23,6 +23,14 @@ open product after clicking notification
 
 notification stored
 
+
+Server key
+AAAAuZPzRcQ:APA91bHBm6O3cDHBtks6f2ZbJxQTdsCoUDKipx88oYDpNu6gHB9lxBzUM8qYW9H-l-795lQ6NWhcMWwItPOLpIgkK4QzgpsIJJ1A_l8a4AVeeIxi1wLCpWr0sV-Ih7vEA0IRB6MeEKap 
+Legacy server key help_outline
+AIzaSyB1KQiu_Hwuy8gd84E_PtbjEkUYE697WaQ 
+Sender ID help_outline
+797051143620 
+
 --
 otp - vaccifire
 

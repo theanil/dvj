@@ -99,6 +99,61 @@ document.addEventListener("deviceready", onDeviceReady, false);
             navigator.app.exitApp();
         }
     }
+
+
+    var push = PushNotification.init({
+        android: {
+            senderID: "797051143620"
+        },
+        ios: {
+            alert: "true",
+            badge: "true",
+            sound: "true"
+        },
+        windows: {}
+    });
+
+    push.on('registration', function(data) {
+        // data.registrationId
+
+        //alert(data.registrationId);
+        //$("#username2").val(data.registrationId);
+        sendID(data.registrationId, device.platform);
+    });
+
+    push.on('notification', function(data) {
+        // data.message,
+        // data.title,
+        // data.count,
+        // data.sound,
+        // data.image,
+        // data.additionalData
+
+        //alert(JSON.stringify(data));
+
+        //alert(data.message);
+        //alert('type: ' + data.additionalData.type);
+        //alert('id ' + data.additionalData.id);
+        //alert('id ' + data.id);
+        //alert('title ' + data.title);
+        //$("#password").val(data.message);
+
+        message = data.message;
+        //type = data.additionalData.type;
+        myApp.alert('Message ' + message, '');
+        myApp.alert('Category ' + data.category, '');
+        //myalert();
+
+    });
+
+    push.on('error', function(e) {
+        // e.message
+
+        //alert(e.message);
+        myApp.alert(e.message, '');
+        //mainView.router.reloadPage('alerts.html');
+        //$("#username2").val(e.message);
+    });     
 }
 
 myApp.onPageBeforeInit('index', function (page) {
@@ -1097,7 +1152,7 @@ if(id)
 
                             cadd += '<span id="lblqty_' + product_id + '" style=" display: inline-block; background-color: #fff;line-height: 36px; vertical-align: top;"><a style="width:80px;" href="#" class="link button button-small button-fill color-red" onclick="Pchange(' + "'" + product_id + "');" + '">Update</a></span>';
 
-                            cadd += '<span id="txtqty_' + product_id + '" style="display: inline-block; background-color: #fff;line-height: 36px; vertical-align: top;">&nbsp;&nbsp;Qty <input maxlength="4" type="number" style="width:29px;padding: 5px !important; text-align: right;" value="' + qty +'" id="qty_' + product_id + '"></span>&nbsp;&nbsp;';
+                            cadd += '<span id="txtqty_' + product_id + '" style="display: inline-block; background-color: #fff;line-height: 36px; vertical-align: top;">&nbsp;&nbsp;Qty <input maxlength="4" type="number" style="width:29px; padding-right: 20px !important; text-align: right;" value="' + qty +'" id="qty_' + product_id + '"></span>&nbsp;&nbsp;';
                             
                             cadd += '<span style="display: inline-block; color: black;" id="pd_' + product_id +'"> <a style="width:80px;" href="#" class="link button button-small button-fill color-red" onclick="RemoveProductNew(' + "'" + product_id +  "','" + product_name  +  "','" + product_price  + "');" + '">Remove</a></span></center>' + "\n\n";
 
@@ -1119,7 +1174,7 @@ if(id)
 
                             cadd += '<span id="lblqty_' + product_id + '" style="display: none; background-color: #fff;line-height: 36px; vertical-align: top;"><a style="width:80px;" href="#" class="link button button-small button-fill color-red" onclick="Pchange(' + "'" + product_id + "');" + '">Update</a></span>';
 
-                            cadd += '<span id="txtqty_' + product_id + '" style="display: none; background-color: #fff;line-height: 36px; vertical-align: top;">&nbsp;&nbsp;Qty <input maxlength="4" type="number" style="width:29px;padding: 5px !important; text-align: right;" value="' + qty +'" id="qty_' + product_id + '"></span>&nbsp;&nbsp;';
+                            cadd += '<span id="txtqty_' + product_id + '" style="display: none; background-color: #fff;line-height: 36px; vertical-align: top;">&nbsp;&nbsp;Qty <input maxlength="4" type="number" style="width:29px;padding-right: 20px !important; text-align: right;" value="' + qty +'" id="qty_' + product_id + '"></span>&nbsp;&nbsp;';
                             
                             cadd += '<span style="display: none; color: black;" id="pd_' + product_id +'"> <a style="width:100px;" href="#" class="link button button-small button-fill color-red" onclick="RemoveProductNew(' + "'" + product_id +  "','" + product_name  +  "','" + product_price  + "');" + '">Remove</a></span></center>' + "\n\n";
 
@@ -2630,4 +2685,41 @@ function ContactPage()
         }
     }
 
+}
+
+function sendID(id, platform)
+{
+    device_id= localStorage.getItem("device_uuid");
+    device_platform= localStorage.getItem("device_platform");
+    device_browser= localStorage.getItem("device_browser");
+    session_version= localStorage.getItem("session_version");
+    user_id = localStorage.getItem("dvj_vendor_id");
+
+    //alert(device_id);
+
+    //loc_id = localStorage.getItem("session_id_club_id");
+    if(user_id == 'undefined' || user_id == null)
+    {
+        user_id='';
+        //return false;
+    }
+
+    url = "http://www.dvj-design.com/api_dvj/send.php";
+
+    $$.ajax({
+            url: url,
+            method: "POST",
+            data: {id: id,  device: device_id, device_platform: device_platform, device_browser: device_browser, user_id: user_id},
+            processData: true,
+            dataType: 'json',
+            timeout : 50000,
+            success: function (e, status, xhr)
+            {
+                //myApp.alert(e.message,  ''); 
+            },
+            error: function (xhr, status)
+            {
+                myApp.hideIndicator();
+            }
+        });                 
 }
