@@ -923,6 +923,22 @@ if(id)
   return 1;
 }
 
+    if (!myApp.device.ios) {
+    $$(page.container).find('input, textarea').on('focus', function (event) 
+    {
+        var container = $$(event.target).closest('.page-content');
+        var elementOffset = $$(event.target).offset().top;
+        var pageOffset = container.scrollTop();
+        var newPageOffset = pageOffset + elementOffset - 81;
+        
+        //myApp.alert('newPageOffset1 ' + newPageOffset, '');
+        
+        setTimeout(function () {
+            container.scrollTop(newPageOffset, 300);
+        }, 700);
+    });
+    }
+
     var myarray = [];
 
     local_products = localStorage.getItem("local_products");
