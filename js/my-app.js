@@ -1222,10 +1222,16 @@ function Pchange(id)
 {
     qty = $$("#qty_"+id).val();
     //myApp.alert('id ' + id + ' qty: ' + qty,'')
+    qty = parseInt(qty);
+    if(qty <1)
+    {
+        myApp.alert('Please Eneter correct Quantity','')
+    }else{
+        UpdateQty(id, qty);
+    }
 
     //$$("#t_amt2").html(qty);
     //myApp.alert(qty,'');//return false;
-    UpdateQty(id, qty);
 }
 
 function UpdateQty(id, qty)
