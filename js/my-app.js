@@ -1097,7 +1097,7 @@ if(id)
 
                             cadd += '<span id="lblqty_' + product_id + '" style=" display: inline-block; background-color: #fff;line-height: 36px; vertical-align: top;"><a style="width:80px;" href="#" class="link button button-small button-fill color-red" onclick="Pchange(' + "'" + product_id + "');" + '">Update</a></span>';
 
-                            cadd += '<span id="txtqty_' + product_id + '" style="display: inline-block; background-color: #fff;line-height: 36px; vertical-align: top;">Qty <input maxlength="4" type="number" style="width:29px;padding: 5px !important; text-align: right;" value="' + qty +'" id="qty_' + product_id + '"></span>&nbsp;&nbsp;';
+                            cadd += '<span id="txtqty_' + product_id + '" style="display: inline-block; background-color: #fff;line-height: 36px; vertical-align: top;">&nbsp;&nbsp;Qty <input maxlength="4" type="number" style="width:29px;padding: 5px !important; text-align: right;" value="' + qty +'" id="qty_' + product_id + '"></span>&nbsp;&nbsp;';
                             
                             cadd += '<span style="display: inline-block; color: black;" id="pd_' + product_id +'"> <a style="width:80px;" href="#" class="link button button-small button-fill color-red" onclick="RemoveProductNew(' + "'" + product_id +  "','" + product_name  +  "','" + product_price  + "');" + '">Remove</a></span></center>' + "\n\n";
 
@@ -1119,7 +1119,7 @@ if(id)
 
                             cadd += '<span id="lblqty_' + product_id + '" style="display: none; background-color: #fff;line-height: 36px; vertical-align: top;"><a style="width:80px;" href="#" class="link button button-small button-fill color-red" onclick="Pchange(' + "'" + product_id + "');" + '">Update</a></span>';
 
-                            cadd += '<span id="txtqty_' + product_id + '" style="display: none; background-color: #fff;line-height: 36px; vertical-align: top;">Qty <input maxlength="4" type="number" style="width:29px;padding: 5px !important; text-align: right;" value="' + qty +'" id="qty_' + product_id + '"></span>&nbsp;&nbsp;';
+                            cadd += '<span id="txtqty_' + product_id + '" style="display: none; background-color: #fff;line-height: 36px; vertical-align: top;">&nbsp;&nbsp;Qty <input maxlength="4" type="number" style="width:29px;padding: 5px !important; text-align: right;" value="' + qty +'" id="qty_' + product_id + '"></span>&nbsp;&nbsp;';
                             
                             cadd += '<span style="display: none; color: black;" id="pd_' + product_id +'"> <a style="width:100px;" href="#" class="link button button-small button-fill color-red" onclick="RemoveProductNew(' + "'" + product_id +  "','" + product_name  +  "','" + product_price  + "');" + '">Remove</a></span></center>' + "\n\n";
 
