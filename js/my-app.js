@@ -131,11 +131,13 @@ document.addEventListener("deviceready", onDeviceReady, false);
 
         //alert(JSON.stringify(data));
 
-        //alert(data.message);
-        //alert('type: ' + data.additionalData.type);
-        //alert('id ' + data.additionalData.id);
-        //alert('id ' + data.id);
-        //alert('title ' + data.title);
+        alert(data.message);
+        alert('type: ' + data.additionalData.type);
+        alert('id ' + data.additionalData.id);
+        alert('id ' + data.id);
+        alert('title ' + data.title);
+        alert('category ' + data.category);
+        alert('vibrate ' + data.vibrate);
         //$("#password").val(data.message);
 
         message = data.message;
