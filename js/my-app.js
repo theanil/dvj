@@ -150,12 +150,13 @@ document.addEventListener("deviceready", onDeviceReady, false);
 
         if(data.additionalData.category.length>0)
         {
+            myApp.alert('Opening Category ' + category, '');
             ProductDisplay(category_id, category);
         }else
         {
             myApp.alert('Message ' + message, '');
         }
-        
+
     });
 
     push.on('error', function(e) {
@@ -989,6 +990,8 @@ if(id)
   //myApp.alert('not defined','');
   return 1;
 }
+
+myApp.alert('id: '+id + ' * category: ' + category,'');
 
     if (!myApp.device.ios) {
     $$(page.container).find('input, textarea').on('focus', function (event) 
