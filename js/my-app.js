@@ -991,7 +991,7 @@ if(id)
   return 1;
 }
 
-myApp.alert('id: '+id + ' * category: ' + category,'');
+//myApp.alert('id: '+id + ' * category: ' + category,'');
 
     if (!myApp.device.ios) {
     $$(page.container).find('input, textarea').on('focus', function (event) 
@@ -2641,6 +2641,12 @@ function ContactPage()
             }
             else
             {
+                if(local_products.length<1)
+                {
+                    myApp.alert('Please select products before sending any enquiry','');
+                    return true;
+                }
+                
             msg = 'Enquiry';
             var valid = 1;
 
@@ -2738,3 +2744,117 @@ function sendID(id, platform)
             }
         });                 
 }
+
+function Notification()
+{
+    device_uuid = localStorage.getItem("device_uuid");
+
+    var url = srvURL + "/myalert";//?mobile=9702502361&pass=9702502361
+    
+    var loc_id = '';
+    $$.ajax({
+        url: url,
+        method: "POST",
+        data: {device_uuid: device_uuid},
+        processData: true,
+        dataType: 'json',
+        timeout : 50000,
+        success: function (e, status, xhr)
+        {
+            //myApp.alert('sucess <br>' + JSON.stringify(e),  '');  
+            
+            //alert(JSON.parse(e));
+            //var obj = JSON.parse(e);
+            //myApp.alert('e.status ' + e.session_id,  '');  
+            //myApp.alert('e.status ' + e.status,  '');  
+            if(e.status == 'success')
+            {
+                //myApp.alert('session_id ' + e.session_id,  '');  
+                //myApp.alert('Welcome ' + e.vendor_name,  ''); 
+                totalalerts = e.data.alerts.length;
+                //myApp.alert('totalalerts ' + totalalerts,  ''); 
+                //myApp.alert(urldecode(e.data.history),  '');
+                //myApp.alert(history,  '');
+
+                 //var name = $$('#customer_fname2').val();
+                //alert(cadd);
+                //alert(history2);
+
+                mainView.router.load({
+                    url: 'alerts.html',
+                    context: {
+                       e: e
+                    }
+                });
+            }else
+            {
+                //myApp.alert('error: ' + e.status,  '');
+                myApp.alert(e.message,  ''); 
+            }
+        },
+        error: function (xhr, status)
+        {
+            myApp.hideIndicator();
+
+            if(status == 0)
+            {
+                myApp.alert('Please Check Internet',  ''); 
+            }else
+            {
+                myApp.alert('failure * ' +  status,  '');  
+            }
+        }
+    });
+}
+
+myApp.onPageInit('alerts', function (page) {
+     //myApp.alert('hello',  '');   
+     //tel =page.context.tel; 
+     //myApp.alert(customer_fname);
+     //myApp.alert(page.context.history, '');
+     //$$("#customer_fname2").val(tel);
+     //card = page.context.card;
+     e = page.context.e;
+
+     //myApp.alert(e);
+     totalalerts = e.data.alerts.length;
+     //myApp.alert(totalalerts);
+
+    cadd = '';
+    for(i=0; i< totalalerts; i++)
+    {
+        mess_id = e.data.alerts[i].mess_id;
+        //alert(mess_id);
+
+        datec = e.data.alerts[i].datec;
+        m_status = e.data.alerts[i].m_status;
+        message = urldecode(e.data.alerts[i].message);
+
+        comp_details = '<p>';
+        //comp_details += '<b>Name: </b>' +  m_status + '<br>';
+        comp_details += '' +  message + '<br><br>';
+        comp_details +=  datec ;
+
+        comp_details += '</p>';
+
+       
+        
+        cadd += comp_details;
+       
+
+    }    
+
+    if(totalalerts == 0)
+    {
+        cadd = '<div class="card"><div class="card-header">No New Alerts</div></div> ';
+    }
+    //alert(cadd)
+    //myApp.alert(cadd);
+     //history2 = page.context.history2;
+     //comp_status = page.context.comp_status;
+     //complain_id = page.context.complain_id;
+     //loc_id = page.context.loc_id;
+
+     //myApp.alert('alerts.html ' + card, '');
+     $$("#showalert").html(cadd);
+});
