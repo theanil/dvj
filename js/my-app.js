@@ -131,21 +131,31 @@ document.addEventListener("deviceready", onDeviceReady, false);
 
         //alert(JSON.stringify(data));
 
-        alert(data.message);
-        alert('type: ' + data.additionalData.type);
-        alert('id ' + data.additionalData.id);
+        //alert(data.message);
+        //alert('type: ' + data.additionalData.type);
+        //alert('id ' + data.additionalData.id);
         //alert('id ' + data.id);
-        alert('title ' + data.title);
-        alert('category ' + data.additionalData.category);
-        alert('vibrate ' + data.vibrate);
+        //alert('title ' + data.title);
+        //alert('category ' + data.additionalData.category);
+        //alert('vibrate ' + data.vibrate);
         //$("#password").val(data.message);
 
         message = data.message;
+        category_id = data.additionalData.cat_id;
+        category = data.additionalData.category;
         //type = data.additionalData.type;
-        myApp.alert('Message ' + message, '');
-        myApp.alert('Category ' + data.category, '');
+        
+        //myApp.alert('Category ' + category, '');
         //myalert();
 
+        if(data.additionalData.category.length>0)
+        {
+            ProductDisplay(category_id, category);
+        }else
+        {
+            myApp.alert('Message ' + message, '');
+        }
+        
     });
 
     push.on('error', function(e) {
