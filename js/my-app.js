@@ -977,10 +977,10 @@ if(id)
     {
       mlen = mlen + " Products";
     }
-  $$("#t_amt2").html(mlen);
+    $$("#t_amt2").html(mlen);
 
-  //myApp.alert('brochure started','');
-  url = srvURL + '/product_list';
+    //myApp.alert('brochure started','');
+    url = srvURL + '/product_list';
     $$.ajax({
           url: url,
           method: "GET",
@@ -1024,19 +1024,20 @@ if(id)
                       //alert(b)
                       if(b == 0)
                       {
-                        cadd += '<div class="row">';
+                        cadd += '<div class="row">' + "\n\n";
                       }
 
                       cadd += '           <div class="col-100">';
                       cadd += '               <a href="#" onclick="ProductDetails(' + "'" + product_id +"','" + bigproduct_image +  "');" + '">';
                       cadd += '                   <img src="' + product_image + '" style="width: 100%;"/></a>';
-                      cadd += '                  <div><center><a style="color: black; font-size: 22px;"href="#" onclick="ProductDetails(' + "'" + product_id +"','" + bigproduct_image +  "');" + '">' + product_name + '</a></center></div>';
+                      cadd += '                  <div><center><a style="color: black; font-size: 22px;"href="#" onclick="ProductDetails(' + "'" + product_id +"','" + bigproduct_image +  "');" + '">' + product_name + '</a></center></div>' + "\n\n";
 
                       //console.log(cadd + '\n\n');
 
                       if(dvj_logged_in == 'yes')
                       {
-                        price = 'Rs ' + product_price + ' <br>';
+                        //price = 'Rs ' + product_price + ' <br>';
+                        price = product_price + ' <br>';
                       }else
                       {
                         price = '';
@@ -1060,21 +1061,42 @@ if(id)
                                   }
                               }
                               //myApp.alert('qty: ' + qty, '');
-
+                            /*
                             cadd += '<center><span style="display: block; color: black;" id="pd_' + product_id +'">' + price + '<a href="#" onclick="RemoveProduct2(' + "'" + product_id +  "','" + product_name  +  "','" + product_price  + "')" + '";' + '><img src="img/minus-64.png" style="width: 35px; height:35px;"></a>';
                             cadd += '<span id="lblqty_' + product_id + '" style="width: 50px; display: inline-block; background-color: #fff;line-height: 36px; vertical-align: top;">Qty ' + qty + ' </span><input type="hidden" style="width:10px;" value="' + qty +'" id="qty_' + product_id + '">';
                             cadd += '<a href="#" onclick="AddProduct2(' + "'" + product_id +  "','" + product_name  +  "','" + product_price  + "')" + '";' + '><img src="img/plus-64.png" style="width: 35px; height:35px;"></a></span>';
                             
                             cadd += '<span style="display: none; color: black;" id="pa_' + product_id +'">' + price + ' <a style="width:100px;" href="#" class="link button button-small button-fill color-red" onclick="AddProduct(' + "'" + product_id +  "','" + product_name  +  "','" + product_price  + "');" + '">Add </a></span></center>';
+                            */
+                            //</span><span style="width: 50px; display: inline-block; background-color: #fff;line-height: 36px; vertical-align: top;">
+
+                            cadd += '<center>';
+
+                            cadd += '<span id="lblqty_' + product_id + '" style="width: 100px; display: inline-block; background-color: #fff;line-height: 36px; vertical-align: top;">Qty <input onchange="Pchange(' + "'" + product_id + "'" + ')"; maxlength="4" type="number" style="width:29px;padding: 5px !important; text-align: right;" value="' + qty +'" id="qty_' + product_id + '"></span>&nbsp;&nbsp;';
+                            
+                            cadd += '<span style="width: 50px; display: inline-block; color: black;" id="pd_' + product_id +'">' + price + ' <a style="width:100px;" href="#" class="link button button-small button-fill color-red" onclick="RemoveProductNew(' + "'" + product_id +  "','" + product_name  +  "','" + product_price  + "');" + '">Remove</a></span></center>' + "\n\n";
+
+                            cadd += '<center><span style="display: none; color: black;" id="pa_' + product_id +'">' + price + ' <a style="width:100px;" href="#" class="link button button-small button-fill color-red" onclick="AddProduct(' + "'" + product_id +  "','" + product_name  +  "','" + product_price  + "');" + '">Add</a></span></center>';
+
                         }else
                         {
                           //cadd += '<span style="display: none; color: black;" id="pd_' + product_id +'">' + price + ' <a href="#" class="link" onclick="RemoveProduct(' + "'" + product_id +  "','" + product_name  +  "','" + product_price  + "');" + '">Remove 2</a></span>';
 
+                          /*
                             cadd += '<center><span style="display: none; color: black;" id="pd_' + product_id +'">' + price + '<a href="#" onclick="RemoveProduct2(' + "'" + product_id +  "','" + product_name  +  "','" + product_price  + "')" + '";' + '><img src="img/minus-64.png" style="width: 35px; height:35px;"></a>';
                             cadd += '<span id="lblqty_' + product_id + '" style="width: 50px; display: inline-block; background-color: #fff;line-height: 36px; vertical-align: top;">Qty 1 </span><input type="hidden" style="width:10px;" value="1" id="qty_' + product_id + '">';
                             cadd += '<a href="#" onclick="AddProduct2(' + "'" + product_id +  "','" + product_name  +  "','" + product_price  + "')" + '";' + '><img src="img/plus-64.png" style="width: 35px; height:35px;"></a></span>';
                             
                             cadd += '<span style="display: block; color: black;" id="pa_' + product_id +'">' + price + ' <a style="width:100px;" href="#" class="link button button-small button-fill color-red" onclick="AddProduct(' + "'" + product_id +  "','" + product_name  +  "','" + product_price  + "');" + '">Add</a></span></center>';
+                        */
+                            qty =1;
+                            cadd += '<center>';
+
+                            cadd += '<span id="lblqty_' + product_id + '" style="width: 100px; display: none; background-color: #fff;line-height: 36px; vertical-align: top;">Qty <input onchange="Pchange(' + "'" + product_id + "'" + ')"; maxlength="4" type="number" style="width:29px;padding: 5px !important; text-align: right;" value="' + qty +'" id="qty_' + product_id + '"></span>&nbsp;&nbsp;';
+                            
+                            cadd += '<span style="width: 50px; display: none; color: black;" id="pd_' + product_id +'">' + price + ' <a style="width:100px;" href="#" class="link button button-small button-fill color-red" onclick="RemoveProductNew(' + "'" + product_id +  "','" + product_name  +  "','" + product_price  + "');" + '">Remove</a></span></center>' + "\n\n";
+
+                            cadd += '<center><span style="display: block; color: black;" id="pa_' + product_id +'">' + price + ' <a style="width:100px;" href="#" class="link button button-small button-fill color-red" onclick="AddProduct(' + "'" + product_id +  "','" + product_name  +  "','" + product_price  + "');" + '">Add</a></span></center>';
                         }
 
                         //cadd += '<br /><a href="#" onclick="RemoveProduct2(' + "'" + product_id +  "','" + product_name  +  "','" + product_price  + "')" + '";' + '><img src="img/minus-64.png" style="width: 35px; height:35px;"></a>';
@@ -1188,10 +1210,34 @@ function RemoveProduct2(id,product_name, product_price)
       }
     }
 
+function RemoveProductNew(id,product_name, product_price)
+{
+    $$("#lblqty_"+id).hide();
+    $$("#pd_"+id).hide();
+    $$("#pa_"+id).show();
+    RemoveProduct(id,product_name, product_price);
+}
+
+function Pchange(id)
+{
+    qty = $$("#qty_"+id).val();
+    //myApp.alert('id ' + id + ' qty: ' + qty,'')
+
+    //$$("#t_amt2").html(qty);
+    //myApp.alert(qty,'');//return false;
+    UpdateQty(id, qty);
+}
+
 function UpdateQty(id, qty)
 {
     //myApp.alert('id: '+id + ' qty: '+qty,'')
 
+    $$("#lblqty_"+id).show();
+    $$("#pd_"+id).show();
+    $$("#pa_"+id).hide();
+
+    $$("#" + "lblqty_" + id).css("display", "inline-block");
+    $$("#" + "pd_" + id).css("display", "inline-block");
 
    var mlen = 0;
     //a_session_id = localStorage.getItem("a_session_id");
@@ -1285,16 +1331,33 @@ function UpdateQty(id, qty)
 
 }
 
+function AddProduct111(id,product_name, product_price)
+{
+    //$$("#" + "pa_" + id).hide();
+    $$("#" + "lblqty_" + id).show();
+    //$$("#" + "pd_" + id).show();
+    $$("#" + "lblqty_" + id).css("display", "inline-block");
+    $$("#" + "pd_" + id).css("display", "inline-block");
+}
+
 function AddProduct(id,product_name, product_price)
 {
+    //myApp.alert($$("#qty_87").val(),'');return false;
   //myApp.alert(id,'')
   //myApp.alert(product_name,'')
   //myApp.alert(product_price,'')
 
   //var pid = "p_" + id;
   //alert(pid)
-  $$("#" + "pa_" + id).hide();
-  $$("#" + "pd_" + id).show();
+  //$$("#" + "pa_" + id).hide();
+  //$$("#" + "pd_" + id).show();
+
+    $$("#" + "lblqty_" + id).css("display", "inline-block");
+    $$("#" + "pd_" + id).css("display", "inline-block");
+
+
+  //$$("#" + "pd_" + id).css("display", "block");
+
   $$("#elist").show();
   //myApp.alert("#" + "pd_" + id, '');
 
@@ -1907,10 +1970,14 @@ myApp.onPageInit('contact', function (page) {
                         //elist += '<div class="col-50">' + test[j].product_qty + '</div></div>';
                         //elist += 'Product ID: ' + test[j].product_id + '<br>';
 
-                        elist += '<div class="col-50"><span style="display: block; color: black; height:20px; text-align: left;" id="pd2_' + product_id +'">' + price + '<a href="#" onclick="RemoveProduct2(' + "'" + product_id +  "','" + product_name  +  "','" + product_price  + "')" + '";' + '><img src="img/minus-64.png" style="width: 35px; height:35px;"></a>';
+                        //elist += '<div class="col-50"><span style="display: block; color: black; height:20px; text-align: left;" id="pd2_' + product_id +'">' + price + '<a href="#" onclick="RemoveProduct2(' + "'" + product_id +  "','" + product_name  +  "','" + product_price  + "')" + '";' + '><img src="img/minus-64.png" style="width: 35px; height:35px;"></a>';
+                        //elist += '<span id="lblqty2_' + product_id + '" style="width: 50px; display: inline-block; background-color: #fff;line-height: 36px; vertical-align: top;">Qty ' + qty + ' </span><input type="hidden" style="width:10px;" value="' + qty + '" id="qty2_' + product_id + '">';
+                        //elist += '<a href="#" onclick="AddProduct2(' + "'" + product_id +  "','" + product_name  +  "','" + product_price  + "')" + '";' + '><img src="img/plus-64.png" style="width: 35px; height:35px;"></a></span></div></div>' + "\n\n";
+
+                        elist += '<div class="col-50"><span style="display: block; color: black; height:20px; text-align: left;" id="pd2_' + product_id +'">' + price + '';
                         elist += '<span id="lblqty2_' + product_id + '" style="width: 50px; display: inline-block; background-color: #fff;line-height: 36px; vertical-align: top;">Qty ' + qty + ' </span><input type="hidden" style="width:10px;" value="' + qty + '" id="qty2_' + product_id + '">';
-                        elist += '<a href="#" onclick="AddProduct2(' + "'" + product_id +  "','" + product_name  +  "','" + product_price  + "')" + '";' + '><img src="img/plus-64.png" style="width: 35px; height:35px;"></a></span></div></div>' + "\n\n";
-                        
+                        elist += '<a href="#" class="link button button-small button-fill color-red" onclick="RemoveProductNew(' + "'" + product_id +  "','" + product_name  +  "','" + product_price  + "')" + '";' + '>Remove</a></span></div></div>' + "\n\n";
+                        //<a style="width:100px;" href="#" class="link button button-small button-fill color-red" onclick="RemoveProductNew(' + "'" + product_id +  "','" + product_name  +  "','" + product_price  + "');" + '">Remove</a>
                   }
 
                   t5 = '[' + t5.substring(1, (t5.length)) + ']';
@@ -2002,7 +2069,7 @@ myApp.onPageInit('contact', function (page) {
                     }else
                     {
                         //myApp.alert('error: ' + e.status,  '');
-                        myApp.alert(e,  ''); 
+                        myApp.alert(e.message,  ''); 
                     }
                 },
                 error: function (xhr, status)
@@ -2442,3 +2509,84 @@ myApp.onPageInit('aboutus', function (page) {
 
 });
 
+
+function ContactPage()
+{
+
+    //myApp.alert('in contact us','');
+
+     dvj_session_id = localStorage.getItem("dvj_session_id");
+         //alert(dvj_session_id)
+         if(dvj_session_id == null || dvj_session_id =='undefined')
+         {
+             mainView.router.load({url: 'contact.html',ignoreCache: true});
+         }else
+         {
+           
+            local_products = localStorage.getItem("local_products");
+            //alert('local_products <br>' + local_products)
+            if(local_products === null || local_products === 'undefined')
+            {
+                mainView.router.load({url: 'contact.html',ignoreCache: true});
+            }
+            else
+            {
+            msg = 'Enquiry';
+            var valid = 1;
+
+
+            if(valid == '1')
+            {
+              //myApp.alert('Will post','');
+
+              url = srvURL + '/enquiry';
+                console.log(url);
+                //myApp.alert('url ' + url, '');
+                //alert(url);//return false;
+                //$_GET[“mode_of_operation”], $_GET[“pressure_drop_check”], $_GET[“gland”], $_GET[“bearing”], $_GET[“vibration”], $_GET[“remark”]
+
+                $$.ajax({
+                    url: url,
+                    method: "POST",
+                    data: {session_id: dvj_session_id, enquiry_msg: msg, enquiry_product: local_products},
+                    processData: true,
+                    dataType: 'json',
+                    timeout : 50000,
+                    success: function (e, status, xhr)
+                    {
+                        //myApp.hidePreloader();
+
+                        if(e.status== 'success')
+                        {
+                            //myApp.alert('session_id ' + e.session_id,  ''); 
+
+                            myApp.alert('Enquiry Saved',  '');   
+
+                            mainView.router.load({
+                                    url: 'index.html',
+                                    context: {}});                      
+                        }else
+                        {
+                            //myApp.alert('error: ' + e.status,  '');
+                            myApp.alert(e.message,  ''); 
+                        }
+                    },
+                    error: function (xhr, status)
+                    {
+                        myApp.hideIndicator();
+
+                        if(status == 0)
+                        {
+                            myApp.alert('Please Check Internet',  ''); 
+                        }else
+                        {
+                            myApp.alert('failure * ' +  status,  '');  
+                        };
+                    }
+                });
+
+            }
+        }
+    }
+
+}

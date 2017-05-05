@@ -8,8 +8,8 @@ Home Page
 
 
 
-skip enquiry form for dealer
-enquiry in mail
+--skip enquiry form for dealer
+--enquiry in mail
 
 product_price -> field varchar(200)
 

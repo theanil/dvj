@@ -21,6 +21,12 @@ input[type="text"]{
       -webkit-border-radius:5px;
     }
 
+input[type="number"]{
+      border-radius:5px;
+      -moz-border-radius:5px;
+      -webkit-border-radius:5px;
+    }
+
  .row.home {
     margin-bottom: 10px;
 }
