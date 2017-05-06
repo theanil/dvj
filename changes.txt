@@ -35,3 +35,13 @@ Sender ID help_outline
 otp - vaccifire
 
 Select Drop Down -> contact name of lead (multiple)
+
+INSERT INTO `booking_data` (`loc_id`, `club_service_id`, `date_b`, `slot_id`, `slot_from`, `slot_to`, `book_status`, `court_ids`, `mem_charge`, `gue_charge`, `mu_id`, `member_id`, `last_updated`)
+VALUES ('4', '86', '2017-05-06', '1217', '12:15', '13:00', 1, '32', '200', '200', '', '', now());
+
+INSERT INTO `booking_data` (`loc_id`, `club_service_id`, `date_b`, `slot_id`, `slot_from`, `slot_to`, `book_status`, `court_ids`, `mem_charge`, `gue_charge`, `mu_id`, `member_id`, `last_updated`)
+VALUES ('4', '86', '2017-05-06', '1215', '13:30', '12:15', 1, '32', '200', '200', '', '', now());
+
+INSERT INTO `booking_data` (`loc_id`, `club_service_id`, `date_b`, `slot_id`, `slot_from`, `slot_to`, `book_status`, `court_ids`, `mem_charge`, `gue_charge`, `mu_id`, `member_id`, `last_updated`)
+VALUES ('4', '86', '2017-05-06', '1216', '10:45', '11:30', 1, '32', '200', '200', '', '', now());
+
