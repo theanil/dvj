@@ -1762,21 +1762,22 @@ myApp.onPageInit('brochure', function (page) {
                       brochure_fname = urldecode(e.data.brochure[i].brochure_fname);
 
                       var b= i%2;
+                      var b =0;
                       //alert(b)
                       if(b == 0)
                       {
                         cadd += '<div class="row">';
                       }
 
-                      cadd += '           <div class="col-50">';
+                      cadd += '           <div class="col-100">';
                       cadd += '               <a href="#" onclick="downbrochure(' + "'" + urldecode(e.data.brochure[i].brochure_pdf) + "');" + '">';
-                      cadd += '                   <img src="' + brochure_image + '" style=" height: 120px; width: 140px;"/></a>';
+                      cadd += '                   <img src="' + brochure_image + '" style="width: 100%;"/></a>';
                       cadd += '                  <span><center><a style="color: black;" href="#" onclick="downbrochure(' + "'" + urldecode(e.data.brochure[i].brochure_pdf) + "');" + '">' + brochure_name + '</a></center></span>';
                       //cadd += '               </a>';
                       //cadd += '               <a class="external" href="' + urldecode(e.data.brochure[i].brochure_pdf)  + '"' + '>' + brochure_fname + '</a>';
                       cadd += '           </div>';
                       
-                      if(b == 1)
+                      //if(b == 1)
                       {
                         cadd += '      </div>';
                       }
@@ -2643,7 +2644,9 @@ function ContactPage()
             {
                 if(local_products.length<1)
                 {
-                    myApp.alert('Please select products before sending any enquiry','');
+                     // myApp.alert('Please select products before sending any enquiry','');
+                    mainView.router.load({url: 'contact.html',ignoreCache: true});
+
                     return true;
                 }
                 
