@@ -2842,7 +2842,7 @@ myApp.onPageInit('alerts', function (page) {
 
        
         
-        cadd += comp_details;
+        cadd += '<div class="card"><div class="card-content"><div class="card-content-inner">' + comp_details + '</div></div></div>';
        
 
     }    
