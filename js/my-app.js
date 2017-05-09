@@ -2085,7 +2085,7 @@ myApp.onPageInit('contact', function (page) {
                         //elist += '<a href="#" onclick="AddProduct2(' + "'" + product_id +  "','" + product_name  +  "','" + product_price  + "')" + '";' + '><img src="img/plus-64.png" style="width: 35px; height:35px;"></a></span></div></div>' + "\n\n";
 
                         elist += '<div class="col-50"><span style="display: block; color: black; height:20px; text-align: left;" id="pd2_' + product_id +'">' + price + '';
-                        elist += '<span id="lblqty2_' + product_id + '" style="width: 50px; display: inline-block; background-color: #fff;line-height: 36px; vertical-align: top;">Qty ' + qty + ' </span><input type="hidden" style="width:10px;" value="' + qty + '" id="qty2_' + product_id + '"></div></div>' + "\n\n";
+                        elist += '<span id="lblqty2_' + product_id + '" style="width: 100px; display: inline-block; background-color: #fff;line-height: 36px; vertical-align: top;">Qty ' + qty + ' </span><input type="hidden" style="width:10px;" value="' + qty + '" id="qty2_' + product_id + '"></div></div>' + "\n\n";
                         //elist += '<a href="#" class="link button button-small button-fill color-red" onclick="RemoveProductNew(' + "'" + product_id +  "','" + product_name  +  "','" + product_price  + "')" + '";' + '>Remove</a></span></div></div>' + "\n\n";
                         //<a style="width:100px;" href="#" class="link button button-small button-fill color-red" onclick="RemoveProductNew(' + "'" + product_id +  "','" + product_name  +  "','" + product_price  + "');" + '">Remove</a>
                   }
