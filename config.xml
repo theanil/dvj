@@ -3,7 +3,7 @@
 <!-- config.xml reference: https://build.phonegap.com/docs/config-xml -->
 <!-- in.bluapps.webapp  // com.blu.webapp-->
 
-<widget id="com.dvjdesign" version="1.1.0" versionCode="110" xmlns="http://www.w3.org/ns/widgets" xmlns:gap="http://phonegap.com/ns/1.0">
+<widget id="com.dvjdesign" version="1.1.1" versionCode="111" xmlns="http://www.w3.org/ns/widgets" xmlns:gap="http://phonegap.com/ns/1.0">
 
 
     <name>DVJ Design</name>
@@ -114,7 +114,9 @@
     -->
 	
     <!-- Define app icon for each platform. -->
-    <icon src="dvj-logo1.png" />
+    <icon src="dvj.png" />
+    <!--<icon src="dvj-logo1.png" />-->
+
     <icon src="www/res/icon/android/icon-36-ldpi.png"   gap:platform="android"    gap:qualifier="ldpi" />
     <icon src="www/res/icon/android/icon-48-mdpi.png"   gap:platform="android"    gap:qualifier="mdpi" />
     <icon src="www/res/icon/android/icon-72-hdpi.png"   gap:platform="android"    gap:qualifier="hdpi" />
@@ -128,18 +130,18 @@
     <icon src="icons/icon-60-2x.png"         gap:platform="ios"        width="120" height="120" />
 -->
 
-    <icon src="icons/Icon-Small.png"                gap:platform="ios"        width="29" height="29" />
-    <icon src="icons/Icon-Small@2x.png"             gap:platform="ios"        width="58" height="58" />
-    <icon src="icons/Icon-Small-50.png"             gap:platform="ios"        width="50" height="50" />
-    <icon src="icons/Icon-Small-50@2x.png"          gap:platform="ios"        width="100" height="100" />
-    <icon src="icons/Icon-72.png"                   gap:platform="ios"        width="72" height="72" />
-    <icon src="icons/Icon-72@2x.png"                gap:platform="ios"        width="144" height="144" />
-    <icon src="icons/Icon-60.png"                   gap:platform="ios"        width="60" height="60" />
-    <icon src="icons/Icon-60@2x.png"                gap:platform="ios"        width="120" height="120" />
-    <icon src="icons/Icon.png"                      gap:platform="ios"        width="57" height="57" />
-    <icon src="icons/Icon@2x.png"                   gap:platform="ios"        width="114" height="114" />
-    <icon src="icons/Icon-76.png"                   gap:platform="ios"        width="76" height="76" />
-    <icon src="icons/Icon-76@2x.png"                gap:platform="ios"        width="152" height="152" />
+    <icon src="icon/Icon-29.png"                gap:platform="ios"        width="29" height="29" />
+    <icon src="icon/Icon-58.png"             gap:platform="ios"        width="58" height="58" />
+    <icon src="icon/Icon-50.png"             gap:platform="ios"        width="50" height="50" />
+    <icon src="icon/Icon-100.png"          gap:platform="ios"        width="100" height="100" />
+    <icon src="icon/Icon-72.png"                   gap:platform="ios"        width="72" height="72" />
+    <icon src="icon/Icon-144.png"                gap:platform="ios"        width="144" height="144" />
+    <icon src="icon/Icon-60.png"                   gap:platform="ios"        width="60" height="60" />
+    <icon src="icon/Icon-120.png"                gap:platform="ios"        width="120" height="120" />
+    <icon src="icon/Icon-57.png"                      gap:platform="ios"        width="57" height="57" />
+    <icon src="icon/Icon-114.png"                   gap:platform="ios"        width="114" height="114" />
+    <icon src="icon/Icon-76.png"                   gap:platform="ios"        width="76" height="76" />
+    <icon src="icon/Icon-152.png"                gap:platform="ios"        width="152" height="152" />
 
 <!--
     <icon src="www/res/icon/blackberry/icon-80.png"     gap:platform="blackberry" />
@@ -157,18 +159,18 @@
 
     <gap:splash src="images/screen-225.png"              gap:platform="blackberry" />
 	
-    <gap:splash src="icons/screen-iphone-portrait.png"         gap:platform="ios"     width="320" height="480" />
-    <gap:splash src="icons/screen-iphone-portrait-2x.png"      gap:platform="ios"     width="640" height="960" />
-    <gap:splash src="icons/screen-iphone-portrait-568h-2x.png" gap:platform="ios"     width="640" height="1136" />
-    <gap:splash src="icons/screen-ipad-portrait.png"           gap:platform="ios"     width="768" height="1024" />
-    <gap:splash src="icons/screen-ipad-landscape.png"          gap:platform="ios"     width="1024" height="768" />
+    <gap:splash src="icon/320w480h.png"                gap:platform="ios"     width="320" height="480" />
+    <gap:splash src="icon/640w960h.png"                gap:platform="ios"     width="640" height="960" />
+    <gap:splash src="icon/640w1136h.png"               gap:platform="ios"     width="640" height="1136" />
+    <gap:splash src="icon/768w1024h.png"               gap:platform="ios"     width="768" height="1024" />
+    <gap:splash src="icon/1024_768.png"                gap:platform="ios"     width="1024" height="768" />
 	
-    <gap:splash src="icons/iphone6-750-1334.png"               gap:platform="ios"     width="750" height="1334" />
-    <gap:splash src="icons/iphone6-1334-750.png"               gap:platform="ios"     width="1334" height="750" />
-    <gap:splash src="icons/ios-1242-2208.png"                  gap:platform="ios"     width="1242" height="2208" />
-    <gap:splash src="icons/ios-2208-1242.png"                  gap:platform="ios"     width="2208" height="1242" />
-    <gap:splash src="icons/ios-1080-1920.png"                  gap:platform="ios"     width="1080" height="1920" />
-    <gap:splash src="icons/ios-1536-2048.png"                  gap:platform="ios"     width="1536" height="2048" />
+    <gap:splash src="icon/750w1334h.png"               gap:platform="ios"     width="750" height="1334" />
+    <gap:splash src="icon/1334w750h.png"               gap:platform="ios"     width="1334" height="750" />
+    <gap:splash src="icon/1242w2208h.png"              gap:platform="ios"     width="1242" height="2208" />
+    <gap:splash src="icon/2208w1242h.png"              gap:platform="ios"     width="2208" height="1242" />
+    <gap:splash src="icon/1080w1920h.png"              gap:platform="ios"     width="1080" height="1920" />
+    <gap:splash src="icon/1536w2048h.png"              gap:platform="ios"     width="1536" height="2048" />
 
     <gap:splash src="www/res/screen/windows-phone/screen-portrait.jpg"      gap:platform="winphone" />
 
