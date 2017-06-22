@@ -49,7 +49,7 @@ document.addEventListener("deviceready", onDeviceReady, false);
         //myApp.alert('model length: ' + $$('.modal-in').length , '')
         //myApp.alert('photo-browser length: ' + $$('.photo-browser').length , '')
 
-        if(page == 'index' ) // || page == 'main' || page == 'login'
+        if(page == 'index1' ) // || page == 'main' || page == 'login'
         {
             // call this to get a new token each time. don't call it to reuse existing token.
             
