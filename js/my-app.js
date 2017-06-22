@@ -2205,6 +2205,215 @@ myApp.onPageInit('contact', function (page) {
 });
 
 
+myApp.onPageInit('search', function (page) {
+
+ //myApp.alert('in search','');
+
+ 
+    var myarray = [];
+
+    local_products = localStorage.getItem("local_products");
+    //alert('local_products <br>' + local_products)
+    if(local_products === null || local_products === 'undefined')
+    {
+    }else{
+    //myApp.alert('length ' + local_products.length,'')
+
+      if(local_products.length>0)
+      {
+        //myApp.alert('local_products ' + local_products,'')
+
+        test = JSON.parse(local_products);
+        //myApp.alert('test.length ' + test.length);
+        //myApp.alert('product_id ' + test[0].product_id);
+        //test = JSON.parse(local_products);
+        
+        for(j = 0; j<test.length; j++)
+        {
+            //myApp.alert(test[j].product_id);
+            myarray.push(test[j].product_id);
+        }
+      }}
+
+
+
+ $$('#search1btn').on('click', function()
+     {
+
+        //myApp.alert('clicked search1btn','')
+        errmessage = '';
+        valid = '1';
+        text = $$("#text").val();
+
+        if(text.length <= 0)
+        {
+            errmessage += 'Please Enter Search Text <br>';
+            //myApp.alert('Please enableter user id');
+            //$$('#username').css('border','1px solid red');
+            valid = 0;
+        }
+       
+        if(valid == 0)
+        {
+            myApp.alert(errmessage,'');
+        }
+        if(valid == '1')
+        {
+          //myApp.alert('Will post','');
+          local_products = localStorage.getItem("local_products");
+          url = srvURL + '/search';
+            console.log(url);
+            //myApp.alert('url ' + url, '');
+            //alert(url);//return false;
+            //$_GET[“mode_of_operation”], $_GET[“pressure_drop_check”], $_GET[“gland”], $_GET[“bearing”], $_GET[“vibration”], $_GET[“remark”]
+
+            $$.ajax({
+                url: url,
+                method: "POST",
+                data: {text: text},
+                processData: true,
+                dataType: 'json',
+                timeout : 50000,
+                success: function (e, status, xhr)
+                {
+                    //myApp.hidePreloader();
+
+                    if(e.status== 'success')
+                    {
+                        //myApp.alert('session_id ' + e.session_id,  ''); 
+
+                        //myApp.alert('Search Data',  '');  
+
+                        total = e.data.products.length;
+                        myApp.alert("Result " + total + " found",'');
+
+                      cadd = '';
+                      for(i=0; i< total; i++)
+                      {
+                          product_id = e.data.products[i].product_id;
+                          //alert(brochure_id);
+                          datec = e.data.products[i].datec;
+
+                          status = e.data.products[i].status;
+                          product_price = e.data.products[i].product_price;
+                          is_new_arrival = e.data.products[i].is_new_arrival;
+
+                          category_id = urldecode(e.data.products[i].category_id);
+                          product_image = urldecode(e.data.products[i].product_image);
+                          bigproduct_image = urldecode(e.data.products[i].bigproduct_image);
+                          product_name = urldecode(e.data.products[i].product_name);
+                          product_price = urldecode(e.data.products[i].product_price);
+                          //brochure_fname = urldecode(e.data.products[i].brochure_fname);
+                         
+                          var b= i%1;
+                          //alert(b)
+                          if(b == 0)
+                          {
+                            cadd += '<div class="row">' + "\n\n";
+                          }
+                          if(dvj_logged_in == 'yes')
+                          {
+                            //price = 'Rs ' + product_price + ' <br>';
+                            price = product_price + ' <br>';
+                          }else
+                          {
+                            price = '';
+                          }
+
+                          cadd += '           <div class="col-100">';
+                          cadd += '               <a href="#" onclick="ProductDetails(' + "'" + product_id +"','" + bigproduct_image +  "');" + '">';
+                          cadd += '                   <img src="' + product_image + '" style="width: 100%;"/></a>';
+                          cadd += '                  <div><center><a style="color: black; font-size: 22px;" href="#" onclick="ProductDetails(' + "'" + product_id +"','" + bigproduct_image +  "');" + '">' + product_name + '</a>';
+                          if(dvj_logged_in == 'yes')
+                          {
+                            cadd += '<br><p color: black; font-size: 22px;">Price: ' + price + '</p>';
+                          }
+                          cadd += '</center></div>' + "\n\n";
+
+                        if(myarray.indexOf(product_id) != -1)   
+                        {
+                           //myApp.alert('matching product_id ' + product_id)
+                           //cadd += '<span style="display: block; color: black;" id="pd_' + product_id +'">' + price + ' <a href="#" class="link" onclick="RemoveProduct(' + "'" + product_id +  "','" + product_name  +  "','" + product_price  + "');" + '">Remove 1</a></span>';
+                           //cadd += '<span style="display: none; color: black;" id="pa_' + product_id +'">' + price + ' <a href="#" class="link" onclick="AddProduct(' + "'" + product_id +  "','" + product_name  +  "','" + product_price  + "');" + '">Add 1</a></span>';
+
+                            for(j = 0; j<test.length; j++)
+                              {
+                                  //myApp.alert(test[j].product_id + ' ' + test[j].product_name + ' ' + test[j].product_qty,'' );
+                                  //myarray.push(test[j].product_id);
+                                  if(test[j].product_id == product_id)
+                                  {
+                                    qty = test[j].product_qty;break;
+                                  }
+                              }
+                              //myApp.alert('qty: ' + qty, '');
+
+
+                            cadd += '<center>';
+
+                            cadd += '<span id="lblqty_' + product_id + '" style=" display: inline-block; background-color: #fff;line-height: 36px; vertical-align: top;"><a style="width:80px;" href="#" class="link button button-small button-fill color-red" onclick="Pchange(' + "'" + product_id + "');" + '">Update</a></span>';
+
+                            cadd += '<span id="txtqty_' + product_id + '" style="display: inline-block; background-color: #fff;line-height: 36px; vertical-align: top;">&nbsp;&nbsp;Qty <input maxlength="4" type="number" style="width:29px; padding-right: 20px !important; text-align: left;" value="' + qty +'" id="qty_' + product_id + '"></span>&nbsp;&nbsp;';
+                            
+                            cadd += '<span style="display: inline-block; color: black;" id="pd_' + product_id +'"> <a style="width:80px;" href="#" class="link button button-small button-fill color-red" onclick="RemoveProductNew(' + "'" + product_id +  "','" + product_name  +  "','" + product_price  + "');" + '">Remove</a></span></center>' + "\n\n";
+
+                            cadd += '<center><span style="display: none; color: black;" id="pa_' + product_id +'"> <a style="width:100px;" href="#" class="link button button-small button-fill color-red" onclick="AddProduct(' + "'" + product_id +  "','" + product_name  +  "','" + product_price  + "');" + '">Add</a></span></center>';
+
+                        }else
+                        {
+
+                            qty =1;
+                            cadd += '<center>';
+
+                            cadd += '<span id="lblqty_' + product_id + '" style="display: none; background-color: #fff;line-height: 36px; vertical-align: top;"><a style="width:80px;" href="#" class="link button button-small button-fill color-red" onclick="Pchange(' + "'" + product_id + "');" + '">Update</a></span>';
+
+                            cadd += '<span id="txtqty_' + product_id + '" style="display: none; background-color: #fff;line-height: 36px; vertical-align: top;">&nbsp;&nbsp;Qty <input maxlength="4" type="number" style="width:29px;padding-right: 20px !important; text-align: left;" value="' + qty +'" id="qty_' + product_id + '"></span>&nbsp;&nbsp;';
+                            
+                            cadd += '<span style="display: none; color: black;" id="pd_' + product_id +'"> <a style="width:80px;" href="#" class="link button button-small button-fill color-red" onclick="RemoveProductNew(' + "'" + product_id +  "','" + product_name  +  "','" + product_price  + "');" + '">Remove</a></span></center>' + "\n\n";
+
+                            cadd += '<center><span style="display: block; color: black;" id="pa_' + product_id +'"> <a style="width:100px;" href="#" class="link button button-small button-fill color-red" onclick="AddProduct(' + "'" + product_id +  "','" + product_name  +  "','" + product_price  + "');" + '">Add</a></span></center>';
+                        }
+
+                        cadd += '           </div>' + "\n\n";
+                      
+                          if(b == 0)
+                          {
+                            cadd += '      </div>' + "\n\n";
+                          }
+                       }
+                        console.log(cadd)
+
+                        //console.log(localStorage.getItem("local_products"));
+
+                        $$("#productsdetails2").html(cadd);
+
+                        //mainView.router.load({
+                        //        url: 'index.html',
+                        //        context: {}});                      
+                    }else
+                    {
+                        //myApp.alert('error: ' + e.status,  '');
+                        myApp.alert(e.message,  ''); 
+                    }
+                },
+                error: function (xhr, status)
+                {
+                    myApp.hideIndicator();
+
+                    if(status == 0)
+                    {
+                        myApp.alert('Please Check Internet',  ''); 
+                    }else
+                    {
+                        myApp.alert('failure * ' +  status,  '');  
+                    };
+                }
+            });
+
+        }
+    });
+
+});
+
 
 myApp.onPageBeforeInit('dealer_profile', function (page) {
 
