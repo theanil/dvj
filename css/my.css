@@ -70,3 +70,5 @@ div[class*="col-"] {
   padding: 5px;
   padding-left: 10px;
 }
+
+.swiper-zoom-container { background-color: #fff; }
