@@ -49,17 +49,22 @@ document.addEventListener("deviceready", onDeviceReady, false);
         //myApp.alert('model length: ' + $$('.modal-in').length , '')
         //myApp.alert('photo-browser length: ' + $$('.photo-browser').length , '')
 
-        if(page == 'index1' ) // || page == 'main' || page == 'login'
+        if(page == 'index' ) // || page == 'main' || page == 'login'
         {
             // call this to get a new token each time. don't call it to reuse existing token.
             
+            /*
             navigator.notification.confirm(
                 'Wish to Exit App ?',  // message
                 onBtnConfirm,              // callback to invoke with index of button pressed
                 '',            // title
                 'Yes,No'          // buttonLabels
             );
-       
+            */
+
+            localStorage.removeItem("last_main_call");
+            navigator.app.clearHistory();
+            navigator.app.exitApp();
             //navigator.app.backHistory();
         }else
         {
