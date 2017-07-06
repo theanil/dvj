@@ -72,3 +72,18 @@ div[class*="col-"] {
 }
 
 .swiper-zoom-container { background-color: #fff; }
+
+@font-face {
+  font-family: 'AVGARDN';
+  src: url('../fonts/AVGARDNI.ttf') format('truetype');
+  font-weight: normal;
+  font-style: normal !important;
+}
+
+
+@font-face {
+  font-family: 'RomanUncialModern';
+  src: url('../fonts/RomanUncialModern.ttf') format('truetype');
+  font-weight: normal;
+  font-style: normal !important;
+}

@@ -62,3 +62,15 @@ Redeem button
 
 user list
 
+---
+app vaccifire
+
+QR code search (http://www.vaccifire.com/crm/admin/qr_code_generate)
+show Count on Main screen
+client name bigger
+
+Quotation
+sr no in reports
+
+
+
