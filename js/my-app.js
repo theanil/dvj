@@ -21,7 +21,7 @@ if(hostname == 'localhost')
 {
     var srvURL = "http://localhost/api_dvj/Serv";
 }
-var version = "110";
+var version = "116";
 var app_name ="DVJ";
 var appname = "DVJ Design";
 
