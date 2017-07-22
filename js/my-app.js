@@ -21,7 +21,7 @@ if(hostname == 'localhost')
 {
     var srvURL = "http://localhost/api_dvj/Serv";
 }
-var version = "117";
+var version = "118";
 var app_name ="DVJ";
 var appname = "DVJ Design";
 
@@ -131,8 +131,8 @@ document.addEventListener("deviceready", onDeviceReady, false);
 
         //alert(JSON.stringify(data));
 
-        myApp.alert(data.message,'');
-        myApp.alert(device.platform,'');
+        //myApp.alert(data.message,'');
+        //myApp.alert(device.platform,'');
         //alert('type: ' + data.additionalData.type);
         //alert('id ' + data.additionalData.id);
         //alert('id ' + data.id);
@@ -145,7 +145,7 @@ document.addEventListener("deviceready", onDeviceReady, false);
 
         if (device.platform == 'iOS') {
             myApp.modal({
-                title:  'Notification &nbsp;&nbsp;&nbsp;&nbsp;<a href="#" onclick="myApp.closeModal();"><i class="icon f7-icons active" style="margin-left: 0px;">close</i></a>',
+                title:  'Notification &nbsp;&nbsp;&nbsp;&nbsp;<a href="#" onclick="myApp.closeModal();"><i class="fa fa-window-close color-white" style="margin-left: 0px;">close</i></a>',
                 text: message,
                 buttons: [
                   {
