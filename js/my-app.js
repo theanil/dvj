@@ -146,22 +146,45 @@ document.addEventListener("deviceready", onDeviceReady, false);
         //$("#password").val(data.message);
 
         message = data.message;
-        category_id = data.additionalData.cat_id;
-        category = data.additionalData.category;
-        //type = data.additionalData.type;
-        
-        //myApp.alert('Category ' + category, '');
-        //myalert();
 
-        if(data.additionalData.category.length>0)
-        {
-            myApp.alert('Opening Category ' + category, '');
-            ProductDisplay(category_id, category);
-        }else
-        {
-            myApp.alert('Message ' + message, '');
+        if (device.platform == 'iOS') {
+            myApp.modal({
+                title:  'Notification &nbsp;&nbsp;&nbsp;&nbsp;<a href="#" onclick="myApp.closeModal();"><i class="icon f7-icons active" style="margin-left: 0px;">close</i></a>',
+                text: message,
+                buttons: [
+                  {
+                    text: 'Close',
+                    onClick: function() {}
+                  }]
+               });
+        }else{
+            category_id = data.additionalData.cat_id;
+            category = data.additionalData.category;
+            //type = data.additionalData.type;
+            
+            //myApp.alert('Category ' + category, '');
+            //myalert();
+
+            if(data.additionalData.category.length>0)
+            {
+                myApp.alert('Opening Category ' + category, '');
+                ProductDisplay(category_id, category);
+            }else
+            {
+                //myApp.alert('Notification Message<br>' + message, '');
+                myApp.modal({
+                title:  'Notification &nbsp;&nbsp;&nbsp;&nbsp;<a href="#" onclick="myApp.closeModal();"><i class="icon f7-icons active" style="margin-left: 0px;">close</i></a>',
+                text: message,
+                buttons: [
+                  {
+                    text: 'Close',
+                    onClick: function() {}
+                  }]
+               });
+            }
         }
 
+        //type = data.additionalData.type;
     });
 
     push.on('error', function(e) {
