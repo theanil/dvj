@@ -128,15 +128,11 @@ document.addEventListener("deviceready", onDeviceReady, false);
 
     push.on('notification', function(data) {
         // data.message,
-        // data.title,
-        // data.count,
-        // data.sound,
-        // data.image,
-        // data.additionalData
 
         //alert(JSON.stringify(data));
 
-        //alert(data.message);
+        myApp.alert(data.message,'');
+        myApp.alert(device.platform,'');
         //alert('type: ' + data.additionalData.type);
         //alert('id ' + data.additionalData.id);
         //alert('id ' + data.id);
