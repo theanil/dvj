@@ -1352,11 +1352,14 @@ function RemoveProduct2(id,product_name, product_price)
       }
 
       $$("#qty_" + id).val(qty3);
+      //myApp.alert(qty3,'')
       //$$("#lblqty_" + id).html('Qty ' + qty3);
       $$("#lblqty_" + id).html(qty3);
       $$("#qty2_" + id).val(qty3);
       //$$("#lblqty2_" + id).html('Qty ' + qty3);
       $$("#lblqty2_" + id).html(qty3);
+
+      //myApp.alert(qty2,''); return false;
 
       if(qty2 == 0)
       {
@@ -2166,8 +2169,8 @@ myApp.onPageInit('contact', function (page) {
                         elist += '<div class="col-28"><span style="display: block; color: black; height:20px; text-align: left;" id="pd2_' + product_id +'">' + price + '';
                         //elist += '<span id="lblqty2_' + product_id + '" style="width: 100px; display: inline-block; background-color: #fff;line-height: 36px; vertical-align: top;">' + qty + ' </span><input type="hidden" style="width:10px;" value="' + qty + '" id="qty2_' + product_id + '"></div>';
 
-                        elist += '<center><span style="display: none1; color: black;" id="pd_' + product_id +'">' + price + '<a href="#" onclick="RemoveProduct2(' + "'" + product_id +  "','" + product_name  +  "','" + product_price  + "')" + '";' + '><img src="img/minus-64.png" style="width: 30px; height:30px;"></a>';
-                        elist += '<span id="lblqty_' + product_id + '" style="width: 20px; display: inline-block; background-color: #fff;line-height: 36px; vertical-align: top; font-size:20px;">' + qty +' </span><input type="hidden" style="width:10px;" value="1" id="qty_' + product_id + '">';
+                        elist += '<center><span style="display: none1; color: black;" id="pd_' + product_id +'">' + price + '<a href="#" onclick="RemoveProduct2(' + "'" + product_id +  "','" + product_name  +  "','" + product_price  +  "','" + qty  + "')" + '";' + '><img src="img/minus-64.png" style="width: 30px; height:30px;"></a>';
+                        elist += '<span id="lblqty_' + product_id + '" style="width: 20px; display: inline-block; background-color: #fff;line-height: 36px; vertical-align: top; font-size:20px;">' + qty +' </span><input type="hidden" style="width:10px;" value="' + qty + '" id="qty_' + product_id + '">';
                         elist += '<a href="#" onclick="AddProduct2(' + "'" + product_id +  "','" + product_name  +  "','" + product_price  + "')" + '";' + '><img src="img/plus-64.png" style="width: 30px; height:30px;"></a></span>';
                         //elist += '<img src="img/plus-64.png" style="width: 35px; height:35px;">';
                         elist += '</div>';
