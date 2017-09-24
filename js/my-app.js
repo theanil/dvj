@@ -3176,11 +3176,7 @@ myApp.onPageInit('alerts', function (page) {
 
         comp_details += '</p>';
 
-       
-        
         cadd += '<div class="card"><div class="card-content"><div class="card-content-inner">' + comp_details + '</div></div></div>';
-       
-
     }    
 
     if(totalalerts == 0)
@@ -3208,7 +3204,93 @@ var conversationStarted = false;
 var myMessages = myApp.messages('.messages', {
   autoLayout:true
 });
- 
+    
+    setInterval(function()
+    { 
+
+        device_uuid = localStorage.getItem("device_uuid");
+        var url = srvURL + "/chatlist";//?mobile=9702502361&pass=9702502361
+        
+        $$.ajax({
+            url: url,
+            method: "POST",
+            data: {device_uuid: device_uuid},
+            processData: true,
+            dataType: 'json',
+            timeout : 50000,
+            success: function (e, status, xhr)
+            {            
+                //myApp.alert(e.status,  ''); 
+                if(e.status == 'success')
+                {
+                    totalalerts = e.data.chat.length;
+                    for(i=0; i< totalalerts; i++)
+                    {
+                        chatid = e.data.chat[i].chatid;
+                        //alert(mess_id);
+
+                        datec = e.data.chat[i].datec;
+                        readstatus = e.data.chat[i].readstatus;
+                        message = urldecode(e.data.chat[i].message);
+
+                        //myApp.alert(e.status,  ''); 
+
+                         var avatar, name;
+                           myMessages.addMessage({
+                            // Message text
+                            text: message,
+                            // Random message type
+                            type: 'sent',
+                            // Avatar and name:
+                            avatar: avatar,
+                            name: name,
+                            // Day
+                            day: datec
+                          })
+                    }   
+
+                    //myApp.alert(e.message,  ''); 
+                }else
+                {
+                    //myApp.alert('error: ' + e.status,  '');
+                    //myApp.alert(e.message,  ''); 
+                }
+            },
+            error: function (xhr, status)
+            {
+                myApp.hideIndicator();
+
+                if(status == 0)
+                {
+                    myApp.alert('Please Check Internet',  ''); 
+                }else
+                {
+                    myApp.alert('failure * ' +  status,  '');  
+                }
+            }
+        });
+
+        //alert("Hello"); 
+        /*
+        var avatar, name;
+       myMessages.addMessage({
+        // Message text
+        text: 'Hello',
+        // Random message type
+        type: 'sent',
+        // Avatar and name:
+        avatar: avatar,
+        name: name,
+        // Day
+        day: !conversationStarted ? 'Today' : false,
+        time: !conversationStarted ? (new Date()).getHours() + ':' + (new Date()).getMinutes() : false
+      })
+    
+        */
+    }, 10000);
+
+
+
 // Init Messagebar
 var myMessagebar = myApp.messagebar('.messagebar');
  //myApp.alert('I am in chat','')
@@ -3236,6 +3318,43 @@ $$('.messagebar .link').on('click', function () {
   }
   name = 'anil';
   // Add message
+
+    device_uuid = localStorage.getItem("device_uuid");
+    var url = srvURL + "/chatnew";//?mobile=9702502361&pass=9702502361
+    
+    $$.ajax({
+        url: url,
+        method: "POST",
+        data: {device_uuid: device_uuid, name: name, message: messageText},
+        processData: true,
+        dataType: 'json',
+        timeout : 50000,
+        success: function (e, status, xhr)
+        {            
+            //myApp.alert('e.status ' + e.status,  '');  
+            if(e.status == 'success')
+            {
+                //myApp.alert(e.message,  ''); 
+            }else
+            {
+                //myApp.alert('error: ' + e.status,  '');
+                //myApp.alert(e.message,  ''); 
+            }
+        },
+        error: function (xhr, status)
+        {
+            myApp.hideIndicator();
+
+            if(status == 0)
+            {
+                myApp.alert('Please Check Internet',  ''); 
+            }else
+            {
+                myApp.alert('failure * ' +  status,  '');  
+            }
+        }
+    });
+
   myMessages.addMessage({
     // Message text
     text: messageText,
