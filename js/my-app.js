@@ -2170,7 +2170,7 @@ myApp.onPageInit('contact', function (page) {
                         //elist += '<span id="lblqty2_' + product_id + '" style="width: 100px; display: inline-block; background-color: #fff;line-height: 36px; vertical-align: top;">' + qty + ' </span><input type="hidden" style="width:10px;" value="' + qty + '" id="qty2_' + product_id + '"></div>';
 
                         elist += '<center><span style="display: none1; color: black;" id="pd_' + product_id +'">' + price + '<a href="#" onclick="RemoveProduct2(' + "'" + product_id +  "','" + product_name  +  "','" + product_price  +  "','" + qty  + "')" + '";' + '><img src="img/minus-64.png" style="width: 30px; height:30px;"></a>';
-                        elist += '<span id="lblqty_' + product_id + '" style="width: 20px; display: inline-block; background-color: #fff;line-height: 36px; vertical-align: top; font-size:20px;">' + qty +' </span><input type="hidden" style="width:10px;" value="' + qty + '" id="qty_' + product_id + '">';
+                        elist += '<span id="lblqty_' + product_id + '" style="width: 30px; display: inline-block; background-color: #fff;line-height: 36px; vertical-align: top; font-size:20px;">' + qty +' </span><input type="hidden" style="width:10px;" value="' + qty + '" id="qty_' + product_id + '">';
                         elist += '<a href="#" onclick="AddProduct2(' + "'" + product_id +  "','" + product_name  +  "','" + product_price  + "')" + '";' + '><img src="img/plus-64.png" style="width: 30px; height:30px;"></a></span>';
                         //elist += '<img src="img/plus-64.png" style="width: 35px; height:35px;">';
                         elist += '</div>';
@@ -3196,4 +3196,61 @@ myApp.onPageInit('alerts', function (page) {
 
      //myApp.alert('alerts.html ' + card, '');
      $$("#showalert").html(cadd);
+});
+
+myApp.onPageInit('chat', function (page) {
+
+//myApp.alert('I am in chat','')
+    // Conversation flag
+var conversationStarted = false;
+ 
+// Init Messages
+var myMessages = myApp.messages('.messages', {
+  autoLayout:true
+});
+ 
+// Init Messagebar
+var myMessagebar = myApp.messagebar('.messagebar');
+ //myApp.alert('I am in chat','')
+
+// Handle message
+$$('.messagebar .link').on('click', function () {
+  // Message text
+  var messageText = myMessagebar.value().trim();
+  //myApp.alert('I am in 2','')
+
+  // Exit if empy message
+  if (messageText.length === 0) return;
+ 
+  // Empty messagebar
+  myMessagebar.clear()
+ 
+  // Random message type
+  var messageType = (['sent', 'received'])[Math.round(Math.random())];
+ 
+  // Avatar and name for received message
+  var avatar, name;
+  if(messageType === 'received') {
+    avatar = 'http://lorempixel.com/output/people-q-c-100-100-9.jpg';
+    name = 'Kate';
+  }
+  name = 'anil';
+  // Add message
+  myMessages.addMessage({
+    // Message text
+    text: messageText,
+    // Random message type
+    type: messageType,
+    // Avatar and name:
+    avatar: avatar,
+    name: name,
+    // Day
+    day: !conversationStarted ? 'Today' : false,
+    time: !conversationStarted ? (new Date()).getHours() + ':' + (new Date()).getMinutes() : false
+  })
+ 
+  // Update conversation flag
+  conversationStarted = true;
+});   
+
 });
