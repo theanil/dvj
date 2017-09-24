@@ -3231,8 +3231,15 @@ var myMessages = myApp.messages('.messages', {
 
                         datec = e.data.chat[i].datec;
                         readstatus = e.data.chat[i].readstatus;
+                        to = e.data.chat[i].to;
+                        from = e.data.chat[i].from;
                         message = urldecode(e.data.chat[i].message);
 
+                        type = 'received';
+                        if(to == '1')
+                        {
+                            type = 'sent';
+                        }
                         //myApp.alert(e.status,  ''); 
 
                          var avatar, name;
@@ -3240,7 +3247,7 @@ var myMessages = myApp.messages('.messages', {
                             // Message text
                             text: message,
                             // Random message type
-                            type: 'sent',
+                            type: type,
                             // Avatar and name:
                             avatar: avatar,
                             name: name,
