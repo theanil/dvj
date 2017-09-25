@@ -368,6 +368,7 @@ myApp.onPageInit('login', function (page) {
                         localStorage.setItem("dvj_session_id", e.session_id);
                         localStorage.setItem("dvj_vendor_id", e.user_id);
                         localStorage.setItem("dvj_vendor_name", e.vendor_name);
+                        localStorage.setItem("dvj_isadmin", e.isadmin);
                         
                         //sendID();
 
@@ -3194,17 +3195,224 @@ myApp.onPageInit('alerts', function (page) {
      $$("#showalert").html(cadd);
 });
 
+
+function Chat()
+{
+    dvj_logged_in = localStorage.getItem("dvj_logged_in");
+    //myApp.alert(dvj_logged_in,'')
+    if(dvj_logged_in == 'yes')
+    {
+        dvj_isadmin = localStorage.getItem("dvj_isadmin");
+        //myApp.alert('dvj_isadmin ' + dvj_isadmin, '')
+        if(dvj_isadmin == 0)
+        {
+            mainView.router.load({url: 'chat.html',context: {}});
+        }else{
+            mainView.router.load({url: 'chatlist.html',context: {}});            
+        }
+    }else{
+        myApp.alert('Please login for the Chat option','')
+    }
+}
+
+myApp.onPageInit('chatlist', function (page) {
+    //myApp.alert('chatlist','')
+
+
+    //chats += '                        <li>';
+    //chats += '                          <div class="item-content">';
+    //chats += '                            <div class="item-inner">';
+    //chats += '                              <div class="item-title">Aaron </div>';
+    //chats += '                            </div>';
+    //chats += '                          </div>';
+    //chats += '                        </li>';
+    
+    dvj_vendor_id = localStorage.getItem("dvj_vendor_id");
+    dvj_vendor_name = localStorage.getItem("dvj_vendor_name");
+    dvj_isadmin = localStorage.getItem("dvj_isadmin");
+    device_uuid = localStorage.getItem("device_uuid");
+    var url = srvURL + "/onlinelist";//?mobile=9702502361&pass=9702502361
+    chats = '';
+
+    $$.ajax({
+        url: url,
+        method: "POST",
+        data: {device_uuid: device_uuid, vendor_id: dvj_vendor_id},
+        processData: true,
+        dataType: 'json',
+        timeout : 50000,
+        success: function (e, status, xhr)
+        {            
+            //myApp.alert(e.status,  ''); 
+            if(e.status == 'success')
+            {
+                totalalerts = e.data.chat.length;
+                //myApp.alert(totalalerts,  '');
+
+                chats = '';
+                chats += '<div class="list-group">';
+                chats += '                      <ul>';
+                
+                for(i=0; i< totalalerts; i++)
+                {
+                    dealer_id = e.data.chat[i].dealer_id;
+                    //alert(dealer_id);
+
+                    last_online = e.data.chat[i].last_online;
+                    dealer_name = urldecode(e.data.chat[i].dealer_name);
+                    dealer_contact_person = urldecode(e.data.chat[i].dealer_contact_person);
+                    //alert(dealer_contact_person);
+
+                    chats += '<li>';
+                    chats += '<div class="item-content">';
+                    chats += '<div class="item-inner">';
+                    chats += '<div class="item-title"><a href="#" onClick="ChatUser(' + "'" + dealer_id + "');" + '">' + dealer_contact_person + ' (' + last_online + ')' + '</a></div>';
+                    chats += '</div>';
+                    chats += '</div>';
+                    chats += '</li>';
+                    //myApp.alert(chats,'');
+                }   
+                chats += '                    </ul>';
+                chats += '                    </div>';
+                //myApp.alert(chats,'');
+                //myApp.alert(e.message,  ''); 
+                console.log(chats)
+                //myApp.alert(chats,'')
+                $$("#chatlist2").html(chats);
+            }else
+            {
+                //myApp.alert('error: ' + e.status,  '');
+                //myApp.alert(e.message,  ''); 
+            }
+        },
+        error: function (xhr, status)
+        {
+            myApp.hideIndicator();
+
+            if(status == 0)
+            {
+                myApp.alert('Please Check Internet',  ''); 
+            }else
+            {
+                myApp.alert('failure * ' +  status,  '');  
+            }
+        }
+    });
+
+    //chats += '                        <li>';
+    //chats += '                          <div class="item-content">';
+    //chats += '                            <div class="item-inner">';
+    //chats += '                              <div class="item-title">Abbie</div>';
+    //chats += '                            </div>';
+    //chats += '                          </div>';
+    //chats += '                        </li>';
+        
+});
+
+function ChatUser(user)
+{
+    //myApp.alert('Chat with user: ' + user,'')
+    mainView.router.load({url: 'chat.html',context: {user: user}});
+}
+
 myApp.onPageInit('chat', function (page) {
 
 //myApp.alert('I am in chat','')
+    user =page.context.user; 
+    //myApp.alert('start with user: ' + user,'')
+    if(user == undefined)
+    {
+        toid = "admin";
+    }else{
+        toid = user;
+    }
+    //myApp.alert('start with user: ' + user,'')
+
     // Conversation flag
-var conversationStarted = false;
- 
-// Init Messages
-var myMessages = myApp.messages('.messages', {
-  autoLayout:true
-});
+    var conversationStarted = false;
+     
+    // Init Messages
+    var myMessages = myApp.messages('.messages', {
+      autoLayout:true
+    });
+        
+    dvj_vendor_id = localStorage.getItem("dvj_vendor_id");
+    dvj_vendor_name = localStorage.getItem("dvj_vendor_name");
+    dvj_isadmin = localStorage.getItem("dvj_isadmin");
+    dvj_vendor_name = urldecode(dvj_vendor_name);
+    //myApp.alert('dvj_vendor_id: ' + dvj_vendor_id + ' <br> dvj_vendor_name: '+dvj_vendor_name + '<br> dvj_isadmin: ' + dvj_isadmin,'')
+
+    device_uuid = localStorage.getItem("device_uuid");
+    var url = srvURL + "/chatlist";//?mobile=9702502361&pass=9702502361
     
+    $$.ajax({
+        url: url,
+        method: "POST",
+        data: {device_uuid: device_uuid, first: true, vendor_id: dvj_vendor_id, toid: toid},
+        processData: true,
+        dataType: 'json',
+        timeout : 50000,
+        success: function (e, status, xhr)
+        {            
+            //myApp.alert(e.status,  ''); 
+            if(e.status == 'success')
+            {
+                totalalerts = e.data.chat.length;
+                for(i=0; i< totalalerts; i++)
+                {
+                    chatid = e.data.chat[i].chatid;
+                    //alert(mess_id);
+
+                    datec = e.data.chat[i].datec;
+                    readstatus = e.data.chat[i].readstatus;
+                    to = e.data.chat[i].to;
+                    fromname = urldecode(e.data.chat[i].fromname);
+                    from = e.data.chat[i].from;
+                    message = urldecode(e.data.chat[i].message);
+
+                    if(dvj_vendor_id == from)
+                    {
+                        type = 'sent';
+                    }else{
+                        type = 'received';
+                    }
+                    //myApp.alert(e.status,  ''); 
+
+                     var avatar, name;
+                       myMessages.addMessage({
+                        // Message text
+                        text: message,
+                        // Random message type
+                        type: type,
+                        // Avatar and name:
+                        avatar: '',
+                        name: fromname,
+                        // Day
+                        day: datec
+                      })
+                }   
+
+                //myApp.alert(e.message,  ''); 
+            }else
+            {
+                //myApp.alert('error: ' + e.status,  '');
+                //myApp.alert(e.message,  ''); 
+            }
+        },
+        error: function (xhr, status)
+        {
+            myApp.hideIndicator();
+
+            if(status == 0)
+            {
+                myApp.alert('Please Check Internet',  ''); 
+            }else
+            {
+                myApp.alert('failure * ' +  status,  '');  
+            }
+        }
+    });
+
     setInterval(function()
     { 
 
@@ -3214,7 +3422,7 @@ var myMessages = myApp.messages('.messages', {
         $$.ajax({
             url: url,
             method: "POST",
-            data: {device_uuid: device_uuid},
+            data: {device_uuid: device_uuid, vendor_id: dvj_vendor_id, toid: toid},
             processData: true,
             dataType: 'json',
             timeout : 50000,
@@ -3233,6 +3441,7 @@ var myMessages = myApp.messages('.messages', {
                         readstatus = e.data.chat[i].readstatus;
                         to = e.data.chat[i].to;
                         from = e.data.chat[i].from;
+                        fromname = urldecode(e.data.chat[i].fromname);
                         message = urldecode(e.data.chat[i].message);
 
                         type = 'received';
@@ -3249,8 +3458,8 @@ var myMessages = myApp.messages('.messages', {
                             // Random message type
                             type: type,
                             // Avatar and name:
-                            avatar: avatar,
-                            name: name,
+                            avatar: '',
+                            name: fromname,
                             // Day
                             day: datec
                           })
@@ -3294,7 +3503,7 @@ var myMessages = myApp.messages('.messages', {
       })
     
         */
-    }, 10000);
+    }, 5000);
 
 
 
@@ -3323,6 +3532,7 @@ $$('.messagebar .link').on('click', function () {
     avatar = 'http://lorempixel.com/output/people-q-c-100-100-9.jpg';
     name = 'Kate';
   }
+  avatar = '';
   name = 'anil';
   // Add message
 
@@ -3332,7 +3542,7 @@ $$('.messagebar .link').on('click', function () {
     $$.ajax({
         url: url,
         method: "POST",
-        data: {device_uuid: device_uuid, name: name, message: messageText},
+        data: {device_uuid: device_uuid, name: dvj_vendor_name, message: messageText,  vendor_id: dvj_vendor_id, toid: toid},
         processData: true,
         dataType: 'json',
         timeout : 50000,
@@ -3362,6 +3572,7 @@ $$('.messagebar .link').on('click', function () {
         }
     });
 
+var messageType = 'sent';
   myMessages.addMessage({
     // Message text
     text: messageText,
@@ -3369,7 +3580,7 @@ $$('.messagebar .link').on('click', function () {
     type: messageType,
     // Avatar and name:
     avatar: avatar,
-    name: name,
+    name: dvj_vendor_name,
     // Day
     day: !conversationStarted ? 'Today' : false,
     time: !conversationStarted ? (new Date()).getHours() + ':' + (new Date()).getMinutes() : false
