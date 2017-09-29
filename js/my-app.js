@@ -3251,7 +3251,7 @@ myApp.onPageInit('chatlist', function (page) {
 
                 chats = '';
                 chats += '<div class="list-group">';
-                chats += '                      <ul>';
+                chats += '<ul style="background: transparent;">';
                 
                 for(i=0; i< totalalerts; i++)
                 {
