@@ -87,3 +87,7 @@ div[class*="col-"] {
   font-weight: normal;
   font-style: normal !important;
 }
+
+.message-sent .message-text {
+  background-color: grey;
+}
