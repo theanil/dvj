@@ -144,6 +144,9 @@ document.addEventListener("deviceready", onDeviceReady, false);
         message = data.message;
 
         if (device.platform == 'iOS') {
+            chat = data.additionalData.chat;
+            myApp.alert('chat ' + chat, '');
+            
             myApp.modal({
                 title:  'Notification &nbsp;&nbsp;&nbsp;&nbsp;<a href="#" onclick="myApp.closeModal();"><i class="fa fa-window-close color-white" style="margin-left: 0px;">close</i></a>',
                 text: message,
@@ -156,6 +159,7 @@ document.addEventListener("deviceready", onDeviceReady, false);
         }else{
             category_id = data.additionalData.cat_id;
             category = data.additionalData.category;
+            chat = data.additionalData.chat;
             //type = data.additionalData.type;
             
             //myApp.alert('Category ' + category, '');
@@ -165,6 +169,10 @@ document.addEventListener("deviceready", onDeviceReady, false);
             {
                 myApp.alert('Opening Category ' + category, '');
                 ProductDisplay(category_id, category);
+            }if(data.additionalData.chat.length>0)
+            {
+                //myApp.alert('Opening Category ' + category, '');
+                Chat();
             }else
             {
                 //myApp.alert('Notification Message<br>' + message, '');
@@ -207,13 +215,18 @@ myApp.onPageBeforeInit('index', function (page) {
         {  
             $$("#beforelogin").show();
             $$("#afterlogin").hide();
+            $$(".sign1").show();
+            $$(".chat1").hide();
+            //myApp.alert('1','close')
         }
         else
         {
             $$("#beforelogin").hide();     
             $$("#afterlogin").show();     
+            $$(".sign1").hide();
+            $$(".chat1").show();
+            //myApp.alert('2','close')
         }
-
 
 }).trigger(); //And trigger it right away
 
@@ -247,6 +260,31 @@ var mySwiper = new Swiper('.swiper-container2', {
 })   
 
 myApp.onPageInit('index', function (page) {
+
+
+    dvj_logged_in = localStorage.getItem("dvj_logged_in");
+    if(dvj_logged_in == null || dvj_logged_in == 'undefined')
+        {  
+            $$("#beforelogin").show();
+            $$("#afterlogin").hide();
+            $$(".sign1").show();
+            $$(".chat1").hide();
+            //myApp.alert('1','close')
+        }
+        else
+        {
+            $$("#beforelogin").hide();     
+            $$("#afterlogin").show();     
+            $$(".sign1").hide();
+            $$(".chat1").show();
+
+            //$$("#sign1").css("display", "block");
+            //$$("#chat1").css("display", "block");
+            //myApp.alert('2 will hide','close')
+        }
+        //$$("#sign11").css("background-color", "red");
+        //$$(".su").css("background-color", "red");
+
        /*=== Default standalone ===*/
           var myPhotoBrowserStandalone = myApp.photoBrowser({
               photos : [
@@ -2171,7 +2209,8 @@ myApp.onPageInit('contact', function (page) {
                         //elist += '<span id="lblqty2_' + product_id + '" style="width: 100px; display: inline-block; background-color: #fff;line-height: 36px; vertical-align: top;">' + qty + ' </span><input type="hidden" style="width:10px;" value="' + qty + '" id="qty2_' + product_id + '"></div>';
 
                         elist += '<center><span style="display: none1; color: black;" id="pd_' + product_id +'">' + price + '<a href="#" onclick="RemoveProduct2(' + "'" + product_id +  "','" + product_name  +  "','" + product_price  +  "','" + qty  + "')" + '";' + '><img src="images/minus.png" style="width: 20px; height:20px;"></a>';
-                        elist += '<span id="lblqty_' + product_id + '" style="width: 30px; display: inline-block; background-color: transparent; line-height: 36px; vertical-align: top; font-size:20px;">' + qty +' </span><input type="hidden" style="width:10px;" value="' + qty + '" id="qty_' + product_id + '">';
+                        //elist += '<span id="lblqty_' + product_id + '" style="width: 30px; display: inline-block; background-color: transparent; line-height: 36px; vertical-align: top; font-size:20px;">' + qty +' </span><input type="hidden1" style="width:10px;" value="' + qty + '" id="qty_' + product_id + '">';
+                        elist += '<span id="lblqty_' + product_id + '" style="width: 0px; display: inline-block; background-color: transparent; line-height: 36px; vertical-align: top; font-size:20px;"></span><input type="text" style="width:10px;margin: 5px; padding:5px !important;" value="' + qty + '" id="qty_' + product_id + '">';
                         elist += '<a href="#" onclick="AddProduct2(' + "'" + product_id +  "','" + product_name  +  "','" + product_price  + "')" + '";' + '><img src="images/plus.png" style="width: 20px; height:20px;"></a></span>';
                         //elist += '<img src="img/plus-64.png" style="width: 35px; height:35px;">';
                         elist += '</div>';
