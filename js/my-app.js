@@ -2208,14 +2208,14 @@ myApp.onPageInit('contact', function (page) {
                         elist += '<div class="col-28" style="background-color: transparent; "><span style="display: block; color: black; height:20px; text-align: left;" id="pd2_' + product_id +'">' + price + '';
                         //elist += '<span id="lblqty2_' + product_id + '" style="width: 100px; display: inline-block; background-color: #fff;line-height: 36px; vertical-align: top;">' + qty + ' </span><input type="hidden" style="width:10px;" value="' + qty + '" id="qty2_' + product_id + '"></div>';
 
-                        elist += '<center><span style="display: none1; color: black;" id="pd_' + product_id +'">' + price + '<a href="#" onclick="RemoveProduct2(' + "'" + product_id +  "','" + product_name  +  "','" + product_price  +  "','" + qty  + "')" + '";' + '><img src="images/minus.png" style="width: 20px; height:20px;"></a>';
+                        ////elist += '<center><span style="display: none1; color: black;" id="pd_' + product_id +'">' + price + '<a href="#" onclick="RemoveProduct2(' + "'" + product_id +  "','" + product_name  +  "','" + product_price  +  "','" + qty  + "')" + '";' + '><img src="images/minus.png" style="width: 20px; height:20px;"></a>';
                         //elist += '<span id="lblqty_' + product_id + '" style="width: 30px; display: inline-block; background-color: transparent; line-height: 36px; vertical-align: top; font-size:20px;">' + qty +' </span><input type="hidden1" style="width:10px;" value="' + qty + '" id="qty_' + product_id + '">';
-                        elist += '<span id="lblqty_' + product_id + '" style="width: 0px; display: inline-block; background-color: transparent; line-height: 36px; vertical-align: top; font-size:20px;"></span><input type="text" style="width:10px;margin: 5px; padding:5px !important;" value="' + qty + '" id="qty_' + product_id + '">';
-                        elist += '<a href="#" onclick="AddProduct2(' + "'" + product_id +  "','" + product_name  +  "','" + product_price  + "')" + '";' + '><img src="images/plus.png" style="width: 20px; height:20px;"></a></span>';
+                        elist += '<span id="lblqty_' + product_id + '" style="width: 0px; display: inline-block; background-color: transparent; line-height: 36px; vertical-align: top; font-size:20px;"></span><input type="text" style="width:20px;margin: 5px; padding:5px !important;" value="' + qty + '" id="qty_' + product_id + '">';
+                        ////elist += '<a href="#" onclick="AddProduct2(' + "'" + product_id +  "','" + product_name  +  "','" + product_price  + "')" + '";' + '><img src="images/plus.png" style="width: 20px; height:20px;"></a></span>';
                         //elist += '<img src="img/plus-64.png" style="width: 35px; height:35px;">';
                         elist += '</div>';
 
-                        elist += '<div class="col-8" style="background-color: transparent; ">' + '<a href="#" onclick="RemoveProductNew(' + "'" + product_id +  "','" + product_name  +  "','" + product_price  + "');" + '"><img src="images/x.png" style="width: 20px; height:20px;"></a>' + '</div>';
+                        ////elist += '<div class="col-8" style="background-color: transparent; ">' + '<a href="#" onclick="RemoveProductNew(' + "'" + product_id +  "','" + product_name  +  "','" + product_price  + "');" + '"><img src="images/x.png" style="width: 20px; height:20px;"></a>' + '</div>';
                         elist += '<div class="col-2" style="background-color: transparent; ">&nbsp;</div>';
                         elist += '</div>' + "\n\n";
 
@@ -2232,7 +2232,7 @@ myApp.onPageInit('contact', function (page) {
               //myApp.alert(t5);
 
               console.log(t5)
-              $$("#elistcontact").html(elist);
+              $$("#elistcontact").html(elist + '<br>');
               //localStorage.setItem("local_products", t5);
               //t4 = JSON.parse(t3);
               //myApp.alert('product_name2 ' + t4[0].product_name)
