@@ -2215,7 +2215,7 @@ myApp.onPageInit('contact', function (page) {
                         //elist += '<img src="img/plus-64.png" style="width: 35px; height:35px;">';
                         elist += '</div>';
 
-                        ////elist += '<div class="col-8" style="background-color: transparent; ">' + '<a href="#" onclick="RemoveProductNew(' + "'" + product_id +  "','" + product_name  +  "','" + product_price  + "');" + '"><img src="images/x.png" style="width: 20px; height:20px;"></a>' + '</div>';
+                        elist += '<div class="col-8" style="background-color: transparent; ">' + '<a href="#" onclick="RemoveProductNew(' + "'" + product_id +  "','" + product_name  +  "','" + product_price  + "');" + '"><img src="images/x.png" style="width: 20px; height:20px;"></a>' + '</div>';
                         elist += '<div class="col-2" style="background-color: transparent; ">&nbsp;</div>';
                         elist += '</div>' + "\n\n";
 
