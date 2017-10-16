@@ -142,6 +142,7 @@ document.addEventListener("deviceready", onDeviceReady, false);
         //$("#password").val(data.message);
 
         message = data.message;
+        myApp.alert('message ' + message, '');
 
         if (device.platform == 'iOS') {
             chat = data.additionalData.chat;
@@ -165,11 +166,11 @@ document.addEventListener("deviceready", onDeviceReady, false);
             //myApp.alert('Category ' + category, '');
             //myalert();
 
-            if(data.additionalData.category.length>0)
+            if(data.additionalData.category != '')
             {
                 myApp.alert('Opening Category ' + category, '');
                 ProductDisplay(category_id, category);
-            }if(data.additionalData.chat.length>0)
+            }if(data.additionalData.chat != '')
             {
                 myApp.alert('Opening chat ', '');
                 Chat();
