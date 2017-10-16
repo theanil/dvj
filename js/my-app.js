@@ -178,7 +178,7 @@ document.addEventListener("deviceready", onDeviceReady, false);
             {
                 //myApp.alert('Notification Message<br>' + message, '');
                 myApp.modal({
-                title:  'Notification &nbsp;&nbsp;&nbsp;&nbsp;<a href="#" onclick="myApp.closeModal();"><i class="icon f7-icons active" style="margin-left: 0px;">close</i></a>',
+                title:  'Notification</a>',
                 text: message,
                 buttons: [
                   {
