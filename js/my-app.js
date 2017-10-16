@@ -171,7 +171,7 @@ document.addEventListener("deviceready", onDeviceReady, false);
                 ProductDisplay(category_id, category);
             }if(data.additionalData.chat.length>0)
             {
-                //myApp.alert('Opening Category ' + category, '');
+                myApp.alert('Opening chat ', '');
                 Chat();
             }else
             {
