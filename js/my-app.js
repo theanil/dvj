@@ -173,7 +173,7 @@ document.addEventListener("deviceready", onDeviceReady, false);
                 ProductDisplay(category_id, category);
             }if(data.additionalData.chat != '')
             {
-                myApp.alert('Opening chat ', '');
+                //myApp.alert('Opening chat ', '');
                 Chat();
             }else
             {
