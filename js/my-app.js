@@ -28,6 +28,7 @@ var appname = "DVJ Design";
 $$(document).on('ajaxStart', function (e) { myApp.showIndicator(); }); 
 $$(document).on('ajaxComplete', function () { myApp.hideIndicator(); });
 
+var intervalId = null;
 
 document.addEventListener("deviceready", onDeviceReady, false);
  //alert('ok');
@@ -262,6 +263,7 @@ var mySwiper = new Swiper('.swiper-container2', {
 
 myApp.onPageInit('index', function (page) {
 
+clearInterval(intervalId);
 
     dvj_logged_in = localStorage.getItem("dvj_logged_in");
     if(dvj_logged_in == null || dvj_logged_in == 'undefined')
@@ -3453,7 +3455,7 @@ myApp.onPageInit('chat', function (page) {
         }
     });
 
-    setInterval(function()
+    intervalId = setInterval(function()
     { 
 
         device_uuid = localStorage.getItem("device_uuid");
