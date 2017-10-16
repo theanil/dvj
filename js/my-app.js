@@ -142,14 +142,14 @@ document.addEventListener("deviceready", onDeviceReady, false);
         //$("#password").val(data.message);
 
         message = data.message;
-        myApp.alert('message ' + message, '');
+        //myApp.alert('message ' + message, '');
 
         if (device.platform == 'iOS') {
             chat = data.additionalData.chat;
             myApp.alert('chat ' + chat, '');
             
             myApp.modal({
-                title:  'Notification &nbsp;&nbsp;&nbsp;&nbsp;<a href="#" onclick="myApp.closeModal();"><i class="fa fa-window-close color-white" style="margin-left: 0px;">close</i></a>',
+                title:  'Notification</a>',
                 text: message,
                 buttons: [
                   {
