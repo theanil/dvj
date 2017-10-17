@@ -145,12 +145,13 @@ document.addEventListener("deviceready", onDeviceReady, false);
         message = data.message;
         //myApp.alert('message ' + message, '');
 
+        /*
         if (device.platform == 'iOS') {
             chat = data.additionalData.chat;
             myApp.alert('chat ' + chat, '');
             
             myApp.modal({
-                title:  'Notification</a>',
+                title:  'Notification',
                 text: message,
                 buttons: [
                   {
@@ -159,6 +160,7 @@ document.addEventListener("deviceready", onDeviceReady, false);
                   }]
                });
         }else{
+        */
             category_id = data.additionalData.cat_id;
             category = data.additionalData.category;
             chat = data.additionalData.chat;
@@ -179,7 +181,7 @@ document.addEventListener("deviceready", onDeviceReady, false);
             {
                 //myApp.alert('Notification Message<br>' + message, '');
                 myApp.modal({
-                title:  'Notification</a>',
+                title:  'Notification',
                 text: message,
                 buttons: [
                   {
@@ -188,7 +190,9 @@ document.addEventListener("deviceready", onDeviceReady, false);
                   }]
                });
             }
+        /*
         }
+        */
 
         //type = data.additionalData.type;
     });
