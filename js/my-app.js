@@ -169,11 +169,11 @@ document.addEventListener("deviceready", onDeviceReady, false);
             //myApp.alert('Category ' + category, '');
             //myalert();
 
-            if(data.additionalData.category != '')
+            if(data.additionalData.category != '' || data.additionalData.category != null)
             {
                 myApp.alert('Opening Category ' + category, '');
                 ProductDisplay(category_id, category);
-            }if(data.additionalData.chat != '')
+            }else if(data.additionalData.chat != '' || data.additionalData.chat != null)
             {
                 //myApp.alert('Opening chat ', '');
                 Chat();
