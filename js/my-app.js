@@ -164,12 +164,17 @@ document.addEventListener("deviceready", onDeviceReady, false);
             category_id = data.additionalData.cat_id;
             category = data.additionalData.category;
             chat = data.additionalData.chat;
+            chat_user = data.additionalData.chat_user;
             //type = data.additionalData.type;
             page = mainView.activePage.name;
             //myApp.alert('page ' + page,  ''); 
             dvj_isadmin = localStorage.getItem("dvj_isadmin");
     
-            //myApp.alert('Category ' + category, '');
+            myApp.alert('category_id ' + category_id, '');
+            myApp.alert('category ' + category, '');
+            myApp.alert('chat ' + chat, '');
+            myApp.alert('page ' + page, '');
+            myApp.alert('chat_user ' + chat_user, '');
             //myalert();
 
             if(data.additionalData.category != '' || data.additionalData.category != null)
