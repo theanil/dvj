@@ -165,7 +165,10 @@ document.addEventListener("deviceready", onDeviceReady, false);
             category = data.additionalData.category;
             chat = data.additionalData.chat;
             //type = data.additionalData.type;
-            
+            page = mainView.activePage.name;
+            //myApp.alert('page ' + page,  ''); 
+            dvj_isadmin = localStorage.getItem("dvj_isadmin");
+    
             //myApp.alert('Category ' + category, '');
             //myalert();
 
@@ -176,10 +179,24 @@ document.addEventListener("deviceready", onDeviceReady, false);
             }else if(data.additionalData.chat != '' || data.additionalData.chat != null)
             {
                 //myApp.alert('Opening chat ', '');
-                Chat();
+                if(dvj_isadmin == '1')
+                {
+                    if(page == 'chat' || page == 'chatlist' )
+                    {
+
+                    }
+                }else{
+                    if(page != 'chat')
+                    {
+                        Chat();
+                    }
+                }
+                
+               // Chat();
             }else
             {
                 //myApp.alert('Notification Message<br>' + message, '');
+                /*
                 myApp.modal({
                 title:  'Notification',
                 text: message,
@@ -189,6 +206,12 @@ document.addEventListener("deviceready", onDeviceReady, false);
                     onClick: function() {}
                   }]
                });
+               */
+
+               myApp.addNotification({
+                  title: 'Notification',
+                  message: message
+                });
             }
         /*
         }
