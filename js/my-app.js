@@ -159,8 +159,9 @@ document.addEventListener("deviceready", onDeviceReady, false);
                     onClick: function() {}
                   }]
                });
-        }else{
+        }else{}
         */
+            m_type = data.additionalData.m_type;
             category_id = data.additionalData.cat_id;
             category = data.additionalData.category;
             chat = data.additionalData.chat;
@@ -170,6 +171,7 @@ document.addEventListener("deviceready", onDeviceReady, false);
             //myApp.alert('page ' + page,  ''); 
             dvj_isadmin = localStorage.getItem("dvj_isadmin");
     
+            myApp.alert('m_type ' + m_type, '');
             myApp.alert('message ' + message, '');
             myApp.alert('category_id ' + category_id, '');
             myApp.alert('category ' + category, '');
@@ -178,15 +180,17 @@ document.addEventListener("deviceready", onDeviceReady, false);
             myApp.alert('chat_user ' + chat_user, '');
             //myalert();
 
-           myApp.addNotification({title: 'Notification',message: message});
-
-            if(data.additionalData.category == '' || data.additionalData.category != null)
-            {
+           if(m_type == 'M')
+           {
+                myApp.addNotification({title: 'Notification',message: message});
+           }
+           if(m_type == 'C')
+           {
                 myApp.alert('Opening Category ' + category, '');
-                ProductDisplay(category_id, category);
-            }else if(data.additionalData.chat != '' || data.additionalData.chat != null)
-            {
-                //myApp.alert('Opening chat ', '');
+                ProductDisplay(category_id, category);            
+           }
+           if(m_type == 'C')
+           {
                 if(dvj_isadmin == '1')
                 {
                     if(page == 'chat' || page == 'chatlist' )
@@ -199,31 +203,7 @@ document.addEventListener("deviceready", onDeviceReady, false);
                         Chat();
                     }
                 }
-                
-               // Chat();
-            }else
-            {
-                //myApp.alert('Notification Message<br>' + message, '');
-                /*
-                myApp.modal({
-                title:  'Notification',
-                text: message,
-                buttons: [
-                  {
-                    text: 'Close',
-                    onClick: function() {}
-                  }]
-               });
-               */
-
-               myApp.addNotification({
-                  title: 'Notification',
-                  message: message
-                });
-            }
-        /*
-        }
-        */
+           }
 
         //type = data.additionalData.type;
     });
