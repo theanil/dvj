@@ -189,7 +189,7 @@ document.addEventListener("deviceready", onDeviceReady, false);
                 myApp.alert('Opening Category ' + category, '');
                 ProductDisplay(category_id, category);            
            }
-           if(m_type == 'C')
+           if(m_type == 'CH')
            {
                 if(dvj_isadmin == '1')
                 {
