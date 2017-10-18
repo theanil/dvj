@@ -171,13 +171,13 @@ document.addEventListener("deviceready", onDeviceReady, false);
             //myApp.alert('page ' + page,  ''); 
             dvj_isadmin = localStorage.getItem("dvj_isadmin");
     
-            myApp.alert('m_type ' + m_type, '');
-            myApp.alert('message ' + message, '');
-            myApp.alert('category_id ' + category_id, '');
-            myApp.alert('category ' + category, '');
-            myApp.alert('chat ' + chat, '');
-            myApp.alert('page ' + page, '');
-            myApp.alert('chat_user ' + chat_user, '');
+            //myApp.alert('m_type ' + m_type, '');
+            //myApp.alert('message ' + message, '');
+            //myApp.alert('category_id ' + category_id, '');
+            //myApp.alert('category ' + category, '');
+            //myApp.alert('chat ' + chat, '');
+            //myApp.alert('page ' + page, '');
+            //myApp.alert('chat_user ' + chat_user, '');
             //myalert();
 
            if(m_type == 'M')
