@@ -193,14 +193,14 @@ document.addEventListener("deviceready", onDeviceReady, false);
            {
                 if(dvj_isadmin == '1')
                 {
-                    if(page == 'chat' || page == 'chatlist' )
+                    if(page != 'chat') // || page == 'chatlist' 
                     {
-
+                        Chat(chat_user)
                     }
                 }else{
                     if(page != 'chat')
                     {
-                        Chat();
+                        Chat(chat_user);
                     }
                 }
            }
@@ -3253,10 +3253,11 @@ myApp.onPageInit('alerts', function (page) {
 });
 
 
-function Chat()
+function Chat(chat_user)
 {
     dvj_logged_in = localStorage.getItem("dvj_logged_in");
     //myApp.alert(dvj_logged_in,'')
+    //myApp.alert(chat_user,'')
     if(dvj_logged_in == 'yes')
     {
         dvj_isadmin = localStorage.getItem("dvj_isadmin");
@@ -3265,7 +3266,14 @@ function Chat()
         {
             mainView.router.load({url: 'chat.html',context: {}});
         }else{
-            mainView.router.load({url: 'chatlist.html',context: {}});            
+            if(chat_user == '')
+            {
+                //myApp.alert('1','')
+                mainView.router.load({url: 'chatlist.html',context: {}});   
+            }else{
+                ChatUser(chat_user);
+                //myApp.alert('2','')
+            }         
         }
     }else{
         myApp.alert('Please login for the Chat option','')
