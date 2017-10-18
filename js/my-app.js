@@ -170,6 +170,7 @@ document.addEventListener("deviceready", onDeviceReady, false);
             //myApp.alert('page ' + page,  ''); 
             dvj_isadmin = localStorage.getItem("dvj_isadmin");
     
+            myApp.alert('message ' + message, '');
             myApp.alert('category_id ' + category_id, '');
             myApp.alert('category ' + category, '');
             myApp.alert('chat ' + chat, '');
@@ -177,7 +178,9 @@ document.addEventListener("deviceready", onDeviceReady, false);
             myApp.alert('chat_user ' + chat_user, '');
             //myalert();
 
-            if(data.additionalData.category != '' || data.additionalData.category != null)
+           myApp.addNotification({title: 'Notification',message: message});
+
+            if(data.additionalData.category == '' || data.additionalData.category != null)
             {
                 myApp.alert('Opening Category ' + category, '');
                 ProductDisplay(category_id, category);
