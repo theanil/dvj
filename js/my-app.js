@@ -3480,7 +3480,7 @@ myApp.onPageInit('chat', function (page) {
 
     intervalId = setInterval(function()
     { 
-
+        myApp.hideIndicator();
         device_uuid = localStorage.getItem("device_uuid");
         var url = srvURL + "/chatlist";//?mobile=9702502361&pass=9702502361
         
@@ -3543,10 +3543,10 @@ myApp.onPageInit('chat', function (page) {
 
                 if(status == 0)
                 {
-                    myApp.alert('Please Check Internet',  ''); 
+                    //myApp.alert('Please Check Internet',  ''); 
                 }else
                 {
-                    myApp.alert('failure * ' +  status,  '');  
+                    //myApp.alert('failure * ' +  status,  '');  
                 }
             }
         });
@@ -3568,7 +3568,7 @@ myApp.onPageInit('chat', function (page) {
       })
     
         */
-    }, 5000);
+    }, 20000);
 
 
 
