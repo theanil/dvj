@@ -183,12 +183,17 @@ document.addEventListener("deviceready", onDeviceReady, false);
 
            if(m_type == 'M')
            {
-                if(msg2 != '')
-                {
-                    myApp.addNotification({title: 'Notification',message: msg2 + '<br>' + '<font color="black">'+ message + "</font>" });
-                }else{
-                    myApp.addNotification({title: 'Notification',message: '<font color="black">'+ message + "</font>" });
-                }
+             page = mainView.activePage.name;
+             if(page == 'index' )
+             {
+                Notification();
+             }
+             if(msg2 != '')
+             {
+                myApp.addNotification({title: 'Notification',message: msg2 + '<br>' + '<font color="black">'+ message + "</font>" });
+             }else{
+                myApp.addNotification({title: 'Notification',message: '<font color="black">'+ message + "</font>" });
+             }
            }
            if(m_type == 'C')
            {
