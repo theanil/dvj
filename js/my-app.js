@@ -183,7 +183,13 @@ document.addEventListener("deviceready", onDeviceReady, false);
 
            if(m_type == 'M')
            {
-                myApp.addNotification({title: 'Notification',message: '<font color="black">+ message + "</font>"+ '<br>' + msg2});
+                if(msg2.length >0)
+                {
+                    myApp.addNotification({title: 'Notification',message: msg2 + '<br>' + '<font color="black">'+ message + "</font>" });
+
+                }else{
+                    myApp.addNotification({title: 'Notification',message: '<font color="black">'+ message + "</font>" });
+                }
            }
            if(m_type == 'C')
            {
