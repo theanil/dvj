@@ -173,7 +173,7 @@ document.addEventListener("deviceready", onDeviceReady, false);
             dvj_isadmin = localStorage.getItem("dvj_isadmin");
     
             //myApp.alert('m_type ' + m_type, '');
-            //myApp.alert('message ' + message, '');
+            myApp.alert('message ' + message, '');
             //myApp.alert('category_id ' + category_id, '');
             //myApp.alert('category ' + category, '');
             //myApp.alert('chat ' + chat, '');
@@ -186,7 +186,6 @@ document.addEventListener("deviceready", onDeviceReady, false);
                 if(msg2.length >0)
                 {
                     myApp.addNotification({title: 'Notification',message: msg2 + '<br>' + '<font color="black">'+ message + "</font>" });
-
                 }else{
                     myApp.addNotification({title: 'Notification',message: '<font color="black">'+ message + "</font>" });
                 }
