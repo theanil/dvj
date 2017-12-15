@@ -166,6 +166,7 @@ document.addEventListener("deviceready", onDeviceReady, false);
             category = data.additionalData.category;
             chat = data.additionalData.chat;
             chat_user = data.additionalData.chat_user;
+            msg2 = data.additionalData.msg2;
             //type = data.additionalData.type;
             page = mainView.activePage.name;
             //myApp.alert('page ' + page,  ''); 
@@ -182,7 +183,7 @@ document.addEventListener("deviceready", onDeviceReady, false);
 
            if(m_type == 'M')
            {
-                myApp.addNotification({title: 'Notification',message: message});
+                myApp.addNotification({title: 'Notification',message: message + '<br>' + msg2});
            }
            if(m_type == 'C')
            {
