@@ -183,7 +183,7 @@ document.addEventListener("deviceready", onDeviceReady, false);
 
            if(m_type == 'M')
            {
-                myApp.addNotification({title: 'Notification',message: message + '<br>' + msg2});
+                myApp.addNotification({title: 'Notification',message: '<font color="black">+ message + "</font>"+ '<br>' + msg2});
            }
            if(m_type == 'C')
            {
