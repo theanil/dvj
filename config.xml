@@ -114,7 +114,7 @@
     -->
 	
     <!-- Define app icon for each platform. -->
-    <icon src="dvj.png" />
+    <icon src="imageedit_1_4791705846.png" />
     <!--<icon src="dvj-logo1.png" />-->
 
     <icon src="www/res/icon/android/icon-36-ldpi.png"   gap:platform="android"    gap:qualifier="ldpi" />
