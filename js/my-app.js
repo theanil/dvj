@@ -179,6 +179,8 @@ document.addEventListener("deviceready", onDeviceReady, false);
             //myApp.alert('category ' + category, '');
             //myApp.alert('chat ' + chat, '');
             //myApp.alert('page ' + page, '');
+            myApp.alert('m_type ' + m_type, '');
+            myApp.alert('image ' + image, '');
             //myApp.alert('chat_user ' + chat_user, '');
             //myalert();
 
