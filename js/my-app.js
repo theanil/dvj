@@ -110,7 +110,7 @@ document.addEventListener("deviceready", onDeviceReady, false);
     var push = PushNotification.init({
         android: {
             senderID: "797051143620",
-            icon: "notification-icon"
+            icon: "fcm_push_icon",
         },
         ios: {
             alert: "true",
