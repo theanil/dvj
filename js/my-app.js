@@ -163,6 +163,7 @@ document.addEventListener("deviceready", onDeviceReady, false);
         */
             m_type = data.additionalData.m_type;
             category_id = data.additionalData.cat_id;
+            image = data.additionalData.image;
             category = data.additionalData.category;
             chat = data.additionalData.chat;
             chat_user = data.additionalData.chat_user;
@@ -192,7 +193,7 @@ document.addEventListener("deviceready", onDeviceReady, false);
              {
                 myApp.addNotification({title: 'Notification',message: msg2 + '<br>' + '<font color="black">'+ message + "</font>" });
              }else{
-                myApp.addNotification({title: 'Notification',message: '<font color="black">'+ message + "</font>" });
+                myApp.addNotification({title: 'Notification',message: '<font color="black">'+ message + '<br>' + image + "</font>" });
              }
            }
            if(m_type == 'C')
