@@ -118,15 +118,21 @@
     <!--<icon src="dvj.png" />-->
     <!--<icon src="dvj-logo1.png" />-->
 
-    <icon src="res/drawable-hdpi/fcm_push_icon.png"   gap:platform="android"    gap:qualifier="ldpi" />
-    <icon src="res/drawable-xhdpi/fcm_push_icon.png"   gap:platform="android"    gap:qualifier="mdpi" />
-    <icon src="res/drawable-xxhdpi/fcm_push_icon.png"   gap:platform="android"    gap:qualifier="hdpi" />
-    <icon src="res/drawable-xxxhdpi/fcm_push_icon.png"  gap:platform="android"    gap:qualifier="xhdpi" />
+    <icon src="res/36x36.png"   gap:platform="android"    gap:qualifier="ldpi" />
+    <icon src="res/48x48.png"   gap:platform="android"    gap:qualifier="mdpi" />
+    <icon src="res/72x72.png"   gap:platform="android"    gap:qualifier="hdpi" />
+    <icon src="res/96x96.png"   gap:platform="android"    gap:qualifier="xhdpi" />
+
 <!--
 -->
 
 
 <!--
+    <icon src="res/drawable-hdpi/fcm_push_icon.png"   gap:platform="android"    gap:qualifier="ldpi" />
+    <icon src="res/drawable-xhdpi/fcm_push_icon.png"   gap:platform="android"    gap:qualifier="mdpi" />
+    <icon src="res/drawable-xxhdpi/fcm_push_icon.png"   gap:platform="android"    gap:qualifier="hdpi" />
+    <icon src="res/drawable-xxxhdpi/fcm_push_icon.png"  gap:platform="android"    gap:qualifier="xhdpi" />
+
     <icon src="res/dvj_rgb36.png"   gap:platform="android"   gap:qualifier="ldpi" />
     <icon src="res/dvj_rgb48.png"   gap:platform="android"   gap:qualifier="mdpi" />
     <icon src="res/dvj_rgb72.png"   gap:platform="android"   gap:qualifier="hdpi" />
