@@ -173,8 +173,6 @@
     <gap:splash src="images/800_480.png"       gap:platform="android" gap:qualifier="port-hdpi" />
     <gap:splash src="images/800_480.png"       gap:platform="android" gap:qualifier="port-xhdpi" />
 
-    <gap:splash src="images/screen-225.png"              gap:platform="blackberry" />
-	
     <gap:splash src="icon/320w480h.png"                gap:platform="ios"     width="320" height="480" />
     <gap:splash src="icon/640w960h.png"                gap:platform="ios"     width="640" height="960" />
     <gap:splash src="icon/640w1136h.png"               gap:platform="ios"     width="640" height="1136" />
@@ -188,6 +186,7 @@
     <gap:splash src="icon/1080w1920h.png"              gap:platform="ios"     width="1080" height="1920" />
     <gap:splash src="icon/1536w2048h.png"              gap:platform="ios"     width="1536" height="2048" />
 
+    <gap:splash src="images/screen-225.png"              gap:platform="blackberry" />
     <gap:splash src="www/res/screen/windows-phone/screen-portrait.jpg"      gap:platform="winphone" />
 
 	<splash src="images/800_480.png" />
