@@ -175,9 +175,6 @@
     <splash src="icon/1080w1920h.png"              gap:platform="ios"     width="1080" height="1920" />
     <splash src="icon/1536w2048h.png"              gap:platform="ios"     width="1536" height="2048" />
 
-    <splash src="images/screen-225.png"              gap:platform="blackberry" />
-    <splash src="www/res/screen/windows-phone/screen-portrait.jpg"      gap:platform="winphone" />
-
 	<splash src="images/800_480.png" />
     <!--
         Define access to external domains.
@@ -236,7 +233,6 @@
         <config-file platform="ios" target="*-Info.plist" parent="ITSAppUsesNonExemptEncryption">
           <false/>
         </config-file>
-
     </platform>
 	
     <preference name="SplashScreenDelay" value="3000" />
