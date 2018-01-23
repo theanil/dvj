@@ -2,11 +2,9 @@
 
 <!-- config.xml reference: https://build.phonegap.com/docs/config-xml -->
 
-<widget id="com.dvjdesign" version="1.2.3" versionCode="123" xmlns="http://www.w3.org/ns/widgets" xmlns:gap="http://phonegap.com/ns/1.0">
-
+<widget id="com.dvjdesign" version="1.2.4" versionCode="124" xmlns="http://www.w3.org/ns/widgets" xmlns:gap="http://phonegap.com/ns/1.0">
 
     <name>DVJ Design</name>
-
     <description>DVJ Design</description>
 
     <author href="http://phonegap.com" email="support@phonegap.com">Anil Team</author>
@@ -109,7 +107,7 @@
     -->
 	
     <!-- Define app icon for each platform. -->
-    <icon src="dvj_rgb.png" />
+    <icon src="icon98x101.png" />
     <!--<icon src="dvj.png" />-->
     <!--<icon src="dvj-logo1.png" />-->
 
