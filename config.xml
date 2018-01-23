@@ -1,20 +1,15 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
 <!-- config.xml reference: https://build.phonegap.com/docs/config-xml -->
-<!-- in.bluapps.webapp  // com.blu.webapp-->
 
 <widget id="com.dvjdesign" version="1.2.3" versionCode="123" xmlns="http://www.w3.org/ns/widgets" xmlns:gap="http://phonegap.com/ns/1.0">
 
 
     <name>DVJ Design</name>
 
-    <description>
-        DVJ Design
-    </description>
+    <description>DVJ Design</description>
 
-    <author href="http://phonegap.com" email="support@phonegap.com">
-        Anil Team
-    </author>
+    <author href="http://phonegap.com" email="support@phonegap.com">Anil Team</author>
 
     <!-- Define the main entry-point to the application -->
     <content src="index.html" />
@@ -61,9 +56,9 @@
     <!-- Core plugins -->
     <!--gap:plugin name="cordova-plugin-media-capture" source="npm" /-->
 
-    <gap:plugin name="cordova-plugin-console" source="npm" />
-    <gap:plugin name="cordova-plugin-device" source="npm" />
-    <gap:plugin name="cordova-plugin-dialogs" source="npm" />
+    <plugin name="cordova-plugin-console" source="npm" />
+    <plugin name="cordova-plugin-device" source="npm" />
+    <plugin name="cordova-plugin-dialogs" source="npm" />
 
     <!--
     <gap:plugin name="cordova-plugin-device-motion" source="npm" />
@@ -84,13 +79,13 @@
 
     <feature name="http://api.phonegap.com/1.0/network"/>
 
-    <gap:plugin name="cordova-plugin-globalization" source="npm" />
-    <gap:plugin name="cordova-plugin-network-information" source="npm" />
-    <gap:plugin name="cordova-plugin-splashscreen" source="npm" />
-    <gap:plugin name="cordova-plugin-vibration" source="npm" />
-    <gap:plugin name="cordova-plugin-inappbrowser" source="npm" />
+    <plugin name="cordova-plugin-globalization" source="npm" />
+    <plugin name="cordova-plugin-network-information" source="npm" />
+    <plugin name="cordova-plugin-splashscreen" source="npm" />
+    <plugin name="cordova-plugin-vibration" source="npm" />
+    <plugin name="cordova-plugin-inappbrowser" source="npm" />
 
-    <gap:plugin name="cordova-plugin-whitelist" source="npm" />
+    <plugin name="cordova-plugin-whitelist" source="npm" />
 
 <!--
     <plugin name="cordova-plugin-media-capture" source="npm" spec="*">
@@ -99,9 +94,9 @@
       <variable name="PHOTOLIBRARY_USAGE_DESCRIPTION" value="App would like to access the library." />
     </plugin>
 -->
-    <gap:plugin name="phonegap-plugin-push" source="npm" spec="~1.7.2">
+    <plugin name="phonegap-plugin-push" source="npm" spec="~1.7.2">
         <param name="SENDER_ID" value="797051143620" />
-    </gap:plugin> 
+    </plugin> 
     
 	<feature name="Device">
 		<param name="android-package" value="org.apache.cordova.device.Device" />
@@ -122,10 +117,6 @@
     <icon src="res/w48x48.png"   gap:platform="android"    gap:qualifier="mdpi" />
     <icon src="res/w72x72.png"   gap:platform="android"    gap:qualifier="hdpi" />
     <icon src="res/w96x96.png"   gap:platform="android"    gap:qualifier="xhdpi" />
-
-<!--
--->
-
 
 <!--
     <icon src="res/drawable-hdpi/fcm_push_icon.png"   gap:platform="android"    gap:qualifier="ldpi" />
@@ -168,26 +159,26 @@
 -->
 
     <!-- Define app splash screen for each platform. -->
-    <gap:splash src="images/800_480.png"       gap:platform="android" gap:qualifier="port-ldpi" />
-    <gap:splash src="images/800_480.png"       gap:platform="android" gap:qualifier="port-mdpi" />
-    <gap:splash src="images/800_480.png"       gap:platform="android" gap:qualifier="port-hdpi" />
-    <gap:splash src="images/800_480.png"       gap:platform="android" gap:qualifier="port-xhdpi" />
+    <splash src="images/800_480.png"       gap:platform="android" gap:qualifier="port-ldpi" />
+    <splash src="images/800_480.png"       gap:platform="android" gap:qualifier="port-mdpi" />
+    <splash src="images/800_480.png"       gap:platform="android" gap:qualifier="port-hdpi" />
+    <splash src="images/800_480.png"       gap:platform="android" gap:qualifier="port-xhdpi" />
 
-    <gap:splash src="icon/320w480h.png"                gap:platform="ios"     width="320" height="480" />
-    <gap:splash src="icon/640w960h.png"                gap:platform="ios"     width="640" height="960" />
-    <gap:splash src="icon/640w1136h.png"               gap:platform="ios"     width="640" height="1136" />
-    <gap:splash src="icon/768w1024h.png"               gap:platform="ios"     width="768" height="1024" />
-    <gap:splash src="icon/1024_768.png"                gap:platform="ios"     width="1024" height="768" />
+    <splash src="icon/320w480h.png"                gap:platform="ios"     width="320" height="480" />
+    <splash src="icon/640w960h.png"                gap:platform="ios"     width="640" height="960" />
+    <splash src="icon/640w1136h.png"               gap:platform="ios"     width="640" height="1136" />
+    <splash src="icon/768w1024h.png"               gap:platform="ios"     width="768" height="1024" />
+    <splash src="icon/1024_768.png"                gap:platform="ios"     width="1024" height="768" />
 	
-    <gap:splash src="icon/750w1334h.png"               gap:platform="ios"     width="750" height="1334" />
-    <gap:splash src="icon/1334w750h.png"               gap:platform="ios"     width="1334" height="750" />
-    <gap:splash src="icon/1242w2208h.png"              gap:platform="ios"     width="1242" height="2208" />
-    <gap:splash src="icon/2208w1242h.png"              gap:platform="ios"     width="2208" height="1242" />
-    <gap:splash src="icon/1080w1920h.png"              gap:platform="ios"     width="1080" height="1920" />
-    <gap:splash src="icon/1536w2048h.png"              gap:platform="ios"     width="1536" height="2048" />
+    <splash src="icon/750w1334h.png"               gap:platform="ios"     width="750" height="1334" />
+    <splash src="icon/1334w750h.png"               gap:platform="ios"     width="1334" height="750" />
+    <splash src="icon/1242w2208h.png"              gap:platform="ios"     width="1242" height="2208" />
+    <splash src="icon/2208w1242h.png"              gap:platform="ios"     width="2208" height="1242" />
+    <splash src="icon/1080w1920h.png"              gap:platform="ios"     width="1080" height="1920" />
+    <splash src="icon/1536w2048h.png"              gap:platform="ios"     width="1536" height="2048" />
 
-    <gap:splash src="images/screen-225.png"              gap:platform="blackberry" />
-    <gap:splash src="www/res/screen/windows-phone/screen-portrait.jpg"      gap:platform="winphone" />
+    <splash src="images/screen-225.png"              gap:platform="blackberry" />
+    <splash src="www/res/screen/windows-phone/screen-portrait.jpg"      gap:platform="winphone" />
 
 	<splash src="images/800_480.png" />
     <!--
