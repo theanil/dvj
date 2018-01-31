@@ -112,9 +112,11 @@
     <!--<icon src="dvj-logo1.png" />-->
 
     <icon src="res/newdrawable-ldpi-icon.png"   gap:platform="android"    gap:qualifier="ldpi" />
-    <icon src="res/w48x48.png"   gap:platform="android"    gap:qualifier="mdpi" />
-    <icon src="res/w72x72.png"   gap:platform="android"    gap:qualifier="hdpi" />
-    <icon src="res/w96x96.png"   gap:platform="android"    gap:qualifier="xhdpi" />
+    <icon src="android/drawable-mdpi-icon.png"   gap:platform="android"    gap:qualifier="mdpi" />
+    <icon src="android/drawable-hdpi-icon.png"   gap:platform="android"    gap:qualifier="hdpi" />
+    <icon src="android/drawable-xhdpi-icon.png"   gap:platform="android"    gap:qualifier="xhdpi" />
+    <icon src="android/drawable-xxhdpi-icon.png"   gap:platform="android"    gap:qualifier="xhdpi" />
+    <icon src="android/drawable-xxxhdpi-icon.png"   gap:platform="android"    gap:qualifier="xhdpi" />
     <!--
     <icon src="res/w72x72.png"   gap:platform="android"    gap:qualifier="hdpi" />
     <icon src="res/w96x96.png"   gap:platform="android"    gap:qualifier="xhdpi" />
