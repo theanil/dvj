@@ -151,9 +151,14 @@
     <icon src="icons/icon-60-2x.png"         gap:platform="ios"        width="120" height="120" />
 -->
 
-    <icon src="icon/Icon-40.png" width="40" height="40"/>
-
     <!--
+    <icon src="icon/Icon-40.png" width="40" height="40"/>
+-->
+
+   
+   <preference name='phonegap-version' value='cli-6.5.0' />
+    <preference name='pgb-builder-version' value='2' />
+
     <icon src="icon/Icon-29.png"                gap:platform="ios"        width="29" height="29" />
     <icon src="icon/Icon-40.png"                gap:platform="ios"        width="40" height="40" />
     <icon src="icon/Icon-50.png"                gap:platform="ios"        width="50" height="50" />
@@ -167,7 +172,7 @@
     <icon src="icon/Icon-120.png"               gap:platform="ios"        width="120" height="120" />
     <icon src="icon/Icon-144.png"               gap:platform="ios"        width="144" height="144" />
     <icon src="icon/Icon-152.png"               gap:platform="ios"        width="152" height="152" />
-    -->
+    
 
 
 <!--
