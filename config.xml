@@ -162,7 +162,7 @@
 
     <icon src="icon/Icon-29.png"                gap:platform="ios"        width="29" height="29" />
     <!--<icon src="icon/Icon-40.png"                gap:platform="ios"        width="40" height="40" />-->
-    <icon src="2-ConvertImage.png"              gap:platform="ios"        width="40" height="40" />
+    <icon src="OLD-AppIcon40x40.png"            gap:platform="ios"        width="40" height="40" />
     <icon src="icon/Icon-50.png"                gap:platform="ios"        width="50" height="50" />
     <icon src="icon/Icon-57.png"                gap:platform="ios"        width="57" height="57" />
     <icon src="icon/Icon-58.png"                gap:platform="ios"        width="58" height="58" />
@@ -286,7 +286,7 @@
             <key>CFBundleIconFiles</key>
             <array>
               <!-- The actual filenames. Don't list the @2x/@3x files here, and you can use just the biggest one if you like -->
-              <string>2.png</string>
+              <string>OLD-AppIcon40x40.png</string>
             </array>
           </dict>
         </dict>
