@@ -174,8 +174,10 @@
     <icon src="icon/Icon-120.png"               gap:platform="ios"        width="120" height="120" />
     <icon src="icon/Icon-144.png"               gap:platform="ios"        width="144" height="144" />
     <icon src="icon/Icon-152.png"               gap:platform="ios"        width="152" height="152" />
-    <icon src="1024x1024-2.png"               gap:platform="ios"        width="1024" height="1024" />
+
+    <icon src="1024x1024-2.png"                 gap:platform="ios"        width="1024" height="1024" />
     
+    <icon src="1024x1024-2.png" width="1024" height="1024" />
 
 
 <!--
