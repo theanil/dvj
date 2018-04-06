@@ -2,7 +2,7 @@
 
 <!-- config.xml reference: https://build.phonegap.com/docs/config-xml -->
 
-<widget id="com.dvjdesign" version="1.2.5" versionCode="125" xmlns="http://www.w3.org/ns/widgets" xmlns:gap="http://phonegap.com/ns/1.0">
+<widget id="com.dvjdesign" version="1.2.6" versionCode="126" xmlns="http://www.w3.org/ns/widgets" xmlns:gap="http://phonegap.com/ns/1.0">
 
     <name>DVJ Design</name>
     <description>DVJ Design</description>
@@ -132,34 +132,7 @@
     <icon src="res/drawable-xhdpi-icon.png"   gap:platform="android"    gap:qualifier="xhdpi" />
     <icon src="res/drawable-xxhdpi-icon.png"   gap:platform="android"    gap:qualifier="xxhdpi" />
     <icon src="res/drawable-xxxhdpi-icon.png"   gap:platform="android"    gap:qualifier="xxxhdpi" />
--->
-
-<!--
-    <icon src="res/w36x36.png"   gap:platform="android"    gap:qualifier="ldpi" />
-    <icon src="res/w48x48.png"   gap:platform="android"    gap:qualifier="mdpi" />
-    <icon src="res/w72x72.png"   gap:platform="android"    gap:qualifier="hdpi" />
-    <icon src="res/w96x96.png"   gap:platform="android"    gap:qualifier="xhdpi" />
-
-    <icon src="res/drawable-hdpi/fcm_push_icon.png"   gap:platform="android"    gap:qualifier="ldpi" />
-    <icon src="res/drawable-xhdpi/fcm_push_icon.png"   gap:platform="android"    gap:qualifier="mdpi" />
-    <icon src="res/drawable-xxhdpi/fcm_push_icon.png"   gap:platform="android"    gap:qualifier="hdpi" />
-    <icon src="res/drawable-xxxhdpi/fcm_push_icon.png"  gap:platform="android"    gap:qualifier="xhdpi" />
-
-    <icon src="res/dvj_rgb36.png"   gap:platform="android"   gap:qualifier="ldpi" />
-    <icon src="res/dvj_rgb48.png"   gap:platform="android"   gap:qualifier="mdpi" />
-    <icon src="res/dvj_rgb72.png"   gap:platform="android"   gap:qualifier="hdpi" />
-    <icon src="res/dvj_rgb96.png"  gap:platform="android"    gap:qualifier="xhdpi" />
-
-    <icon src="icons/icon-57.png"            gap:platform="ios"        width="57" height="57" />
-    <icon src="icons/icon-72.png"            gap:platform="ios"        width="72" height="72" />
-    <icon src="icons/icon-57-2x.png"         gap:platform="ios"        width="114" height="114" />
-    <icon src="icons/icon-72-2x.png"         gap:platform="ios"        width="144" height="144" />
-    <icon src="icons/icon-60-2x.png"         gap:platform="ios"        width="120" height="120" />
--->
-
-    <!--
-    <icon src="icon/Icon-40.png" width="40" height="40"/>
--->
+    -->
 
     <icon src="icon/Icon-29.png"                gap:platform="ios"        width="29" height="29" />
     <!--<icon src="icon/Icon-40.png"                gap:platform="ios"        width="40" height="40" />-->
@@ -175,7 +148,7 @@
     <icon src="icon/Icon-144.png"               gap:platform="ios"        width="144" height="144" />
     <icon src="icon/Icon-152.png"               gap:platform="ios"        width="152" height="152" />
 
-    <icon src="OLD-AppIcon40x40.png"   platform="ios"           width="40" height="40" />
+    <icon src="icon/Icon-40.png"            platform="ios"           width="40" height="40" />
     <icon src="icon/ios/Icon-Small-80.png" platform="ios" width="80" height="80" />
     <icon src="icon/ios/Icon-120.png" platform="ios" width="120" height="120" />
     <icon src="icon/ios/1024x1024.png" width="1024" height="1024" />
