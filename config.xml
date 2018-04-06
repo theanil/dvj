@@ -228,18 +228,18 @@
     <splash src="images/800_480.png"       gap:platform="android" gap:qualifier="port-hdpi" />
     <splash src="images/800_480.png"       gap:platform="android" gap:qualifier="port-xhdpi" />
 
-    <splash src="icon/320w480h.png"                gap:platform="ios"     width="320" height="480" />
-    <splash src="icon/640w960h.png"                gap:platform="ios"     width="640" height="960" />
-    <splash src="icon/640w1136h.png"               gap:platform="ios"     width="640" height="1136" />
-    <splash src="icon/768w1024h.png"               gap:platform="ios"     width="768" height="1024" />
-    <splash src="icon/1024_768.png"                gap:platform="ios"     width="1024" height="768" />
+    <splash src="icon/320w480h.png"        gap:platform="ios"     width="320" height="480" />
+    <splash src="icon/640w960h.png"        gap:platform="ios"     width="640" height="960" />
+    <splash src="icon/640w1136h.png"       gap:platform="ios"     width="640" height="1136" />
+    <splash src="icon/768w1024h.png"       gap:platform="ios"     width="768" height="1024" />
+    <splash src="icon/1024_768.png"        gap:platform="ios"     width="1024" height="768" />
 	
-    <splash src="icon/750w1334h.png"               gap:platform="ios"     width="750" height="1334" />
-    <splash src="icon/1334w750h.png"               gap:platform="ios"     width="1334" height="750" />
-    <splash src="icon/1242w2208h.png"              gap:platform="ios"     width="1242" height="2208" />
-    <splash src="icon/2208w1242h.png"              gap:platform="ios"     width="2208" height="1242" />
-    <splash src="icon/1080w1920h.png"              gap:platform="ios"     width="1080" height="1920" />
-    <splash src="icon/1536w2048h.png"              gap:platform="ios"     width="1536" height="2048" />
+    <splash src="icon/750w1334h.png"       gap:platform="ios"     width="750" height="1334" />
+    <splash src="icon/1334w750h.png"       gap:platform="ios"     width="1334" height="750" />
+    <splash src="icon/1242w2208h.png"      gap:platform="ios"     width="1242" height="2208" />
+    <splash src="icon/2208w1242h.png"      gap:platform="ios"     width="2208" height="1242" />
+    <splash src="icon/1080w1920h.png"      gap:platform="ios"     width="1080" height="1920" />
+    <splash src="icon/1536w2048h.png"      gap:platform="ios"     width="1536" height="2048" />
 
 	<splash src="images/800_480.png" />
     <!--
@@ -289,9 +289,7 @@
     	<gap:platform name="blackberry" />
     	<gap:platform name="winphone" />
     -->
-	
-
-	
+		
     <preference name="SplashScreenDelay" value="3000" />
     <preference name="AutoHideSplashScreen" value="true" />
     <preference name="SplashMaintainAspectRatio" value="false" />
