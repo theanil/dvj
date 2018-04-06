@@ -2,7 +2,7 @@
 
 <!-- config.xml reference: https://build.phonegap.com/docs/config-xml -->
 
-<widget id="com.dvjdesign" version="1.2.6" versionCode="126" xmlns="http://www.w3.org/ns/widgets" xmlns:gap="http://phonegap.com/ns/1.0">
+<widget id="com.dvjdesign" version="1.2.7" versionCode="127" xmlns="http://www.w3.org/ns/widgets" xmlns:gap="http://phonegap.com/ns/1.0">
 
     <name>DVJ Design</name>
     <description>DVJ Design</description>
@@ -149,8 +149,8 @@
     <icon src="icon/Icon-152.png"               gap:platform="ios"        width="152" height="152" />
 
     <icon src="icon/Icon-40.png"            platform="ios"           width="40" height="40" />
-    <icon src="icon/ios/Icon-Small-80.png" platform="ios" width="80" height="80" />
-    <icon src="icon/ios/Icon-120.png" platform="ios" width="120" height="120" />
+    <icon src="icon/Icon-80.png" platform="ios" width="80" height="80" />
+    <icon src="icon/Icon-120.png" platform="ios" width="120" height="120" />
     <icon src="icon/ios/1024x1024.png" width="1024" height="1024" />
 
 
