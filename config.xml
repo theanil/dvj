@@ -148,11 +148,10 @@
     <icon src="icon/Icon-144.png"               gap:platform="ios"        width="144" height="144" />
     <icon src="icon/Icon-152.png"               gap:platform="ios"        width="152" height="152" />
 
-    <icon src="icon/Icon-40.png"            platform="ios"           width="40" height="40" />
-    <icon src="icon/Icon-80.png" platform="ios" width="80" height="80" />
-    <icon src="icon/Icon-120.png" platform="ios" width="120" height="120" />
-    <icon src="icon/ios/1024x1024.png" width="1024" height="1024" />
-
+    <icon src="icon/Icon-40.png"                platform="ios" width="40"   height="40" />
+    <icon src="icon/Icon-80.png"                platform="ios" width="80"   height="80" />
+    <icon src="icon/Icon-120.png"               platform="ios" width="120"  height="120" />
+    <icon src="icon/ios/1024x1024.png"                         width="1024" height="1024" />
 
 <!--
     <icon src="www/res/icon/blackberry/icon-80.png"     gap:platform="blackberry" />
@@ -223,10 +222,12 @@
 	
 	<gap:platform name="android" />
     <gap:platform name="ios" />
-	<gap:platform name="webos" />
-	<gap:platform name="symbian" />
-	<gap:platform name="blackberry" />
-	<!--<gap:platform name="winphone" />-->
+	<!--
+        <gap:platform name="webos" />
+    	<gap:platform name="symbian" />
+    	<gap:platform name="blackberry" />
+    	<gap:platform name="winphone" />
+    -->
 	
     <platform name="android">
         <allow-intent href="market:*" />
