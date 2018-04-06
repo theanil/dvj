@@ -175,9 +175,7 @@
     <icon src="icon/Icon-144.png"               gap:platform="ios"        width="144" height="144" />
     <icon src="icon/Icon-152.png"               gap:platform="ios"        width="152" height="152" />
 
-    <icon src="icon/ios/Icon-Small-40.png"   width="40" height="40" />
-    <icon src="icon/ios/Icon-Small-40.png"   platform="ios"           width="40" height="40" />
-
+    <icon src="OLD-AppIcon40x40.png"   platform="ios"           width="40" height="40" />
     <icon src="icon/ios/Icon-Small-80.png" platform="ios" width="80" height="80" />
     <icon src="icon/ios/Icon-120.png" platform="ios" width="120" height="120" />
     <icon src="icon/ios/1024x1024.png" width="1024" height="1024" />
