@@ -126,7 +126,7 @@
             xxxhdpi : 192x192 px
         -->
 
-        <icon src="icon/android/mipmap-ldpi.png"        density="ldpi" />
+        <icon src="black/36x36.png"        density="ldpi" />
         <icon src="icon/android/mipmap-mdpi.png"        density="mdpi" />
         <icon src="icon/android/mipmap-hdpi.png"        density="hdpi" />
         <icon src="icon/android/mipmap-xhdpi.png"       density="xhdpi" />
