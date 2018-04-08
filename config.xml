@@ -126,7 +126,7 @@
             xxxhdpi : 192x192 px
         -->
 
-        <icon src="res/newdrawable-ldpi-icon.png"     density="ldpi" />
+        <icon src="1.png"     density="ldpi" />
         <icon src="res/drawable-mdpi-icon.png"        density="mdpi" />
         <icon src="res/drawable-hdpi-icon.png"        density="hdpi" />
         <icon src="res/drawable-xhdpi-icon.png"       density="xhdpi" />
