@@ -42,8 +42,8 @@
     <!--
         Define a specific version of PhoneGap to build into your app.
         <preference name="phonegap-version"       value="3.5.0" />
-    -->
     <preference name="phonegap-version" value="cli-7.1.0" />
+    -->
 
     <preference name="android-build-tool" value="gradle" />
     <preference name="AndroidPersistentFileLocation" value="Compatibility" />
@@ -115,7 +115,6 @@
     <!--<icon src="dvj-logo1.png" />-->
 
 
-    <platform name="android">
 
         <!--
             ldpi    : 36x36 px
@@ -126,20 +125,15 @@
             xxxhdpi : 192x192 px
         -->
 
-        <icon src="black/36x36.png"        density="ldpi" />
-        <icon src="black/48x48.png"        density="mdpi" />
-        <icon src="black/72x72.png"        density="hdpi" />
-        <icon src="black/96x96.png"       density="xhdpi" />
 
-        <!--
-        <icon src="icon/android/mipmap-ldpi.png"        density="ldpi" />
-        <icon src="icon/android/mipmap-mdpi.png"        density="mdpi" />
-        <icon src="icon/android/mipmap-hdpi.png"        density="hdpi" />
-        <icon src="icon/android/mipmap-xhdpi.png"       density="xhdpi" />
-        <icon src="icon/android/mipmap-xxhdpi.png"      density="xxhdpi" />
-        <icon src="icon/android/mipmap-xxxhdpi.png"     density="xxxhdpi" />
-    -->
+    <icon src="res/newdrawable-ldpi-icon.png"   gap:platform="android"    gap:qualifier="ldpi" />
+    <icon src="android/drawable-mdpi-icon.png"   gap:platform="android"    gap:qualifier="mdpi" />
+    <icon src="android/drawable-hdpi-icon.png"   gap:platform="android"    gap:qualifier="hdpi" />
+    <icon src="android/drawable-xhdpi-icon.png"   gap:platform="android"    gap:qualifier="xhdpi" />
+    <icon src="android/drawable-xxhdpi-icon.png"   gap:platform="android"    gap:qualifier="xhdpi" />
+    <icon src="android/drawable-xxxhdpi-icon.png"   gap:platform="android"    gap:qualifier="xhdpi" />
 
+    <platform name="android">
         <preference name="android-minSdkVersion" value="15"/>
         <allow-intent href="market:*" />
          
