@@ -126,12 +126,12 @@
             xxxhdpi : 192x192 px
         -->
 
-        <icon src="1.png"     density="ldpi" />
-        <icon src="res/drawable-mdpi-icon.png"        density="mdpi" />
-        <icon src="res/drawable-hdpi-icon.png"        density="hdpi" />
-        <icon src="res/drawable-xhdpi-icon.png"       density="xhdpi" />
-        <icon src="res/drawable-xxhdpi-icon.png"      density="xxhdpi" />
-        <icon src="res/drawable-xxxhdpi-icon.png"     density="xxxhdpi" />
+        <icon src="icon/android/mipmap-ldpi.png"        density="ldpi" />
+        <icon src="icon/android/mipmap-mdpi.png"        density="mdpi" />
+        <icon src="icon/android/mipmap-hdpi.png"        density="hdpi" />
+        <icon src="icon/android/mipmap-xhdpi.png"       density="xhdpi" />
+        <icon src="icon/android/mipmap-xxhdpi.png"      density="xxhdpi" />
+        <icon src="icon/android/mipmap-xxxhdpi.png"     density="xxxhdpi" />
 
         <preference name="android-minSdkVersion" value="15"/>
         <allow-intent href="market:*" />
