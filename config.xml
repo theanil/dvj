@@ -139,6 +139,8 @@
     </platform>
 
     <platform name="ios">
+            <preference name="phonegap-version" value="cli-7.1.0" />
+
         <!-- iOS 8.0+ -->
         <!-- iPhone 6 Plus  -->
         <icon src="icon/ios/Icon-180.png" width="180" height="180" />
@@ -176,7 +178,6 @@
 
      </platform>
 
-    <preference name="phonegap-version" value="cli-7.1.0" />
 
     <!-- Define app splash screen for each platform. -->
     <splash src="images/800_480.png"       gap:platform="android" gap:qualifier="port-ldpi" />
