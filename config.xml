@@ -130,8 +130,6 @@
         <icon src="black/48x48.png"        density="mdpi" />
         <icon src="black/72x72.png"        density="hdpi" />
         <icon src="black/96x96.png"       density="xhdpi" />
-        <icon src="icon/android/mipmap-xxhdpi.png"      density="xxhdpi" />
-        <icon src="icon/android/mipmap-xxxhdpi.png"     density="xxxhdpi" />
 
         <!--
         <icon src="icon/android/mipmap-ldpi.png"        density="ldpi" />
