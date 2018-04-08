@@ -126,14 +126,12 @@
             xxxhdpi : 192x192 px
         -->
 
-        <icon src="res/newdrawable-ldpi-icon.png"     gap:qualifier="ldpi" />
-        <icon src="res/drawable-mdpi-icon.png"          gap:qualifier="mdpi" />
-        <icon src="res/drawable-hdpi-icon.png"        gap:qualifier="hdpi" />
-        <icon src="res/drawable-xhdpi-icon.png"         gap:qualifier="xhdpi" />
-        <icon src="res/drawable-xxhdpi-icon.png"       gap:qualifier="xxhdpi" />
-        <icon src="res/drawable-xxxhdpi-icon.png"       gap:qualifier="xxxhdpi" />
-
-        <icon src="icon2.png" />
+        <icon src="res/newdrawable-ldpi-icon.png"     density="ldpi" />
+        <icon src="res/drawable-mdpi-icon.png"        density="mdpi" />
+        <icon src="res/drawable-hdpi-icon.png"        density="hdpi" />
+        <icon src="res/drawable-xhdpi-icon.png"       density="xhdpi" />
+        <icon src="res/drawable-xxhdpi-icon.png"      density="xxhdpi" />
+        <icon src="res/drawable-xxxhdpi-icon.png"     density="xxxhdpi" />
 
         <preference name="android-minSdkVersion" value="15"/>
         <allow-intent href="market:*" />
