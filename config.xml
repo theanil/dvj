@@ -43,7 +43,6 @@
         Define a specific version of PhoneGap to build into your app.
         <preference name="phonegap-version"       value="3.5.0" />
     -->
-    <preference name="phonegap-version" value="cli-8.0.0" />
 
     <preference name="android-build-tool" value="gradle" />
     <preference name="AndroidPersistentFileLocation" value="Compatibility" />
@@ -176,6 +175,8 @@
         <config-file platform="ios" target="*-Info.plist" parent="ITSAppUsesNonExemptEncryption"><false/></config-file>
 
      </platform>
+
+    <preference name="phonegap-version" value="cli-7.1.0" />
 
     <!-- Define app splash screen for each platform. -->
     <splash src="images/800_480.png"       gap:platform="android" gap:qualifier="port-ldpi" />
