@@ -942,7 +942,7 @@ myApp.onPageInit('products', function (page) {
     $$.ajax({
           url: url,
           method: "GET",
-          data: {},
+          data: {category_type:'tiles'},
           processData: true,
           dataType: 'json',
           timeout : 50000,
@@ -3670,3 +3670,133 @@ var messageType = 'sent';
 });   
 
 });
+
+
+<!---  Add Code To my-app.js---->
+myApp.onPageInit('mosaic', function (page) {
+
+  //myApp.alert('brochure started','');
+  url = srvURL + '/category';
+    $$.ajax({
+          url: url,
+          method: "GET",
+          data: {category_type:'mosaic'},
+          processData: true,
+          dataType: 'json',
+          timeout : 50000,
+          success: function (e, status, xhr)
+          {
+              //myApp.hidePreloader();
+
+              if(e.status == 'success')
+              {
+                  //myApp.alert('session_id ' + e.session_id,  ''); 
+
+                  //myApp.alert('test Server',  '');   
+
+                  total = e.data.category.length;
+                   //myApp.alert(totalalerts);
+
+                  cadd = '';
+                  for(i=0; i< total; i++)
+                  {
+                      category_id = e.data.category[i].category_id;
+                      //alert(brochure_id);
+                      //datec = e.data.category[i].datec;
+
+                      //status = e.data.category[i].status;
+
+                      category_name = urldecode(e.data.category[i].category_name);
+                      category_image = urldecode(e.data.category[i].category_image);
+                      //brochure_pdf = urldecode(e.data.category[i].brochure_pdf);
+                      //brochure_fname = urldecode(e.data.category[i].brochure_fname);
+
+                      /*
+                      var b= i%2;
+                      //alert(b)
+                      if(b == 0)
+                      {
+                        cadd += '<div class="row">';
+                      }
+
+                      cadd += '           <div class="col-50">';
+                      cadd += '               <a href="#" onclick="ProductDisplay(' + "'" + category_id + "','" + category_name  +"');" + '">';
+                      cadd += '                   <img src="' + category_image + '" style=" height: 120px; width: 140px;"/></a>';
+                      cadd += '                  <span style="color: black;"><a href="#" onclick="ProductDisplay(' + "'" + category_id + "','" + category_name  +"');" + '">' + category_name + '</a></span>';
+                      //cadd += '               </a>';
+                      //cadd += '               <a class="external" href="' + urldecode(e.data.brochure[i].brochure_pdf)  + '"' + '>' + brochure_fname + '</a>';
+                      cadd += '           </div>';
+                      
+                      if(b == 1)
+                      {
+                        cadd += '      </div>';
+                      }
+
+                      */
+
+                      cadd += '<div class="row">';
+
+                      cadd += '           <div class="col-100" style="background: transparent;">';
+                      cadd += '               <a href="#" onclick="ProductDisplay(' + "'" + category_id + "','" + category_name  +"');" + '">';
+                      cadd += '                   <img src="' + category_image + '" style="width: 100%;"/></a>';
+                      cadd += '                  <div><center><a style="color: black; font-size: 22px;" href="#" onclick="ProductDisplay(' + "'" + category_id + "','" + category_name  +"');" + '">' + category_name + '</a></center></div>';
+                      //cadd += '               </a>';
+                      //cadd += '               <a class="external" href="' + urldecode(e.data.brochure[i].brochure_pdf)  + '"' + '>' + brochure_fname + '</a>';
+                      cadd += '           </div>';
+                      
+                      cadd += '      </div>';
+
+                    }
+                    console.log(cadd)
+                    $$("#productsdetails").html(cadd);
+                                  
+              }else
+              {
+                  //myApp.alert('error: ' + e.status,  '');
+                  myApp.alert(e.message,  ''); 
+              }
+          },
+          error: function (xhr, status)
+          {
+              myApp.hideIndicator();
+
+              if(status == 0)
+              {
+                  myApp.alert('Please Check Internet',  ''); 
+              }else
+              {
+                  myApp.alert('failure * ' +  status,  '');  
+              };
+          }
+      });
+
+    //localStorage.setItem("local_products", '');
+    var mlen = 0;
+    //a_session_id = localStorage.getItem("a_session_id");
+    local_products = localStorage.getItem("local_products");
+    //alert('local_products <br>' + local_products)
+    console.log(local_products);
+    if(local_products === null || local_products === 'undefined')
+    {
+    }else{
+    //myApp.alert('length ' + local_products.length,'')
+
+      if(local_products.length>0)
+      {
+        //myApp.alert('local_products ' + local_products,'')
+
+        test = JSON.parse(local_products);
+        mlen = test.length;
+      }
+    }
+    if(mlen == 0)
+    {
+      mlen = '';
+    }else
+    {
+      mlen = mlen + " Products";
+    }
+    $$("#t_amt").html(mlen);
+});
+
+<!---------********************------>
