@@ -134,7 +134,7 @@
     <icon src="android/drawable-xxxhdpi-icon.png"   gap:platform="android"    gap:qualifier="xhdpi" />
 
     <platform name="android">
-        <preference name="android-minSdkVersion" value="15"/>
+        <preference name="android-minSdkVersion" value="19"/>
         <allow-intent href="market:*" />
     </platform>
 
