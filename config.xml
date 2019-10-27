@@ -94,10 +94,11 @@
       <variable name="PHOTOLIBRARY_USAGE_DESCRIPTION" value="App would like to access the library." />
     </plugin>
 -->
+<!--
     <plugin name="phonegap-plugin-push" source="npm" spec="~1.7.2">
         <param name="SENDER_ID" value="797051143620" />
     </plugin> 
-    
+    -->
 	<feature name="Device">
 		<param name="android-package" value="org.apache.cordova.device.Device" />
 	</feature>
@@ -151,7 +152,7 @@
             <application android:usesCleartextTraffic="true" />
         </edit-config>
     </platform>
-    
+
     <platform name="ios">
 
         <!-- iOS 8.0+ -->
